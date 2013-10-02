@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+
+This is a DTD description of a rules file.  However, since NanoXML that JOGRE
+uses doesn't support DTD descriptions, it is given in a comment.
+
+<!DOCTYPE rules [
+<!ELEMENT rules (section+)>
+<!ATTLIST rules content (text | text/html | text/rtf) "text"
+				title CDATA #REQUIRED>
+	<!ELEMENT section (section+ | CDATA)>
+	<!ATTLIST title CDATA #IMPLIED>
+]>
+
+Notes: The "rules" element *must* have a title even though that title is never
+       shown to the users.  If the title isn't there, then nothing will display
+       in the rules window.
+
+       Sections are not required to have a title, but only sections with titles
+       will show up in the index'd tree list.
+
+       NanoXML doesn't support mixing elements and CDATA inside of an element,
+       and so non-title'd sections allow that functionality.
+
+       You can embed sections within sections and they will show up in the
+       tree as subsections.
+
+       The <![CDATA[ ... ]]> verbiage is needed for text that uses HTML tags within
+       it.  Without them, NanoXML would try to parse them as XML and fail.  For plain
+       text rules files, you don't need them.
+-->
+
+<rules content="text/html" title="Rules">
+	<section title="Introduction">
+		<![CDATA[<font size="+2"><b><u>Introduction</u></b></font><br>
+		Points Total was designed by PyroMyth games in 2005.<br><br>
+		The rules are available as one of the "free games" at their web site
+		http://www.pyromythgames.com/<br><br>
+		The star used to indicate first-player status was drawn by Sergio I. Rivera.
+		It is in the public domain and is available from http://www.openclipart.org/<br><br>
+		All other graphics drawn by Richard Walter and are put into the public
+		domain.<br><br>
+		The program was written by Richard Walter (rwalter42@yahoo.com)
+		<br>]]>
+	</section>
+
+	<section title="Playing the Game">
+		<![CDATA[<font size="+2"><b><u><br>Playing the Game</u></b></font><br>
+		Each player starts with a set of four pieces, each with a value and
+		arrows drawn on it.<br><br>
+		On a player's turn, he must place one of his pieces on any space on the
+		board that does not already have a piece on it.  It may be oriented in
+		any direction.<br><br>
+		The player scores points of the value of the piece plus the values of
+		the other spaces/pieces that the arrows on the placed piece are pointing
+		toward.<br><br>
+		After all players have placed all of their pieces, the board is cleared
+		and the next round begins with the next player starting.<br><br>
+		The game is over after all players have been the starting player once.
+		The player with the highest total score is the winner.
+		<br>]]>
+	</section>
+
+
+	<section title="Screen Layout">
+		<![CDATA[<font size="+2"><b><u><br>Screen Layout</u></b></font><br>
+			On the left side of the screen is the 4x4 board where pieces are
+			played to score points.  On the right side of the screen are the
+			unplayed pieces that all players have available and their scores.<br><br>
+			There is a star at the top of each column of pieces that indicates
+			which players have had their chance playing first in the round.  A
+			player which has a star has <b>not</b> yet played first.  The player
+			with the green halo around the star is the player who went first this
+			round. When all players have had their turn playing first, the game
+			is over.
+			<br>]]>
+	</section>
+
+	<section title="Placing a piece">
+		<![CDATA[<font size="+2"><b><u><br>Placing a piece</u></b></font><br>
+		When it is your turn, clicking on one of your pieces in the right
+		side of the screen will select that piece to be played on the board.<br><br>
+		Moving the mouse over the board will show the potential piece that
+		will be placed.<br><br>
+		The piece can be rotated clockwise & counter-clockwise by using either:<br>
+		&nbsp;&nbsp;&nbsp;* left & right arrow keys<br>
+		&nbsp;&nbsp;&nbsp;* 'z' and 'x' keys<br>
+		&nbsp;&nbsp;&nbsp;* left & right arrow keys on the numeric keypad<br><br>
+		Clicking on the main board will place the piece.<br><br>
+		<br>]]>
+	</section>
+
+</rules>

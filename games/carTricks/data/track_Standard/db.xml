@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<track num_spaces="154"
+       start_spaces="148 149 150 151 152 153"
+	   name="Standard Track"
+	   image_size="584 432"
+	   num_tiles="11"
+	   backgroundTile="0">
+	<tile id="0" file="grass.png" offset="0 0"/>
+	<tile id="1" file="start.png" offset="17 11"/>
+	<tile id="2" file="horiz.png" offset="17 11"/>
+	<tile id="3" file="vert.png" offset="11 17"/>
+	<tile id="4" file="e_180_turn.png" offset="48 16"/>
+	<tile id="5" file="w_180_turn.png" offset="27 15"/>
+	<tile id="6" file="e_fork.png" offset="32 11"/>
+	<tile id="7" file="w_fork.png" offset="17 11"/>
+	<tile id="8" file="ne_90_turn.png" offset="14 29"/>
+	<tile id="9" file="se_90_turn.png" offset="49 16"/>
+	<tile id="10" file="special_turn.png" offset="67 75"/>
+	<space id="0" screen="53 92 14" next="150 -1 -1"/>
+	<space id="1" screen="56 63 15" next="151 -1 -1" tile="9 1"/>
+	<space id="2" screen="21 101 13" next="1 -1 -1"/>
+	<space id="3" screen="38 140 12" next="0 2 -1" tile="3 1"/>
+	<space id="4" screen="18 140 12" next="2 0 -1" tile="3 1"/>
+	<space id="5" screen="38 172 12" next="3 4 -1" tile="3 1"/>
+	<space id="6" screen="18 172 12" next="4 3 -1" tile="3 1"/>
+	<space id="7" screen="38 204 12" next="5 6 -1" tile="3 1"/>
+	<space id="8" screen="18 204 12" next="6 5 -1" tile="3 1"/>
+	<space id="9" screen="38 236 12" next="7 8 -1" tile="3 1"/>
+	<space id="10" screen="18 236 12" next="8 7 -1" tile="3 1"/>
+	<space id="11" screen="38 268 12" next="9 10 -1" tile="3 1"/>
+	<space id="12" screen="18 268 12" next="10 9 -1" tile="3 1"/>
+	<space id="13" screen="38 300 12" next="11 12 -1" tile="3 1"/>
+	<space id="14" screen="18 300 12" next="12 11 -1" tile="3 1"/>
+	<space id="15" screen="38 332 12" next="13 14 -1" tile="3 1"/>
+	<space id="16" screen="18 332 12" next="14 13 -1" tile="3 1"/>
+	<space id="17" screen="53 380 2" next="15 16 -1"/>
+	<space id="18" screen="21 376 3" next="16 15 -1" tile="8 1"/>
+	<space id="19" screen="56 410 1" next="18 -1 -1"/>
+	<space id="20" screen="100 394 8" next="17 19 -1" tile="2 1"/>
+	<space id="21" screen="100 414 8" next="19 17 -1" tile="2 1"/>
+	<space id="22" screen="132 394 8" next="20 21 -1" tile="2 1"/>
+	<space id="23" screen="132 414 8" next="21 20 -1" tile="2 1"/>
+	<space id="24" screen="142 349 12" next="76 -1 -1"/>
+	<space id="25" screen="164 394 8" next="22 23 24"/>
+	<space id="26" screen="164 414 8" next="23 22 -1" tile="2 1"/>
+	<space id="27" screen="196 394 8" next="25 26 -1" tile="2 1"/>
+	<space id="28" screen="196 414 8" next="26 25 -1" tile="2 1"/>
+	<space id="29" screen="228 394 8" next="27 28 -1" tile="2 1"/>
+	<space id="30" screen="228 414 8" next="28 27 -1" tile="2 1"/>
+	<space id="31" screen="260 394 8" next="29 30 -1" tile="2 1"/>
+	<space id="32" screen="260 414 8" next="30 29 -1" tile="2 1"/>
+	<space id="33" screen="292 394 8" next="31 32 -1" tile="2 1"/>
+	<space id="34" screen="292 414 8" next="32 31 -1" tile="2 1"/>
+	<space id="35" screen="324 394 8" next="33 34 -1" tile="2 1"/>
+	<space id="36" screen="324 414 8" next="34 33 -1" tile="2 1"/>
+	<space id="37" screen="356 394 8" next="35 36 -1"/>
+	<space id="38" screen="356 414 8" next="36 35 -1" tile="2 1"/>
+	<space id="39" screen="388 394 8" next="37 38 -1" tile="2 1"/>
+	<space id="40" screen="388 414 8" next="38 37 -1" tile="2 1"/>
+	<space id="41" screen="420 394 8" next="39 40 -1" tile="2 1"/>
+	<space id="42" screen="420 414 8" next="40 39 -1" tile="2 1"/>
+	<space id="43" screen="452 394 8" next="41 42 -1" tile="2 1"/>
+	<space id="44" screen="452 414 8" next="42 41 -1" tile="2 1"/>
+	<space id="45" screen="484 394 8" next="43 44 -1" tile="2 1"/>
+	<space id="46" screen="484 414 8" next="44 43 -1" tile="2 1"/>
+	<space id="47" screen="522 386 6" next="45 46 -1"/>
+	<space id="48" screen="526 410 7" next="46 45 -1"/>
+	<space id="49" screen="562 376 5" next="48 -1 -1"/>
+	<space id="50" screen="544 347 4" next="47 -1 -1"/>
+	<space id="51" screen="561 323 3" next="49 -1 -1"/>
+	<space id="52" screen="522 310 2" next="50 -1 -1"/>
+	<space id="53" screen="526 286 1" next="51 -1 -1" tile="5 1"/>
+	<space id="54" screen="484 302 0" next="52 53 -1" tile="2 1"/>
+	<space id="55" screen="484 282 0" next="53 52 -1" tile="2 1"/>
+	<space id="56" screen="452 302 0" next="54 55 -1" tile="2 1"/>
+	<space id="57" screen="452 282 0" next="55 54 -1" tile="2 1"/>
+	<space id="58" screen="420 302 0" next="56 57 -1" tile="2 1"/>
+	<space id="59" screen="420 282 0" next="57 56 -1"/>
+	<space id="60" screen="388 302 0" next="58 59 -1" tile="2 1"/>
+	<space id="61" screen="388 282 0" next="59 58 -1" tile="2 1"/>
+	<space id="62" screen="378 349 4" next="37 -1 -1"/>
+	<space id="63" screen="356 302 0" next="60 61 62" tile="7 2"/>
+	<space id="64" screen="356 282 0" next="61 60 -1" tile="2 1"/>
+	<space id="65" screen="324 302 0" next="63 64 -1" tile="2 1"/>
+	<space id="66" screen="346 235 12" next="97 -1 -1"/>
+	<space id="67" screen="324 282 0" next="64 63 66"/>
+	<space id="68" screen="292 302 0" next="65 67 -1" tile="2 1"/>
+	<space id="69" screen="292 282 0" next="67 65 -1" tile="2 1"/>
+	<space id="70" screen="260 302 0" next="68 69 -1" tile="2 1"/>
+	<space id="71" screen="260 282 0" next="69 68 -1" tile="2 1"/>
+	<space id="72" screen="228 302 0" next="70 71 -1" tile="2 1"/>
+	<space id="73" screen="228 282 0" next="71 70 -1" tile="2 1"/>
+	<space id="74" screen="196 302 0" next="72 73 -1" tile="2 1"/>
+	<space id="75" screen="196 282 0" next="73 72 -1" tile="2 1"/>
+	<space id="76" screen="164 302 0" next="74 75 -1" tile="6 2"/>
+	<space id="77" screen="164 282 0" next="75 74 -1" tile="2 1"/>
+	<space id="78" screen="123 273 2" next="77 76 -1"/>
+	<space id="79" screen="94 353 7" next="15 -1 -1" tile="10 2"/>
+	<space id="80" screen="117 299 1" next="76 77 79"/>
+	<space id="81" screen="85 262 3" next="80 -1 -1"/>
+	<space id="82" screen="103 236 4" next="78 -1 -1"/>
+	<space id="83" screen="85 211 5" next="81 -1 -1"/>
+	<space id="84" screen="123 199 6" next="82 -1 -1"/>
+	<space id="85" screen="119 175 7" next="83 -1 -1" tile="4 1"/>
+	<space id="86" screen="164 190 8" next="84 85 -1" tile="2 1"/>
+	<space id="87" screen="164 170 8" next="85 84 -1" tile="2 1"/>
+	<space id="88" screen="196 190 8" next="86 87 -1" tile="2 1"/>
+	<space id="89" screen="196 170 8" next="87 86 -1" tile="2 1"/>
+	<space id="90" screen="228 190 8" next="88 89 -1" tile="2 1"/>
+	<space id="91" screen="228 170 8" next="89 88 -1" tile="2 1"/>
+	<space id="92" screen="260 190 8" next="90 91 -1" tile="2 1"/>
+	<space id="93" screen="238 124 12" next="132 -1 -1"/>
+	<space id="94" screen="260 170 8" next="91 90 93"/>
+	<space id="95" screen="292 190 8" next="92 94 -1" tile="2 1"/>
+	<space id="96" screen="292 170 8" next="94 92 -1" tile="2 1"/>
+	<space id="97" screen="324 190 8" next="95 96 -1" tile="7 2"/>
+	<space id="98" screen="324 170 8" next="96 95 -1" tile="2 1"/>
+	<space id="99" screen="356 190 8 " next="97 98 -1" tile="2 1"/>
+	<space id="100" screen="356 170 8" next="98 97 -1" tile="2 1"/>
+	<space id="101" screen="388 190 8 " next="99 100 -1" tile="2 1"/>
+	<space id="102" screen="388 170 8 " next="100 99 -1"/>
+	<space id="103" screen="398 235 4" next="59 -1 -1"/>
+	<space id="104" screen="420 190 8" next="101 102 103" tile="6 2"/>
+	<space id="105" screen="420 170 8" next="102 101 -1" tile="2 1"/>
+	<space id="106" screen="452 190 8" next="104 105 -1" tile="2 1"/>
+	<space id="107" screen="452 170 8" next="105 104 -1" tile="2 1"/>
+	<space id="108" screen="484 190 8" next="106 107 -1" tile="2 1"/>
+	<space id="109" screen="484 170 8" next="107 106 -1" tile="2 1"/>
+	<space id="110" screen="522 162 6" next="109 108 -1"/>
+	<space id="111" screen="526 186 7" next="108 109 -1"/>
+	<space id="112" screen="562 152 5" next="111 -1 -1"/>
+	<space id="113" screen="544 123 4" next="110 -1 -1"/>
+	<space id="114" screen="561 99 3" next="112 -1 -1"/>
+	<space id="115" screen="522 86 2" next="113 -1 -1"/>
+	<space id="116" screen="526 62 1" next="114 -1 -1" tile="5 1"/>
+	<space id="117" screen="484 78 0" next="115 116 -1" tile="2 1"/>
+	<space id="118" screen="484 58 0" next="116 115 -1" tile="2 1"/>
+	<space id="119" screen="452 78 0" next="117 118 -1" tile="2 1"/>
+	<space id="120" screen="452 58 0" next="118 117 -1" tile="2 1"/>
+	<space id="121" screen="420 78 0" next="119 120 -1" tile="2 1"/>
+	<space id="122" screen="420 58 0" next="120 119 -1" tile="2 1"/>
+	<space id="123" screen="410 124 4" next="102 -1 -1"/>
+	<space id="124" screen="388 78 0" next="121 122 123" tile="7 2"/>
+	<space id="125" screen="388 58 0" next="122 121 -1" tile="2 1"/>
+	<space id="126" screen="356 78 0" next="124 125 -1" tile="2 1"/>
+	<space id="127" screen="356 58 0" next="125 124 -1" tile="2 1"/>
+	<space id="128" screen="324 78 0" next="126 127 -1" tile="2 1"/>
+	<space id="129" screen="324 58 0" next="127 126 -1" tile="2 1"/>
+	<space id="130" screen="292 78 0" next="128 129 -1" tile="2 1"/>
+	<space id="131" screen="292 58 0" next="129 128 -1" tile="2 1"/>
+	<space id="132" screen="260 78 0" next="130 131 -1" tile="6 2"/>
+	<space id="133" screen="260 58 0" next="131 130 -1" tile="2 1"/>
+	<space id="134" screen="228 78 0" next="132 133 -1" tile="2 1"/>
+	<space id="135" screen="228 58 0" next="133 132 -1" tile="2 1"/>
+	<space id="136" screen="196 88 0" next="134 -1 -1" tile="2 1"/>
+	<space id="137" screen="196 68 0" next="134 135 -1" tile="2 1"/>
+	<space id="138" screen="196 48 0" next="135 -1 -1" tile="2 1"/>
+	<space id="139" screen="164 98 0" next="136 -1 -1" tile="2 1"/>
+	<space id="140" screen="164 78 0" next="137 136 -1" tile="2 1"/>
+	<space id="141" screen="164 58 0" next="137 138 -1" tile="2 1"/>
+	<space id="142" screen="164 38 0" next="138 -1 -1" tile="2 1"/>
+	<space id="143" screen="132 108 0" next="139 -1 -1" tile="2 1"/>
+	<space id="144" screen="132 88 0" next="140 139 -1" tile="2 1"/>
+	<space id="145" screen="132 68 0" next="141 140 -1" tile="2 1"/>
+	<space id="146" screen="132 48 0" next="141 142 -1" tile="2 1"/>
+	<space id="147" screen="132 28 0" next="142 -1 -1" tile="2 1"/>
+	<space id="148" screen="100 118 0" next="143 -1 -1" tile="1 1"/>
+	<space id="149" screen="100 98 0" next="144 143 -1" tile="1 1"/>
+	<space id="150" screen="100 78 0" next="145 144 -1" tile="1 1"/>
+	<space id="151" screen="100 58 0" next="145 146 -1" tile="1 1"/>
+	<space id="152" screen="100 38 0" next="146 147 -1" tile="1 1"/>
+	<space id="153" screen="100 18 0" next="147 -1 -1" tile="1 1"/>
+</track>

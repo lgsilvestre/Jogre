@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+
+This is A DTD description of a rules file.  However, since NanoXML that JOGRE
+uses doesn't support DTD descriptions, it is given in a comment.
+
+<!DOCTYPE rules [
+<!ELEMENT rules (section+)>
+<!ATTLIST rules content (text | text/html | text/rtf) "text"
+				title CDATA #REQUIRED>
+	<!ELEMENT section (section+ | CDATA)>
+	<!ATTLIST title CDATA #IMPLIED>
+]>
+
+Notes: The "rules" element *must* have a title even though that title is never
+       shown to the users.  If the title isn't there, then nothing will display
+       in the rules window.
+
+       Sections are not required to have a title, but only sections with titles
+       will show up in the index'd tree list.
+
+       NanoXML doesn't support mixing elements and CDATA inside of an element,
+       and so non-title'd sections allow that functionality.
+
+       You can embed sections within sections and they will show up in the
+       tree as subsections.
+
+       The <![CDATA[ ... ]]> verbiage is needed for text that uses HTML tags within
+       it.  Without them, NanoXML would try to parse them as XML and fail.  For plain
+       text rules files, you don't need them.
+-->
+
+<rules content="text/html" title="Rules">
+	<section title="Introduction">
+		<![CDATA[<font size="+2"><b><u>Introduction</u></b></font><br>
+		The game of Ninety Nine was designed by David Parlett.<br>
+		It is described in the book "Original Card Games".<br><br>
+		The card images used in the game were drawn by Nicu Buculei.  They are in the
+		public domain and are available from http://www.openclipart.org/<br><br>
+		The card suit images used to indicate the trump suit were drawn by Guillaume Boitel.  They are
+		in the public domain and are available from http://www.openclipart.org/<br><br>
+		The program was written by Richard Walter (rwalter42@yahoo.com)<br><br>]]>
+	</section>
+
+	<section title="Overview">
+		<![CDATA[<font size="+2"><b><u>Overview</u></b></font><br>
+		Ninety Nine is a card game for 3 players.<br><br>
+		Players bid for an exact number of tricks to be taken using cards
+		from their hands to make the bid.<br><br>
+		There are premium bids available that provide bonus points for a player
+		who succesfully makes his bid.  But the bonus points will go to <i>both</i>
+		of the other two players if they prevent the premium bidder from
+		succesfully completing his bid.<br><br>]]>
+	</section>
+
+	<section title="Deck">
+		<![CDATA[<font size="+2"><b><u>Deck</u></b></font><br>
+		Ninety Nine is played with a deck of 36 cards using only the cards 6 through Ace.<br><br>]]>
+	</section>
+
+	<section title="Playing the Game">
+		<section>
+			<![CDATA[<font size="+2"><b><u>Playing the Game</u></b></font><br>
+			A game of Ninety Nine consists of 3, 6 or 9 rounds.  A round consists
+			of a deal of the cards, followed by bidding, trick taking and then scoring.<br><br>
+			At the end of each round, the dealer rotates to the left.  That means
+			that each player is dealer the same number of times in a game.<br><br>
+			After all of the rounds of the game, the player with the highest total score
+			is the winner.<br><br>]]>
+		</section>
+
+		<section title="Dealing">
+			<![CDATA[<font size="+1"><b><u>Dealing</u></b></font><br>
+			The 36 cards are shuffled and dealt out with each player getting 12.<br><br>
+			A trump suit is determined randomly.<br><br>
+			Note: If playing with real cards, add
+			a joker to the deck. After dealing the 12 cards to each player, the
+			37th card is turned up to determine the trump suit.  The joker assumes
+			the identity of the turned-up card for this round.  If the turned up card
+			is the joker, then the round is played with no trump.<br><br>]]>
+		</section>
+
+		<section title="Bidding">
+			<![CDATA[<font size="+1"><b><u>Bidding</u></b></font><br>
+			Each player will choose 3 cards from their hand to be set aside as their
+			bid.  After choosing thier bid cards, each player will have 9 cards remaining
+			to use during the trick taking.  Bids remain secret from the other players
+			until all the tricks have been played (except in the case of premium bids (see below)).<br><br>
+			The bid cards represent the number of tricks to be taken (between 0 and 9) by adding
+			the <b><i>suits</i></b> as follows:<br>
+			<ul>
+			<li>Diamond means 0 tricks</li>
+			<li>Spade means 1 trick</li>
+			<li>Heart means 2 tricks</li>
+			<li>Clubs means 3 tricks</li>
+			</ul>
+			For example, if a player's bid cards were two spades and a heart, then the bid
+			would be 1 + 1 + 2 = 4 tricks.<br><br>
+			The values of the bid cards are not important, only their suits.<br><br>]]>
+		</section>
+
+		<section title="Premium Bids">
+			<section>
+				<![CDATA[<font size="+1"><b><u>Premium Bids</u></b></font><br>
+				Premium bids allow a player to attempt to win bonus points.  If a player makes
+				a premium bid and successfully takes the number of tricks bid then he will
+				get bonus points.  However, if a player makes a premium bid and does not take
+				the number of tricks bid, then <i>both</i> of the other two players will get the bonus
+				points.<br><br>
+				There are two premium bids available: Declaration and Revelation.<br><br>]]>
+			</section>
+			
+			<section title="Declaration">
+				<![CDATA[<b><u>Declaration</u></b><br>
+				A player who declares will turn his bid cards face up so the other two players
+				will know how many tricks the declarer is attempting to take.<br><br>]]>
+			</section>
+
+			<section title="Revelation">
+				<![CDATA[<b><u>Revelation</u></b><br>
+				A player who reveals will turn both his bid cards <i><b>and</b></i> his entire playing
+				hand face up.  This allows the other two players to know both how many
+				tricks the revealer is attempting to take and what cards he has to do it.<br><br>
+				To make this easier, a player who reveals can choose which player should
+				lead the first card of the round (including himself) and also doesn't have
+				to show his hand until after the first card is led.<br><br>]]>
+			</section>
+
+			<section title="Premium Bid Priority">
+				<![CDATA[<b><u>Premium Bid Priority</u></b><br>
+				Only one player may be playing a premium bid in any one round.  The player
+				to the left of the dealer has first option to make a premium bid.  If that
+				player declines, then the player to his left has the option.  If the second
+				player also declines, then the dealer has a chance.<br><br>
+				If a player has bid to declare, then a following player can over-bid to
+				reveal.  In this case, the declarer has the option to increase his bid to
+				a revelation or to yield to the player who just over-bid.<br><br>]]>
+			</section>
+		</section>
+
+		<section title="Card Play">
+			<![CDATA[<font size="+1"><b><u>Card Play</u></b></font><br>
+			If there is a player who bid a revelation, then that player chooses who is
+			to lead the first card.  Otherwise, the player to the left of the dealer
+			leads the first card.<br><br>
+			A player can lead any card from his hand.  A player must follow the suit of the
+			lead card if he can.  If a player has no cards of the lead suit, then he can
+			play any card.  A player is not obligated to play a trump suit (unless trump is
+			the lead suit.)<br><br>
+			Tricks are won by the highest card of the lead suit or the highest trump, 
+			if one is played.<br><br>
+			The winner of a trick leads to the next one.<br><br>
+			After all 9 tricks have been played, the round is scored.<br><br>]]>
+		</section>
+
+		<section title="Scoring">
+			<![CDATA[<font size="+1"><b><u>Scoring</u></b></font><br>
+			Each player's score is made up of three parts:  a score for the tricks actually
+			taken, a bonus for taking the exact number of tricks as bid, and a bonus
+			for succeeding or preventing a premium bid.<br><br>
+			<b>Tricks Taken</b><br>
+			A player scores 1 point for each trick taken.<br><br>
+			<b>Bid Bonus</b><br>
+			If all three players met their bid exactly, then each gets 10 bonus points.<br>
+			If two players met their bid exactly, then those two each get 20 bonus points.<br>
+			If one player met his bid exactly, then that player gets 30 bonus points.<br><br>
+			<b>Premium Bonus</b><br>
+			If a player bid a declaration and met his bid, then that player gets 30 bonus points.<br>
+			If a player bid a declaration and did not meet his bid, then the other two players get
+			30 bonus points each.<br>
+			If a player bid a revelation and met his bid, then that player get 60 bonus points.<br>
+			If a player bid a revelation and did not meet his bid, then the other two players get
+			60 bonus points each.<br><br>
+			Scores for each round are summed to provide a total score.<br><br>]]>
+		</section>
+	</section>
+
+	<section title="Interface Details">
+		<section>
+			<![CDATA[<font size="+2"><b><u>Interface Details</u></b></font><br><br>]]>
+		</section>
+
+		<section title="Starting a New Game">
+			<![CDATA[<font size="+1"><b><u>Starting a New Game</u></b></font><br>
+			When you start a new game, you must choose the number of rounds in the
+			game, either 3, 6, or 9.<br><br>]]>
+		</section>
+
+		<section title="Screen Layout">
+			<section>
+				<![CDATA[<font size="+1"><b><u>Screen Layout</u></b></font><br><br>]]>
+			</section>
+
+			<section title="Card Panels">
+				<![CDATA[<b><u>Card Panels</u></b><br>
+				There are three rows of card areas; one for each player.  You are always the
+				top player, with the following players moving down in order.<br><br>
+				Within each row,<br>
+				<ul>
+				<li>The left most group of cards are the bid cards.</li>
+				<li>The next group of cards are the hands.  The cards in the hands are kept
+					sorted by suit and value.</li>
+				<li>The next area shows the cards as they are played on the trick.
+					This area also contains the buttons used to make bids during bid time.</li>
+				<li>The right most group indicate the tricks taken during a round.</li>
+				</ul><br>]]>
+			</section>
+
+			<section title="Score Panel">
+				<![CDATA[<b><u>Score Panel</u></b><br>
+				At the bottom of the window is the score panel.<br><br>
+				There is a column for each round of the game, showing which
+				suit was trump and each player's score for that round.<br><br>
+				The far right column is the total score for each player.<br><br>]]>
+			</section>
+		</section>
+
+		<section title="Bidding">
+			<![CDATA[<font size="+1"><b><u>Bidding</u></b></font><br>
+			After the cards have been dealt, you need to make your bid.  The trump suit
+			for the round is shown in the score panel.<br><br>
+			Selecting a card from your hand will move it to the bid area.  Selecting a card
+			from the bid area will move it back into your hand.  As you move cards into the
+			bid area, the current value of the bid will be updated in the bid button.<br><br>
+			When you have three cards in the bid area, then the bid buttons will become
+			enabled.  Clicking on one of the bid buttons will submit your bid to the server
+			and will lock in your bid.<br><br>
+			Selecting the top bid button will result in a normal bid being made.  Selecting
+			the second bid button will indicate to the server that you wish to make a declaration
+			bid.  Selecting the third bid button will indicate to the server that you wish
+			to make a revelation bid and will result in three more buttons to allow you to
+			choose which player you want to lead the first card.<br><br>
+			Once all of the players have bid, then the server will determine which premium bid,
+			if any, has the priority and will be played that hand.  If you make a premium bid
+			which is not accepted because some other player with higher priority made one,
+			then your attempt to make a priority bid is <i>not</i> revealed to the other players.<br><br>
+			If you bid to declare and had priority over a player that bid reveal, then a dialog
+			box will ask if you wish to upgrade your bid to a reveal or not.  In this one
+			instance, the other players will be informed that you had been asked the question
+			and your response.<br><br>]]>
+		</section>
+
+		<section title="Trick Taking">
+			<![CDATA[<font size="+1"><b><u>Trick Taking</u></b></font><br>
+			During trick taking, the player who is to play the next card will have a yellow
+			card outline displayed.<br><br>
+			When it is your time to play, select a card from your hand to play it.
+			Only cards that are legal to play will move up when moused over.<br><br>
+			When all three cards have been played on a trick, they will be moved into the
+			taken card area of the player who played the highest card.  The cards of the
+			most recent trick are placed face-up for display.  Tricks previously taken are
+			grouped and placed face down.<br><br>]]>
+		</section>
+	</section>
+
+	<section title="Customization">
+		<section>
+			<![CDATA[<font size="+2"><b><u>Customization</u></b></font><br>
+			Many parameters of the game are cusomizable from the game.properties file.
+			This file is editable with any text editor.<br><br>
+			<i>player.colour.x</i> - Can be used to change the color of the players.<br><br>
+			<i>display.hand.cardSpacing</i> - The number of pixels between left-hand edges
+			of two cards in the hand that are of the same suit.<br><br>
+			<i>display.hand.suitSpacing</i> - The number of pixels between left-hand edges
+			of two cards in the hand that are of different suits.<br><br>
+			<i>display.hand.selectYOffset</i> - The number of pixels to move a selectable
+			card when moused over.<br><br>
+			<i>display.taken.cardSpacing</i> - The number of pixels between left-hand edges
+			of cards in the taken tricks area.<br><br>
+			<i>display score.digitSpacing</i> - The number of pixels between digits of multi-digit
+			numbers in the score area.<br><br>
+			<i>display.score.HSpacing</i> - The number of pixels between each column of the score
+			panel<br><br>
+			<i>display.score.VSpacing</i> - The number of pixels between each row of the score panel.<br><br>
+			<i>display.cardback</i> - Chooses which card back to use.  Image.2 contains a number
+			of images of card backs.  If this value is set to a number from 0 to (n-1), where n is
+			the number of card back images in image.2, then that card back is used in the game.
+			If this value is set to the string "random", then a card back is chosen randomly for
+			each round of the game.  If this value is set to the string "rotate", then the card back
+			will start at the first one and then move onto the next one for each round of the game,
+			rotating back to the first after all have been used.  See the section below for more
+			details on customizing images.<br><br>]]>
+		</section>
+
+		<section title="Customizing Images">
+			<![CDATA[<font size="+1"><b><u>Customizing Images</u></b></font><br>
+			The game.properties file contains entries for images used in the game.  You can
+			customize the game by making new image files and setting the appropriate image.x
+			line in the game.properties file to point to your new image.<br><br>
+			Each image line contains a filename followed by a size.  If you change an image
+			file, make sure that you change the size as well.<br><br>
+			<i>image.0</i> - The icon used in the window.  This must be 16x16 pixels.<br><br>
+			<i>image.1</i> - The cards used in the game.  This is an array of images of the
+			cards.  You can change the size of the cards, but each card must be the same size
+			and the cards must remain in the same relative position.  (ie: the 6 of diamonds
+			must be in the upper left corner, with the 6 of spades below it.).<br>
+			If you change the size of the cards, you must also change the card backs and the
+			card prompt images to be the same size as the card faces.<br><br>
+			<i>image.2</i> - The card backs.  This is a horizontal row of card backs.  Each
+			card back must be the same size as a card in image.1.  You can add as many card
+			backs as you like, and use the <i>display.cardback</i> property to select which
+			is used in the game.<br><br>
+			<i>image.3</i> - The symbols used to indicate the trump suit in the score panel.
+			This is a horizontal row of 5 symbols, one each for No Trump, Diamonds, Spades,
+			Hearts and Clubs.<br><br>
+			<i>image.4</i> - The digits used to draw the scores.<br><br>
+			<i>image.5</i> - The prompt used to indicate which player should play next.
+			This must be the same size as a card in image.1.<br><br>]]>
+		</section>
+	</section>
+</rules>

@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+
+This is a DTD description of a rules file.  However, since NanoXML that JOGRE
+uses doesn't support DTD descriptions, it is given in a comment.
+
+<!DOCTYPE rules [
+<!ELEMENT rules (section+)>
+<!ATTLIST rules content (text | text/html | text/rtf) "text"
+				title CDATA #REQUIRED>
+	<!ELEMENT section (section+ | CDATA)>
+	<!ATTLIST title CDATA #IMPLIED>
+]>
+
+Notes: The "rules" element *must* have a title even though that title is never
+       shown to the users.  If the title isn't there, then nothing will display
+       in the rules window.
+
+       Sections are not required to have a title, but only sections with titles
+       will show up in the index'd tree list.
+
+       NanoXML doesn't support mixing elements and CDATA inside of an element,
+       and so non-title'd sections allow that functionality.
+
+       You can embed sections within sections and they will show up in the
+       tree as subsections.
+
+       The <![CDATA[ ... ]]> verbiage is needed for text that uses HTML tags within
+       it.  Without them, NanoXML would try to parse them as XML and fail.  For plain
+       text rules files, you don't need them.
+-->
+
+<rules content="text/html" title="Rules">
+	<section title="Introduction">
+		<![CDATA[<font size="+2"><b><u>Introduction</u></b></font><br>
+		The program was written by Richard Walter (rwalter42@yahoo.com)<br><br>
+		Chinese Checkers was written to be an example of how to use the
+		AbstractHexBoard library to easily develop games based on a
+		hexagonal board.
+		<br>]]>
+	</section>
+
+	<section title="Playing the Game">
+		<![CDATA[<font size="+2"><b><u><br>Playing the Game</u></b></font><br>
+		Chinese Checkers is a game for 2-6 players played on a star-shaped board.<br><br>
+		Each player has some marbles that start on one triangular shaped point of the star.  The goal
+		of the game is to be the first player to move his marbles from their
+		starting point to the target point on the opposite side of the board.<br><br>
+		A marble can move by either taking a single step to an adjacent empty space
+		or by making a series of one or more hops.<br><br>
+		A step consists of moving a marble to an adjacent unoccupied space in any
+		of the six directions.<br><br>
+		A hop consists of jumping over a single adjacent marble, belonging to any
+		player, to an unoccupied space directly opposite.  Marbles hopped over are
+		<b>not</b> removed from the board.<br><br>
+		If long jumps are enabled, then hops consist of jumping over a distant
+		marble to a symmetrical position on the opposite side.  Long jumps can
+		only be made over a single marble, with enough empty spaces on either side
+		for the jump.<br><br>
+		A marble can only end its move in its starting or target point or in the
+		neutral hexagon in the middle of the board.  A marble may jump into the other
+		four points during its move, but must jump out again during the same move.<br><br>
+		Because, in most games, a player's target point is also the starting
+		triangle for another player, it is possible for a player to attempt to prevent
+		another player from winning by refusing to move a marble out of his home
+		point.  To prevent this, a player will win if, at the end of his turn,
+		his target point is completely filled with marbles <b>and</b> there is
+		at least one of his marbles in the target point.  This means that any
+		marbles that are blocking a player count toward that player winning!
+		<br>]]>
+	</section>
+
+
+	<section title="Interface Details">
+		<section>
+			<![CDATA[<font size="+2"><b><u><br>Interface Details</u></b></font><br>]]>
+		</section>
+
+		<section title="Starting a New Game">
+			<![CDATA[<font size="+1"><b><u><br>Starting a New Game</u></b></font><br>
+			When you start a new game, you need to decide how many players will
+			be playing (2..6) and whether long jumps are allowed or not.<br><br>
+			See customization below for information about how to configure the
+			default settings for these in the game.properties file.
+			<br>]]>
+		</section>
+
+		<section title="Making a Move">
+			<![CDATA[<font size="+1"><b><u><br>Making a Move</u></b></font><br>
+			When it is his turn, moving the mouse over the board will allow
+			a player to select which marble he wishes to move.  Clicking on a
+			marble will select it and all of the legal spaces to which that
+			marble can move will be displayed.<br><br>
+			Moving the mouse over the legal spaces will show the series of
+			steps or jumps that result in the marble moving there.  Clicking while
+			a move is shown will result in that move being made.
+			<br>]]>
+		</section>
+	</section>
+
+	<section title="Customization">
+		<section>
+			<![CDATA[<font size="+2"><b><u><br>Customization</u></b></font><br>]]>
+		</section>
+
+		<section title="Changing Images">
+			<![CDATA[<font size="+1"><b><u><br>Images</u></b></font><br>
+			The various images used by the game are kept in the images folder.<br><br>
+			The game.properties file contains a list of the files that should
+			be used for various items.  You can create different images to be
+			used and then change the entry in the game.properties file to point
+			to the new image to use it.<br><br>
+			Each line of the game.properties file contains the filename followed
+			by the size of the file, in bytes.<br><br>
+			The images are:<br><br>
+			<b>image.1</b> - An array of the marbles to show for each player.<br><br>
+			<b>image.2</b> - An empty spaces on the board.<br><br>
+			<b>image.3</b> - What to draw to indicate that the space pointed to is
+							selectable.<br><br>
+			<b>image.4</b> - What to draw to highlight the currently selected marble.<br><br>
+			<b>image.5</b> - What to draw to indicate that a space is a legal move for
+							the currently selected marble.
+			<br>]]>
+		</section>
+
+		<section title="game.properties Parameters">
+			<![CDATA[<font size="+1"><b><u><br>game.properties Parameters</u></b></font><br>
+			The game.properties file is a text file that contains parameters for
+			the game.  This file can be edited by any text editor and used to
+			customize the local view of the game for a client.  The parameters
+			in this file and what they do are:<br><br>
+			<b>player.colour.{0..5}</b> - The color to use for each player.<br><br>
+			<b>neutral.colour</b> - The color to use for board points that don't belong
+									to any player.<br><br>
+			<b>background.colour</b> - The color to use for the background of all of
+									the client windows.<br><br>
+			<b>image.{0..5}</b> - Define the image files that hold the pictures to be
+				used for various things.  See "Changing Images" above for more details.<br><br>
+			<b>preferences.defaultNumPlayers</b> - The default number of players
+				when starting a new game.  This is the number of players that will
+				be initially selected in the new game dialong.<br><br>
+			<b>preferences.defaultLongJumps</b> - The default value for whether to
+				enable long jumps or not in the new game dialog.  If this is equal
+				to 1, then the long jump box will be enabled by default.  Any
+				other value and the long jump box will be disabled by default.<br><br>
+			<b>preferences.colorHome</b> - Whether to color the player's home point
+				or target point on the board.  If set to 1, then a player will start
+				in the point that is colored with his color.  For example, the
+				red marbles	will start in the red point.  If set to any other
+				value, then a player will be attempting to get all of his marbles
+				to the point that is colored with his color.<br>
+				For example, in a two player game between red & blue, if this is
+				set to 1, then the red marbles will start in the red point and
+				the blue marbles will start in the blue point.  Each will be attempting
+				to get his marbles into the other color's point.  If this is set
+				to 0, then the red marbles will start in the blue point and the blue
+				marbles will start in the red point.  Each will be attempted to get
+				his marbles into his own color's point.
+				<br>]]>
+		</section>
+	</section>
+</rules>

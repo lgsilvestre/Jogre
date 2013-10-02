@@ -1,0 +1,43 @@
+<!ELEMENT server_properties (configuration, supported_games, server_data)>
+	
+    <!ELEMENT configuration (server, admin_client)>
+		<!ELEMENT server EMPTY>
+		<!ATTLIST server port CDATA #IMPLIED                            
+                         user_validation (guest | user | password) "user"
+                         max_tables CDATA #IMPLIED
+                         max_users CDATA #IMPLIED
+                         max_tables_per_user CDATA #IMPLIED>
+		<!ELEMENT admin_client EMPTY>
+		<!ATTLIST admin_client username CDATA #REQUIRED
+                               password CDATA #REQUIRED
+			                   receive_messages (true | false) "true">
+
+    <!ELEMENT supported_games (game*)>
+        <!ELEMENT game (elo? | custom*)>
+        <!ATTLIST game id          CDATA #REQUIRED
+                       host (true | false) "true"
+                       minPlayers CDATA #REQUIRED
+                       maxPlayers CDATA #REQUIRED>
+            <!ELEMENT elo EMPTY>
+            <!ATTLIST elo startRating  CDATA #REQUIRED
+                          kFactor CDATA #IMPLIED>
+            <!ELEMENT custom EMPTY>
+            <!ATTLIST custom type CDATA #REQUIRED 
+                                          value CDATA #REQUIRED>
+
+    <!ELEMENT server_data (xml, database, master_server)>
+    <!ATTLIST server_data current (xml | database | master_server) "xml">    
+
+		<!ELEMENT xml EMPTY>
+		<!ATTLIST xml location CDATA #REQUIRED>
+		
+		<!ELEMENT database (connection+)>
+		<!ATTLIST database current CDATA #REQUIRED>
+		
+	        <!ELEMENT connection EMPTY>
+	        <!ATTLIST connection id CDATA #REQUIRED
+	                             driver CDATA #REQUIRED
+	                             url CDATA #REQUIRED
+	                             username CDATA #REQUIRED
+	                             password CDATA #REQUIRED>
+	    <!ELEMENT master_server EMPTY>

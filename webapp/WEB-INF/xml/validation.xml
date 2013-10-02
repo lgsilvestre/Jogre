@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!--
+<!DOCTYPE form-validation PUBLIC
+          "-//Apache Software Foundation//DTD Commons Validator Rules Configuration 1.1.3//EN"
+          "http://jakarta.apache.org/commons/dtds/validator_1_1_1.dtd">
+    -->      
+          
+          <!DOCTYPE form-validation PUBLIC 
+          "-//Apache Software Foundation//DTD Commons Validator Rules Configuration 1.0//EN" 
+          "http://jakarta.apache.org/commons/dtds/validator_1_1_1.dtd">
+
+<form-validation>
+
+<!--
+     This is a minimal Validator form file with a couple of examples.
+-->
+
+    <global>
+
+        <!-- An example global constant
+        <constant>
+            <constant-name>postalCode</constant-name>
+            <constant-value>^\d{5}\d*$</constant-value>
+        </constant>
+        end example-->
+
+    </global>
+
+    <formset>
+
+   <!--Validations for Account Maintenanace operations -->    
+    
+       <form name="accountDetailsEditForm">
+       <field
+                property="username"
+                depends="required">
+                    <arg0 key="hr.account_maintenance.username"/>
+                     <var>
+                        <var-name>field</var-name>
+                        <var-value>username</var-value>
+                    </var>
+                </field> 
+        <field
+                property="firstname"
+                depends="required">
+                    <arg0 key="hr.account_maintenance.firstname"/>
+                     <var>
+                        <var-name>field</var-name>
+                        <var-value>firstname</var-value>
+                    </var>
+                </field>     
+      <field
+                property="surname"
+                depends="required">
+                    <arg0 key="hr.account_maintenance.surname"/>
+                     <var>
+                        <var-name>field</var-name>
+                        <var-value>surname</var-value>
+                    </var>
+                </field>  
+    </form>
+    
+ <!--Validations for Department Maintenanace operations --> 
+ 
+     <form name="departmentEditForm">
+ 
+        <field
+                property="department_description"
+                depends="required">
+                    <arg0 key="hr.department_maintenance.department_description"/>
+                     <var>
+                        <var-name>field</var-name>
+                        <var-value>department_description</var-value>
+                    </var>
+                </field> 
+            
+             <field
+                property="department_id"
+                depends="required">
+                    <arg0 key="hr.account_maintenance.departmentId"/>
+                     <var>
+                        <var-name>field</var-name>
+                        <var-value>department_id</var-value>
+                    </var>
+                </field> 
+
+   </form>   
+   
+ <!--Validations for System Config operations --> 
+         
+        <form name="systemConfigEditForm">
+ 
+        <field
+                property="db_agents"
+                depends="required,integer">
+                    <arg0 key="sm.system_config.db_agents"/>
+                     <var>
+                        <var-name>field</var-name>
+                        <var-value>db_agents</var-value>
+                    </var>
+                </field>           
+
+      <field
+                property="al_agents"
+                 depends="required,integer">
+                    <arg0 key="sm.system_config.al_agents"/>
+                     <var>
+                        <var-name>field</var-name>
+                        <var-value>al_agents</var-value>
+                    </var>
+                </field>  
+         <field
+                property="checkpoint_interval"
+                 depends="required,integer">
+                    <arg0 key="sm.system_config.checkpoint_interval"/>
+                     <var>
+                        <var-name>field</var-name>
+                        <var-value>checkpoint_interval</var-value>
+                    </var>
+                </field>  
+        <field
+                property="vis_timeout"
+                 depends="required,integer">
+                    <arg0 key="sm.system_config.vis_timeout"/>
+                     <var>
+                        <var-name>field</var-name>
+                        <var-value>vis_timeout</var-value>
+                    </var>
+                </field>           
+        </form>     
+      
+  <form name="emailNotificationEditForm">
+ 
+       <field
+                property="email_address"
+                depends="required,email">
+                    <arg0 key="sm.email_notification.email_address"/>
+                     <var>
+                        <var-name>field</var-name>
+                        <var-value>email_address</var-value>
+                    </var>
+                </field> 
+         <field
+                property="firstname"
+                depends="required">
+                    <arg0 key="hr.account_maintenance.firstname"/>
+                     <var>
+                        <var-name>field</var-name>
+                        <var-value>firstname</var-value>
+                    </var>
+                </field>     
+      <field
+                property="surname"
+                depends="required">
+                    <arg0 key="hr.account_maintenance.surname"/>
+                     <var>
+                        <var-name>field</var-name>
+                        <var-value>surname</var-value>
+                    </var>
+                </field>  
+      <field
+                property="company"
+                depends="required">
+                    <arg0 key="sm.email_notification.company"/>
+                     <var>
+                        <var-name>field</var-name>
+                        <var-value>company</var-value>
+                    </var>
+                </field>  
+    </form>            
+
+   
+     </formset>
+
+    <!-- An example formset for another locale -->
+  <!--
+    <formset language="fr">
+
+        <constant>
+            <constant-name>postalCode</constant-name>
+            <constant-value>^[0-9a-zA-Z]*$</constant-value>
+        </constant>
+-->
+        <!-- An example form -->
+   <!--     <form name="logonForm">
+            <field
+                property="username"
+                depends="required">
+                    <arg key="logonForm.username"/>
+            </field>
+            <field
+                property="password"
+                depends="required,mask">
+                    <arg key="logonForm.password"/>
+                    <var>
+                        <var-name>mask</var-name>
+                        <var-value>^[0-9a-zA-Z]*$</var-value>
+                    </var>
+            </field>
+        </form>
+
+   </formset>
+-->
+</form-validation>

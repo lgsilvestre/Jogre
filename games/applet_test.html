@@ -1,0 +1,127 @@
+<html>
+<head>
+<title>Applet Tester</title>
+
+<script language="JavaScript">
+
+// for browsing by SEARCH.
+function openAppletFrame () {
+    // Do some validation first
+	if (form.username.value == "")
+		alert ("Please supply a username");
+	else if (form.serverhost.value == "")
+		alert ("Please supply a server address");
+	else if (form.serverport.value == "")
+		alert ("Please supply a server port");
+	else {
+    	window.open('applet_test_frame.html','','resizable=no, scrollbars=no, width=590,height=475');
+    }
+}
+
+</script>
+
+</head>
+
+<body>
+
+<font size="4" face="Verdana" color="#005599">
+  <b>JOGRE Games Applet tester</b>
+</font>
+
+<form method="post" action="" name="form">
+<table cellpadding="3" cellspacing="1" border="0" bgcolor="#666666" width="400">
+  <tr bgcolor="#005599">
+    <td height="30" colspan="2" align="center">
+      <font face="Verdana" size="2" color="#ffffff"><b>Connection Settings</b></font>
+    </td>
+  </tr>
+  <tr bgcolor="#F9F9F9">
+    <td height="30" width="30%">
+      <font size="2" face="Verdana" color="#55AA55">
+		<b>Game</b>
+	  </font>
+	</td>
+	<td height="30">
+	  <select name="game">
+		<option value="abstrac/applet_abstrac.jar org.jogre.abstrac.client.AbstracApplet.class" selected>Abstrac</option>
+		<option value="battleship/applet_battleship.jar org.jogre.battleship.client.BattleshipApplet.class">Battle Ship</option>
+		<option value="camelot/applet_camelot.jar org.jogre.camelot.client.CamelotApplet.class">Camelot</option>
+		<option value="carTricks/applet_carTricks.jar org.jogre.carTricks.client.CarTricksApplet.class">Car Tricks</option>
+		<option value="checkers/applet_checkers.jar org.jogre.checkers.client.CheckersApplet.class">Checkers</option>
+		<option value="chess/applet_chess.jar org.jogre.chess.client.ChessApplet.class">Chess</option>
+		<option value="chineseCheckers/applet_chineseCheckers.jar org.jogre.chineseCheckers.client.ChineseCheckersApplet.class">Chinese Checkers</option>
+		<option value="connect4/applet_connect4.jar org.jogre.connect4.client.Connect4Applet.class">Connect 4</option>
+		<option value="dots/applet_dots.jar org.jogre.dots.client.DotsApplet.class">Dots</option>
+		<option value="go/applet_go.jar org.jogre.go.client.GoApplet.class">Go</option>
+		<option value="grandPrixJumping/applet_grandPrixJumping.jar org.jogre.grandPrixJumping.client.JumpingApplet.class">Grand Prix Jumping</option>
+		<option value="hex/applet_hex.jar org.jogre.hex.client.HexApplet.class">Hex</option>
+		<option value="ninetynine/applet_ninetynine.jar org.jogre.ninetynine.client.NinetyNineApplet.class">Ninety Nine</option>
+		<option value="octagons/applet_octagons.jar org.jogre.octagons.client.OctagonsApplet.class">Octagons</option>
+		<option value="pointsTotal/applet_pointsTotal.jar org.jogre.pointsTotal.client.PointsTotalApplet.class">Points Total</option>
+		<option value="propinquity/applet_propinquity.jar org.jogre.propinquity.client.PropinquityApplet.class">Propinquity</option>
+		<option value="reversi/applet_reversi.jar org.jogre.reversi.client.ReversiApplet.class">Reversi</option>
+		<option value="spades/applet_spades.jar org.jogre.spades.client.SpadesApplet.class">Spades</option>
+		<option value="tetris/applet_tetris.jar org.jogre.tetris.client.TetrisApplet.class">Tetris</option>
+		<option value="texasHoldEm/applet_texasHoldEm.jar org.jogre.texasHoldEm.client.TexasHoldEmApplet.class">Texas Hold 'Em</option>
+		<option value="tictactoe/applet_tictactoe.jar org.jogre.tictactoe.client.TicTacToeApplet.class">TicTacToe</option>
+		<option value="triangulum/applet_triangulum.jar org.jogre.triangulum.client.TriangulumApplet.class">Triangulum</option>
+		<option value="warwick/applet_warwick.jar org.jogre.warwick.client.WarwickApplet.class">Warwick</option>
+      </select>
+    </td>
+  </tr>
+  <tr bgcolor="#F9F9F9">
+    <td height="30" height="30" width="30%">
+      <font size="2" face="Verdana" color="#55AA55">
+		<b>Username</b>
+	  </font>
+	</td>
+	<td height="30">
+  	  <input type="text" name="username" size="10" maxlength="20">
+    </td>
+  </tr>
+  <tr bgcolor="#F9F9F9">
+    <td height="30" height="30" width="30%">
+      <font size="2" face="Verdana" color="#55AA55">
+		<b>Password</b>
+	  </font>
+	</td>
+	<td height="30">
+  	   <input type="password" name="password" size="10" maxlength="20" value="">
+  	   <input type="checkbox" selected="no" name="usepassword">
+  	   <font size="2" face="Verdana" color="#444444">(click if required)</font>
+    </td>
+  </tr>
+  <tr bgcolor="#F9F9F9">
+    <td height="30" height="30" width="30%">
+      <font size="2" face="Verdana" color="#55AA55">
+		<b>Server</b>
+	  </font>
+	</td>
+	<td height="30">
+  	  <input type="text" name="serverhost" size="10" maxlength="20" value="127.0.0.1">
+  	  <font size="2" face="Verdana" color="#444444">port</font>
+  	  <input type="text" name="serverport" size="4" maxlength="4" value="1790">
+    </td>
+  </tr>
+  <tr bgcolor="#F9F9F9">
+    <td height="30" height="30" width="30%">
+      <font size="2" face="Verdana" color="#55AA55">
+		<b>Language</b>
+	  </font>
+	</td>
+	<td height="30">
+	  <select name="language">
+		<option value="" selected>English</option>
+		<option value="fr">French</option>
+      </select>
+    </td>
+  </tr>
+  <tr bgcolor="#F9F9F9">
+    <td height="30" colspan="2" align="center">
+		 <input type="button" name="Button" value="Connect" onclick="openAppletFrame()">
+	</td>
+  </tr>
+</table>
+</form>
+</body>
+</body>

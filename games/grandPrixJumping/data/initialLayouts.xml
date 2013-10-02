@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+
+This file describes the initial layouts available to the client when starting
+a new game.
+
+Any client can add additional layouts to this file locally to create additional
+short-cuts to initial layouts.
+
+There is no need for the server or the other clients to have the same layouts;
+whenever a new game is started the client that starts it will provide the layout
+to the server which will, in turn, provide it to the other clients as they
+connect.
+
+This file is never written by the program.
+
+title is displayed during the new game dialog.
+locations provides the place where each of the fences is located on the board.
+A negative number indicates the height of the fence and the following positive
+numbers are the spaces on the board where that height fence should be placed.
+A height of -6 is used to place a water jump.
+
+Alternatively, locations can be the track code provided by the program.
+-->
+
+<layouts>
+	<layout title="Standard" locations="-1 11 32 -2 3 20 -3 7 42 -4 38 -5 17 -6 26" />
+	<layout title="Lots 'o Water" locations="3i5mc3x5b"/>
+</layouts>

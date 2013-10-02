@@ -1,0 +1,79 @@
+                       Rules for the game of Octagons
+					   ==============================
+
+This program implements the game of Octagons.
+
+It runs under the JOGRE (Java Online Gaming Real-time Engine) system.
+See http://jogre.sourceforge.net
+
+The game of Octagons is described in the book "New Rules for Classic Games" by
+R. Wayne Schmittberger.
+
+The program was written by Richard Walter (rwalter42@yahoo.com)
+
+
+Players
+=======
+Octagons is a two player game.  One player is RED and the other is BLUE.
+
+
+Goal
+====
+The goal of octagons is to connect two sides of the board by claiming spaces on
+the board.
+
+The RED player is trying to connect the top and bottom of the board.
+The BLUE player is trying to connect the left and right sides of the board.
+
+
+Board
+=====
+The board is a 6x6 array of octagons with each octagon split in half.
+Some of the octagons are split horizontally and some are split vertically.
+In between the octagons are squares.
+The top and bottom edges of the board are colored RED.
+The left and right edges of the board are colored BLUE.
+
+
+Starting
+========
+The RED player always goes first.
+
+However, the game implements the "pie rule".  After the RED player has made
+his first move, the BLUE player may choose to take RED's move as his own.
+
+(The "pie rule" comes from the method to fairly divide a pie between two
+people.  The first person cuts the pie and the second chooses which half
+he wants.)
+
+Moves
+=====
+On a player's turn he can either claim:
+    a) ONE half-octagon
+ or b) TWO squares
+
+
+Game Over
+=========
+The game ends when a player has claimed spaces the result in a continuous
+path that connects his two sides of the board to each other.
+
+
+Interface Details
+=================
+Areas on the board are colored to show ownership.  Spaces not yet claimed are
+light grey.
+
+When it is your turn, moving the mouse over a legal space on the board will
+outline the space in yellow.  Clicking on a space will claim it.  If you claim
+a half-octagon space, then your turn is over.  If you claim a square, then it
+will stay your turn, but you can only select another square.
+
+The last move made will be outlined in green.
+
+If BLUE wishes to exercise the "pie rule", then on his first turn he can
+select the same space that RED did.  This will convert the space to blue and
+end BLUE's turn.  (If RED had selected two squares for the first move of the
+game, then BLUE must select both of those squares also.  After selecting the
+first square, the only valid move will be selecting the other square.)
+

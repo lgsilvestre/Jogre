@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+
+This is a DTD description of a rules file.  However, since NanoXML that JOGRE
+uses doesn't support DTD descriptions, it is given in a comment.
+
+<!DOCTYPE rules [
+<!ELEMENT rules (section+)>
+<!ATTLIST rules content (text | text/html | text/rtf) "text"
+				title CDATA #REQUIRED>
+	<!ELEMENT section (section+ | CDATA)>
+	<!ATTLIST title CDATA #IMPLIED>
+]>
+
+Notes: The "rules" element *must* have a title even though that title is never
+       shown to the users.  If the title isn't there, then nothing will display
+       in the rules window.
+
+       Sections are not required to have a title, but only sections with titles
+       will show up in the index'd tree list.
+
+       NanoXML doesn't support mixing elements and CDATA inside of an element,
+       and so non-title'd sections allow that functionality.
+
+       You can embed sections within sections and they will show up in the
+       tree as subsections.
+
+       The <![CDATA[ ... ]]> verbiage is needed for text that uses HTML tags within
+       it.  Without them, NanoXML would try to parse them as XML and fail.  For plain
+       text rules files, you don't need them.
+-->
+
+<rules content="text/html" title="Rules">
+	<section title="Introduction">
+		<![CDATA[<font size="+2"><b><u>Introduction</u></b></font><br>
+		Texas Hold 'Em Poker<br><br>
+		The program was written by Bob Marks (marksie531@yahoo.com) &
+		Richard Walter (rwalter42@yahoo.com)<br>]]>
+	</section>
+
+	<section title="Playing the Game">
+		<![CDATA[<font size="+2"><b><u><br>Playing the Game</u></b></font><br>
+		Do something...
+		<br>]]>
+	</section>
+
+
+	<section title="Interface Details">
+		<section>
+			<![CDATA[<font size="+2"><b><u><br>Interface Details</u></b></font><br>]]>
+		</section>
+
+		<section title="Starting a New Game">
+			<![CDATA[<font size="+1"><b><u><br>Starting a New Game</u></b></font><br>
+			When you start a new game you get to choose lots of stuff.<br>]]>
+		</section>
+
+	</section>
+
+</rules>

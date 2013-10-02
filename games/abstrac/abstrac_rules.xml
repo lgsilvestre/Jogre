@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+
+This is A DTD description of a rules file.  However, since NanoXML that JOGRE
+uses doesn't support DTD descriptions, it is given in a comment.
+
+<!DOCTYPE rules [
+<!ELEMENT rules (section+)>
+<!ATTLIST rules content (text | text/html | text/rtf) "text"
+				title CDATA #REQUIRED>
+	<!ELEMENT section (section+ | CDATA)>
+	<!ATTLIST title CDATA #IMPLIED>
+]>
+
+Notes: The "rules" element *must* have a title even though that title is never
+       shown to the users.  If the title isn't there, then nothing will display
+       in the rules window.
+
+       Sections are not required to have a title, but only sections with titles
+       will show up in the index'd tree list.
+
+       NanoXML doesn't support mixing elements and CDATA inside of an element,
+       and so non-title'd sections allow that functionality.
+
+       You can embed sections within sections and they will show up in the
+       tree as subsections.
+
+       The <![CDATA[ ... ]]> verbiage is needed for text that uses HTML tags within
+       it.  Without them, NanoXML would try to parse them as XML and fail.  For plain
+       text rules files, you don't need them.
+-->
+
+<rules content="text/html" title="Rules">
+	<section title="Introduction">
+		<![CDATA[<font size="+2"><b><u>Introduction</u></b></font><br>
+		The game of Abstrac was designed by David Parlett.<br>
+		It is described in the book "Original Card Games".<br><br>
+		The card images used in the game were drawn by Nicu Buculei.  They are in the
+		public domain and are available from http://www.openclipart.org/<br><br>
+		The card suit images used on the left of the claimed grid were drawn by Guillaume Boitel.  They are
+		in the public domain and are available from http://www.openclipart.org/<br><br>
+		The star image used to indicate claimed cards was drawn by Sergio I. Rivera.  It is
+		in the public domain and is available from http://www.openclipart.org/<br><br>
+		The program was written by Richard Walter (rwalter42@yahoo.com)<br><br>]]>
+	</section>
+
+	<section title="Overview">
+		<![CDATA[<font size="+2"><b><u>Overview</u></b></font><br>
+		Abstrac is a card game for 2 players.<br><br>
+		Players take turns picking cards from the deck.  Points are scored for sets
+		(cards of the same values of different suits) and runs (cards of the
+		same suit that are of consecutive values) collected.<br><br>
+		But each card a player takes increases the values of his opponent's sets and runs...<br><br>]]>
+	</section>
+
+	<section title="Deck">
+		<![CDATA[<font size="+2"><b><u>Deck</u></b></font><br>
+		Abstrac is played with a deck of 24 cards using only the cards 9 through Ace.<br><br>]]>
+	</section>
+
+	<section title="Playing the Game">
+		<![CDATA[<font size="+2"><b><u>Playing the Game</u></b></font><br>
+		The 24 cards are shuffled and dealt out face up between both players.<br><br>
+		Players alternate turns, taking 1, 2, or 3 cards from the top of the deck.<br><br>
+		]]>
+	</section>
+
+	<section title="Scoring">
+		<section>
+			<![CDATA[<font size="+2"><b><u>Scoring</u></b></font><br>
+			After all of the cards have been claimed, scoring occurs.<br><br>
+			A player scores points for sets and runs.<br><br>]]>
+		</section>
+
+		<section title="Sets">
+			<![CDATA[<font size="+1"><b><u>Sets</u></b></font><br>
+			A set is 3 or 4 cards of the same value, such as 3 Jacks, or 4 Aces.<br><br>
+			A set of 3 is worth 2 points.<br>
+			A set of 4 is worth 8 points.<br><br>]]>
+		</section>
+
+		<section title="Runs">
+			<![CDATA[<font size="+1"><b><u>Runs</u></b></font><br>
+			A run is 3 or more cards of the same suit in consecutive order.  For example,
+			the 9, 10 and Jack of Hearts is a run of 3.<br><br>
+			A run of 3 is worth 3 points.<br>
+			A run of 4 is worth 4 points.<br>
+			A run of 5 is worth 6 points.<br>
+			A run of 6 is worth 12 points.<br><br>]]>
+		</section>
+
+		<section>
+			<![CDATA[
+			After totalling the points made from sets and runs, a player multiplies that
+			total by the number of cards taken by his <b><i>opponent</i></b>.  For example,
+			if a player scored 12 points with sets and runs, and took 15 cards to do it,
+			then is total score would be 12 * 9 = 108, because if he took 15 cards, then
+			his opponent took only 9 cards.<br><br>
+			Whichever player has the larger final score is the winner.<br><br>]]>
+		</section>
+	</section>
+
+	<section title="Interface Details">
+		<section>
+			<![CDATA[<font size="+2"><b><u>Interface Details</u></b></font><br><br>
+			The table contains two grids that show which cards have been taken by each
+			player separated by the deck layed out between them.  Both players see their
+			cards indicated at the top of the screen and their opponent's cards indicated
+			at the bottom of the screen.<br><br>
+			At the beginning of a game, the grids are empty and all 24 cards are layed out
+			in the middle of the table.<br><br>
+			Each square of the grid shows a different symbol to indicate a player's holdings.<br><br>
+			* A star indicates a card that has been taken by that player.  Stars with green
+			backgrounds indicate cards that were taken on the most recent turn.<br>
+			* A grey dash indicates that the card has been taken by the opponent.<br>
+			* An empty square indicates that the card is still in the deck and has not been
+			claimed by either player.<br><br>
+			On a player's turn, he must select one, two, or three cards from the top of
+			the deck.  As the mouse is moved over the deck the selected cards will be
+			highlighted.  Also, a transparent star will be placed in the player's grid to
+			indicate the selected cards.
+			Clicking the mouse button will select the cards and move them to the player's grid.<br><br>
+			The scores on the right and bottom of the grid indicate the scores for runs and sets
+			taken.  The boxed area in the lower right corner shows the total of the
+			points for sums and sets, the number of cards taken by the opponent, and the
+			current grand total.<br><br>
+			]]>
+		</section>
+	</section>
+
+	<section title="Customization">
+		<section>
+			<![CDATA[<font size="+2"><b><u>Customization</u></b></font><br>
+			Many parameters of the game are cusomizable from the game.properties file.
+			This file is editable with any text editor.<br><br>
+			<i>player.colour.x</i> - Can be used to change the color of the players.<br><br>
+			<i>display.hand.cardSpacing</i> - The number of pixels between left-hand edges
+			of two cards in the hand.<br><br>
+			<i>display.hand.selectYOffset</i> - The number of pixels to move a selectable
+			card when moused over.<br><br>
+			<i>display.taken.digitSpacing</i> - The number of pixels between digits of multi-digit
+			numbers in the score area.<br><br>
+			<i>display.taken.HSpacing</i> - The number of pixels between each column of the score
+			panel<br><br>
+			<i>display.taken.VSpacing</i> - The number of pixels between each row of the score panel.<br><br>]]>
+		</section>
+
+		<section title="Customizing Images">
+			<![CDATA[<font size="+1"><b><u>Customizing Images</u></b></font><br>
+			The game.properties file contains entries for images used in the game.  You can
+			customize the game by making new image files and setting the appropriate image.x
+			line in the game.properties file to point to your new image.<br><br>
+			Each image line contains a filename followed by the size of the file.  If you change an image
+			file, make sure that you change the size as well.<br><br>
+			<i>image.0</i> - The icon used in the window.  This must be 16x16 pixels.<br><br>
+			<i>image.1</i> - The cards used in the game.  This is an array of images of the
+			cards.  You can change the size of the cards, but each card must be the same size
+			and the cards must remain in the same relative position.  (ie: the 9 of diamonds
+			must be in the upper left corner, with the 9 of spades below it.).<br><br>
+			<i>image.2</i> - The symbols used to indicate the various parts of the scoring grid.
+			This is a horizontal row of 14 symbols<br><br>
+			<i>image.3</i> - The digits used to draw the scores.  This includes the multiplication
+			sign and the equals sign.<br><br>]]>
+		</section>
+	</section>
+</rules>

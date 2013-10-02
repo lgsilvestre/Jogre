@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+==============================================================================
+
+               J O G R E   G L O B A L   B U I L D   S C R I P T
+
+==============================================================================
+
+This ANT build file builds the specified sub projects in following order: -
+
+       Project       Depends on 
+    ============================
+    1) JOGRE API     -
+    2) JOGRE Util    -
+    3) JOGRE Server  API        
+    4) JOGRE Games   API, Server
+    5) JOGRE Webapp  API, Server, Games
+    
+
+Currently you can do the following:
+
+Command      Action
+==============================================================================
+
+ant          Runs default "package" target in api, server and each game.
+ant clean    Runs "clean" target in api, server and each game.
+ant compile  Runs "compile" target in api, server and each game.
+ant package  Runs "package" target in api, server and each game.
+ant deploy   Runs "deploy" target - only used in the webapp project.
+ant test     Runs "test" target in api, server and each game.
+ant report   Runs "test" target and generates global test report.
+ant view     Runs "report" target displays report using web browser.
+ant all      Runs "clean", "package", "test" and "report" targets in this file.
+
+==============================================================================
+
+NOTE: - if you are having junit issues when you are compiling then set your
+        classpath to include the junit.jar file or else copy the "junit.jar"
+        file into your <apache_ant>/lib folder.
+-->
+
+<project name="JOGRE" default="package" basedir=".">
+
+    <description>
+        This is the build file for building the entire JOGRE suite.
+    </description>
+
+    <!--
+    ==========================================================================
+    Global Properties
+    ==========================================================================
+    -->
+
+    <property file="build.properties"/>
+
+    <!-- API directory -->
+    <property name="api.dir" value="${basedir}/api"/>
+
+    <!-- Utility directory -->
+    <property name="util.dir" value="${basedir}/util"/>
+    
+    <!-- Server directory -->
+    <property name="server.dir" value="${basedir}/server"/>
+
+    <!-- Webapp directory -->
+    <property name="webapp.dir" value="${basedir}/webapp"/>
+    
+    <!-- Games directory -->
+    <property name="games.dir" value="${basedir}/games"/>
+
+    <!-- Report directory -->
+    <property name="report.dir" value="${basedir}/report"/>
+
+    <!--
+    ==========================================================================
+    Target: init
+    ==========================================================================
+    -->
+
+    <target name="init">
+        <echo/>
+        <echo>--------------------------------------------</echo>
+        <echo>          JOGRE MASTER BUILD FILE           </echo>
+        <echo>--------------------------------------------</echo>
+    </target>
+
+    <!--
+    ==========================================================================
+    Target: clean
+    ==========================================================================
+    -->
+    <target name="clean" depends="init"
+            description="Call clean targets in all sub projects">
+        <echo>TARGET [CLEAN]</echo>
+        <echo>--------------------------------------------</echo>
+
+        <!-- Call sub task in order: 
+             1) API, 2) Util, 3) Server, 4) Games, 5) Webapp -->
+             
+        <subant antfile="build.xml" buildpath="${api.dir}" target="clean" />
+        <subant antfile="build.xml" buildpath="${util.dir}" target="clean"/>
+        <subant antfile="build.xml" buildpath="${server.dir}" target="clean"/>        
+        <subant antfile="build.xml" target="clean">
+            <fileset dir="${games.dir}" includes="**/build.xml"/>
+        </subant>        
+        <subant antfile="build.xml" buildpath="${webapp.dir}" target="clean"/>
+
+        <delete dir="${report.dir}"/>
+    </target>
+
+    <!--
+    ==========================================================================
+    Target: compile
+    ==========================================================================
+    -->
+    <target name="compile" depends="init"
+            description="Call compile targets in all sub projects" >
+        <echo>TARGET [COMPILE]</echo>
+        <echo>--------------------------------------------</echo>
+
+        <!-- Call sub task in order: 
+             1) API, 2) Util, 3) Server, 4) Games, 5) Webapp
+             
+             Note, we need to package API/Server (jogre.jar and
+             server.jar) in order for games to compile. -->
+             
+        <subant antfile="build.xml" buildpath="${api.dir}" target="package" />
+        <subant antfile="build.xml" buildpath="${util.dir}" target="compile"/>
+        <subant antfile="build.xml" buildpath="${server.dir}" target="package"/>        
+        <subant antfile="build.xml" target="compile">
+            <fileset dir="${games.dir}" includes="**/build.xml"/>
+        </subant>
+        <subant antfile="build.xml" buildpath="${webapp.dir}" target="compile"/>
+    </target>
+
+    <!--
+    ==========================================================================
+    Target: package
+    ==========================================================================
+    -->
+    <target name="package" depends="init"
+            description="Call package targets in all sub projects" >
+        <echo>TARGET [PACKAGE]</echo>
+        <echo>--------------------------------------------</echo>
+
+        <!-- Call sub task in order: 
+             1) API, 2) Util, 3) Server, 4) Games, 5) Webapp
+             
+             Note, we need to package API/Server (jogre.jar and
+             server.jar) in order for games to compile. -->
+             
+        <subant antfile="build.xml" buildpath="${api.dir}" target="package" />
+        <subant antfile="build.xml" buildpath="${util.dir}" target="package"/>
+        <subant antfile="build.xml" buildpath="${server.dir}" target="package"/>
+        <subant antfile="build.xml" target="package">
+            <fileset dir="${games.dir}" includes="**/build.xml"/>
+        </subant>
+        <subant antfile="build.xml" buildpath="${webapp.dir}" target="package"/>
+    </target>
+    
+    <!--
+    ==========================================================================
+    Target: deploy
+    ==========================================================================
+    -->
+    <target name="deploy" 
+            description="Call deploy targets in all sub projects" >
+        <echo>TARGET [TEST]</echo>
+        <echo>--------------------------------------------</echo>
+
+        <!-- Only applies to webapp project -->        
+        
+        <subant antfile="build.xml" buildpath="${webapp.dir}" target="deploy"/>  
+    </target>    
+
+    <!--
+    ==========================================================================
+    Target: test
+    ==========================================================================
+    -->
+    <target name="test" depends="compile "
+            description="Call test targets in all sub projects" >
+        <echo>TARGET [TEST]</echo>
+        <echo>--------------------------------------------</echo>
+
+        <!-- Call sub task in order: 1) API, 2) Server, 3) Games
+             Note, we need to package API/Server (jogre.jar and
+             server.jar) in order for games to compile. -->        
+        <subant antfile="build.xml" buildpath="${api.dir}" target="test" />
+        <subant antfile="build.xml" buildpath="${server.dir}" target="test"/>
+        <subant antfile="build.xml" target="test">
+            <fileset dir="${games.dir}" includes="**/build.xml"/>
+        </subant>        
+    </target>
+
+    <!--
+    ==========================================================================
+    Target: report
+    ==========================================================================
+    -->
+    <target name="report" depends="init"
+            description="Call test targets in all sub projects and create master report" >
+        <echo>TARGET [REPORT]</echo>
+        <echo>--------------------------------------------</echo>
+
+        <!-- Clean out report from last report -->
+        <delete dir="${report.dir}"/>
+        <mkdir  dir="${report.dir}"/>
+        <copy todir="${report.dir}" flatten="true">
+            <fileset dir="${basedir}" includes="**/TEST-*.xml"/>
+        </copy>
+
+        <!-- Create html test report -->
+        <junitreport todir="${report.dir}">
+            <fileset dir="${report.dir}">
+                <include name="*.xml" />
+            </fileset>
+            <report format="frames"
+                    todir="${report.dir}/html"/>
+        </junitreport>
+    </target>
+
+
+    <!--
+    ==========================================================================
+    Target: view
+    ==========================================================================
+    -->
+    <target name="view"
+            description="View report in web browser" >
+                   <echo>TARGET [VIEW]</echo>
+       <echo>--------------------------------------------</echo>
+
+       <!-- Display JUNIT master report using IE -->
+        <exec dir="${report.dir}/html" executable="explorer" os="Windows XP">
+            <arg line="index.html" />
+        </exec>
+        <exec dir="${report.dir}/html" executable="explorer"
+              os="Windows 2000"><arg line="index.html" />
+        </exec>
+    </target>
+
+    <!--
+    ==========================================================================
+    Target: all
+    ==========================================================================
+    -->
+    <target name="all" depends="clean, package, test, report"
+            description="Do a complete clean build" />
+
+</project>

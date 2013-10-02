@@ -1,0 +1,14 @@
+.menu_plain {FONT-WEIGHT: normal; FONT-SIZE: 10pt; COLOR: #777777; FONT-FAMILY: Arial; TEXT-DECORATION: none}
+.menu_bold  {FONT-WEIGHT: bold;   FONT-SIZE: 10pt; COLOR: #777777; FONT-FAMILY: Arial; TEXT-DECORATION: none}
+.table      {FONT-WEIGHT: bold;   FONT-SIZE: 10pt; COLOR: #ffffff; FONT-FAMILY: Arial; TEXT-DECORATION: none}
+.game       {FONT-WEIGHT: bold;   FONT-SIZE: 10pt; COLOR: #445599; FONT-FAMILY: Arial; TEXT-DECORATION: none}
+.errors     {FONT-WEIGHT: bold;   FONT-SIZE: 10pt; COLOR: #cc0000; FONT-FAMILY: Arial; TEXT-DECORATION: none}
+
+A.menu_plain:hover { TEXT-DECORATION: underline }	
+A.menu_bold:hover  { TEXT-DECORATION: underline }
+A.game:hover       { TEXT-DECORATION: underline }
+A.table:hover      { TEXT-DECORATION: underline }
+
+.menu_bold_selected {FONT-WEIGHT: bold; FONT-SIZE: 10pt; COLOR: #339933; FONT-FAMILY: Arial; TEXT-DECORATION: none}
+
+input { background-color:#eeeeee; color: #777777; font: normal 10px Arial; line-height:12px; } 

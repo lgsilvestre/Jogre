@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  <!DOCTYPE server_properties SYSTEM "server.dtd"> -->
+
+<!--
+#=============================================================================
+# Configuration file for a JOGRE server.
+#
+# Contains various sections for configuring a JOGRE server.
+#
+# Author:  Bob Marks
+# Version: 0.3 Beta
+# Date:    3 Nov 2008
+#
+#=============================================================================
+-->
+<server_properties>
+    <!-- 
+    =============================================================================
+    Main configuration element 
+    =============================================================================
+    -->
+    <configuration>
+        <!-- Main server configuration properties -->
+        <server port="1790" max_tables="10" max_users="10" max_tables_per_user="2" user_validation="user"/>
+        <!-- Admin client properties -->
+        <admin_client username="admin" password="admin" receive_messages="false"/>
+    </configuration>
+    <!-- 
+    =============================================================================
+    Supported games element.
+    ============================================================================= 
+    -->
+    <supported_games>
+        <game id="abstrac" host="true" minPlayers="2" maxPlayers="2"/>
+        <game id="battleship" host="true" minPlayers="2" maxPlayers="2"/>
+        <game id="camelot" host="true" minPlayers="2" maxPlayers="2"/>
+        <game id="carTricks" host="true" minPlayers="3" maxPlayers="5">
+            <custom type="dataRootDir" value="../games/carTricks/data"/>
+        </game>
+        <game id="checkers" host="true" minPlayers="2" maxPlayers="2">
+            <elo startRating="1200" kFactor="0-2099=32,2100-2399=24,2490-3000=16"/>
+        </game>
+        <game id="chess" host="true" minPlayers="2" maxPlayers="2">
+            <elo startRating="1200" kFactor="0-2099=32,2100-2399=24,2490-3000=16"/>
+        </game>
+        <game id="chineseCheckers" host="true" minPlayers="2" maxPlayers="6"/>
+        <game id="connect4" host="true" minPlayers="2" maxPlayers="2"/>
+        <game id="dots" host="true" minPlayers="2" maxPlayers="4"/>
+        <game id="go" host="true" minPlayers="2" maxPlayers="2"/>
+        <game id="grandPrixJumping" host="true" minPlayers="2" maxPlayers="2"/>
+        <game id="quetris" host="true" minPlayers="2" maxPlayers="2"/>
+        <game id="hex" host="true" minPlayers="2" maxPlayers="2"/>
+        <game id="ninetynine" host="true" minPlayers="3" maxPlayers="3"/>
+        <game id="octagons" host="true" minPlayers="2" maxPlayers="2"/>
+        <game id="pointsTotal" host="true" minPlayers="2" maxPlayers="4"/>
+        <game id="propinquity" host="true" minPlayers="2" maxPlayers="2"/>
+        <game id="reversi" host="true" minPlayers="2" maxPlayers="2"/>
+        <game id="spades" host="true" minPlayers="4" maxPlayers="4"/>
+        <game id="tetris" host="true" minPlayers="2" maxPlayers="2"/>
+        <game id="texasHoldEm" host="true" minPlayers="2" maxPlayers="8"/>
+        <game id="tictactoe" host="true" minPlayers="2" maxPlayers="2"/>
+        <game id="triangulum" host="true" minPlayers="2" maxPlayers="4"/>
+        <game id="warwick" host="true" minPlayers="3" maxPlayers="5"/>
+    </supported_games>
+    
+    <!-- 
+    =============================================================================
+    Persistent server data. 
+    =============================================================================
+    -->
+    <server_data current="xml">
+        <!-- XML data source (default) -->
+        <xml location="data/xml"/>
+        <!-- List of database connections -->
+        <database current="jogre_hsqldb">
+            <!-- Access Database connection details -->
+            <connection id="jogre_access" driver="sun.jdbc.odbc.JdbcOdbcDriver" url="jdbc:odbc:jogre" username="" password=""/>
+            <!-- MySQL database connection details -->
+            <connection id="jogre_mysql" driver="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost/jogre_mysql" username="admin" password="admin"/>
+            <!-- MySQLWeb database connection details -->
+            <connection id="jogre_mysql_web" driver="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost/jogreweb" username="admin" password="admin"/>
+            <!-- JOGRE HSQLDB connection -->
+            <connection id="jogre_hsqldb" driver="org.hsqldb.jdbcDriver" url="jdbc:hsqldb:hsql://localhost/jogre_hsqldb" username="sa" password=""/>
+        </database>
+        <!-- Master server e.g. www.jogre.org -->
+        <master_server/>
+    </server_data>
+</server_properties>

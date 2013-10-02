@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+===============================================================================
+Ant build script for Jogre Util project.
+===============================================================================
+-->
+
+<project name="JOGRE Utils" default="compile" basedir=".">
+
+    <description>
+        This is the build file for JOGRE Util
+    </description>
+       
+    <!--
+    ===========================================================================
+    Properties .
+    ===========================================================================
+    -->
+
+    <property file="${basedir}/../build.properties"/>
+    
+    <property name="src.dir"    value="${basedir}/src"/>
+    <property name="class.dir"  value="${basedir}/classes"/>
+    <property name="games.dir"  value="${basedir}/../games"/>
+    <property name="gamegen.jar"  value="${basedir}/gamegen.jar"/>
+    <property name="propedit.jar"  value="${basedir}/propedit.jar"/>
+
+    <!-- Set up class path -->
+    <path id="classpath">
+        <fileset dir="${basedir}/lib" includes="*.jar"/>
+    </path>
+
+    <!--
+    ===========================================================================
+    Target: init
+    ===========================================================================
+    -->
+    <target name="init">
+        <!-- Create directorys -->
+        <mkdir dir="${class.dir}"/>
+    </target>
+
+    <!--
+    ===========================================================================
+    Target: clean
+    ===========================================================================
+    -->
+    <target name="clean" description="Delete classes and jar files">
+        <!-- Delete the ${class.dir} directory trees -->
+        <delete dir="${class.dir}"/>
+        <delete dir="${test.class.dir}"/>
+        
+        <delete file="${gamegen.jar}"/>
+        <delete file="${propedit.jar}"/>
+    </target>
+
+    <!--
+    ===========================================================================
+    Target: compile source
+    ===========================================================================
+    -->
+    <target name="compile" depends="init" description="Compile all utilities">
+    
+        <!-- Compile the java code from ${src} into ${classes} -->
+        <javac srcdir="${src.dir}" 
+               destdir="${class.dir}"  
+               debug="true"
+               debuglevel="${build.debuglevel}" 
+               source="${build.source}" 
+               target="${build.target}" >          
+            <compilerarg line="${build.extraparams}"/>
+            <classpath refid="classpath"/>
+        </javac>
+        
+        <!-- Copy templates and property files also -->
+        <copy todir="${class.dir}">
+            <fileset dir="${src.dir}">
+                <include name="**/*.properties"/>
+                <include name="**/*.tpl"/>
+            </fileset>
+        </copy>        
+    </target>
+    
+    <!--
+    ===========================================================================
+    Target: package
+    ===========================================================================
+    -->
+    <target name="package" depends="compile" description="Package into jar file">
+
+        <!-- Package game generator jar -->
+        <jar jarfile="${gamegen.jar}" manifest="${src.dir}/GAMEGEN_MANIFEST.MF">            
+            <fileset dir="${class.dir}">
+                <include name="org/jogre/common/**"/>
+                <include name="org/jogre/gamegen/**/*.*"/>
+                <include name="info/clearthought/layout/**/*.class"/>
+            </fileset>
+        </jar>
+        
+        <!-- Package game generator jar -->
+        <jar jarfile="${propedit.jar}" manifest="${src.dir}/GAMEGEN_MANIFEST.MF">            
+            <fileset dir="${class.dir}">
+                <include name="org/jogre/common/**"/>
+                <include name="org/jogre/properties/**/*.*"/>
+                <include name="info/clearthought/layout/**/*.class"/>
+            </fileset>
+        </jar>        
+    </target>
+
+    <!--
+    ===========================================================================
+    Target: All - Clean build, compile package and test.
+    ===========================================================================
+    -->
+    <target name="all" depends="clean, package" 
+            description="Clean and do a full compile, package and build"/>
+</project>

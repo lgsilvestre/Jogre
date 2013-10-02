@@ -1,0 +1,112 @@
+                       Rules for the game of Camelot
+					   ==============================
+
+This program implements the game of Camelot.
+
+It runs under the JOGRE (Java Online Gaming Real-time Engine) system.
+See http://jogre.sourceforge.net
+
+The game of Camelot was created by George S. Parker in 1887 as "Chivalry".
+It was published as "Camelot" in 1930 by Parker Brothers.
+
+The program was written by Richard Walter (rwalter42@yahoo.com)
+
+The World Camelot Federation is at http://communities.msn.com/worldcamelotfederation
+Camelot Information is also available at http://www.abstractstrategy.com/camelot.html
+
+Players
+=======
+Camelot is a two player game.  One player is RED and the other is BLUE.
+
+
+Goal
+====
+There are three ways to win Camelot.
+A) A player wins if he captures all of the opponent's pieces and still has
+   at least 2 pieces of his own on the board.
+B) A player wins if he gets two of his pieces into the opponent's castle.
+C) A player wins if his opponent has no move left.
+
+If both players are reduced to 1 piece, then the game is a tie.
+
+
+Board
+=====
+The board is a 12x16 array of squares with some of the square removed.
+The two squares at the top of the board are the BLUE player's castle.
+The two squares at the bottom of the boar are the RED player's castle.
+
+
+Pieces
+======
+There are two types of pieces: Men and Knights.  Each player starts the
+game with 10 men and 4 knights.
+
+
+Moves
+=====
+There are four types of moves:
+    1) Walk - A man or knight may move to an adjacent square horizontally,
+              vertically, or diagonally.
+    2) Jump - A man or knight may jump over a friendly piece and land on
+              an empty square.  The friendly piece jumped over is *NOT*
+              removed from the board.  Jumps can be made horizontally, vertically,
+              or diagonally.  A piece may make as many jumps in one turn
+              as it is possible to do, but is not forced to jump farther than
+              the player wishes.  Each jump of a move may change direction.
+    3) Capture - A man or knight man jump over an opponent's piece and land
+              on an empty square.  The piece jump over is *IMMEDIATELY* removed
+              from the board.  Captures can be made horizontally, vertically,
+              or diagonally.  After jumping, if the piece lands such that it
+              can make another capture, then it must continue to capture.
+              Each capture of a move may change direction.
+    4) Knight's Charge - A knight may combine jumps and captures.  In this
+              case, zero or more jumps are done followed by zreo or more captures.
+              Once a knight has captured a piece, it cannot go back to jumps
+              again.
+
+If a player can make a capture, then he must capture.
+If a player has a choice of captures, then he can choose which one to make.
+A knight's move only changes from a jump to a Knight's charge when the knight
+lands in a position where it is possible to make a capture.  A knight may stop
+a jumping move up to that point, but once it reaches a square where it can
+capture, it must either take that capture, or continue jumping to a point where
+it can make other capture.
+
+A player cannot move or jump into his own castle.
+A player may make capture that results in his piece landing in his castle.  In
+this case, the player *MUST* move the piece out of his castle on his next turn.
+This overrides the requirement to make a capture.
+
+Once a piece has been moved into the opponent's castle, it cannot leave the
+castle for any reason.  It is possible for a piece to walk from one square of
+the castle to the other square of the castle.  This is called a "Castle Move".
+Each player, however, may only make 2 castle moves each game.
+
+
+Interface Details
+=================
+When it is your turn, moving the mouse over a piece that can move will outline
+the piece in yellow.  If a piece does not highlight that means that that piece
+cannot move.  (This is usually because there is another piece that you can use
+to make a capture and this one can't make a capture.)
+
+Clicking on a piece will select it for moving.  All of the spaces that the
+selected piece can legally reach will be outlined in green.
+
+Clicking on a different piece will unselect the currently selected piece and
+select the new one.
+
+Moving the mouse over a green square will show the path that the selected piece
+takes to get from its current square to the chosen ending square.
+
+In the case of captures, there may be multiple paths for a piece from its
+starting square to the ending square.  By moving the mouse out of the green
+square and back in again, an alternate path will be shown.  By repeatedly moving
+out and back in, you can cycle around all possible moves.
+
+Clicking on a green square will make the move that is currently shown.
+
+When your opponent makes a move, his selected path is shown before the pieces are
+actually moved, to allow you to see his complete move.  Clicking in the window will
+cause the move to take effect before showing your legal moves.

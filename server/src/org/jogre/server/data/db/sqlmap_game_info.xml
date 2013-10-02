@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+//==============================================================================
+// SQL MAP for following table: 
+//	
+//     GAME_INFO
+//
+//===========================================================================-->
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+"http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap>
+	
+	<!--
+	=========================================================================== 
+	Add a single game info 
+	===========================================================================
+	-->	
+	<insert id="addGameInfo" 
+            parameterClass="org.jogre.server.data.GameInfo">
+		        
+		INSERT INTO GAME_INFO
+			(GAME_KEY, PLAYERS, RESULTS, START_TIME, END_TIME, HISTORY, SCORE)            
+		VALUES
+			(#gameKey#, #players#, #results#, #startTime#, #endTime#, #gameHistory#, #gameScore#)
+
+	</insert>
+	
+	<!--
+	=========================================================================== 
+	Select a single game info 
+	===========================================================================
+	-->	
+	<select id="selectGameInfo" 
+            resultClass="org.jogre.server.data.GameInfo" 
+            parameterClass="org.jogre.server.data.GameInfo">
+        
+        SELECT 
+		    ID             as id,
+			GAME_KEY       as gameKey,
+			PLAYERS        as players,
+			RESULTS        as results,
+		    START_TIME     as startTime, 
+		    END_TIME       as endTime,
+		    HISTORY        as gameHistory,
+			SCORE          as gameScore		    
+        FROM
+            GAME_INFO
+		WHERE
+			ID = #id#
+		           
+	</select>
+
+	<!--
+	=========================================================================== 
+	Select all game info 
+	===========================================================================
+	-->	
+	<select id="selectAllGameInfo" 
+            resultClass="org.jogre.server.data.GameInfo">
+        
+        SELECT 
+		    ID             as id,
+			GAME_KEY       as gameKey,
+			PLAYERS        as players,
+			RESULTS        as results,
+		    START_TIME     as startTime, 
+		    END_TIME       as endTime,
+		    HISTORY        as gameHistory,
+			SCORE          as gameScore		    
+        FROM
+            GAME_INFO
+		           
+	</select>
+	
+	<!--
+	=========================================================================== 
+	Update a single game info
+	===========================================================================
+	-->	
+	<update id="updateGameInfo" 
+            parameterClass="org.jogre.server.data.GameInfo" >
+        
+		UPDATE GAME_INFO SET 
+		    ID             = #id#,
+			GAME_KEY       = #gameKey#,
+			PLAYERS        = #players#,
+			RESULTS        = #results#,
+		    START_TIME     = #startTime#, 
+		    END_TIME       = #endTime#,
+		    HISTORY        = #gameHistory#,
+			SCORE          = #gameScore#	
+        WHERE
+			ID = #id#
+		
+	</update>
+	
+	<!--
+	=========================================================================== 
+	Delete a single game info 
+	===========================================================================
+	-->	
+	<delete id="deleteGameInfo" 
+            parameterClass="org.jogre.server.data.GameInfo" >
+        
+		DELETE FROM GAME_INFO
+		WHERE ID = #id#
+   
+	</delete>	
+		
+</sqlMap>

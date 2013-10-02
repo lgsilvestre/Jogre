@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+==============================================================================
+JOGRE ant build script for compiling and web application (WAR file).
+==============================================================================
+-->
+
+<project name="JOGRE WEB APP" default="package" basedir=".">
+
+    <description>
+        This is the build file for the JOGRE Web App Application
+    </description>
+
+    <!--
+    ==========================================================================
+    Global Properties
+    ==========================================================================
+    -->
+
+    <property file="${basedir}/build.properties"/>
+    <property name="jogre.root" value="${basedir}/.."/>
+    
+    <!-- Set up class path -->
+    <path id="classpath">
+        <fileset dir="${web-inf.lib.dir}" includes="**/*.jar"/>
+    	<fileset dir="${lib.dir}" includes="**/*.jar"/>
+        <pathelement location="${jogre.root}/api/jogre.jar"/>
+        <pathelement location="${jogre.root}/server/server.jar"/>
+        <pathelement location="${jogre.root}/server/lib/*.jar"/>
+    </path>
+    
+    <!--
+    ==========================================================================
+    Target: init
+    ==========================================================================
+    -->
+    <target name="init">
+        <!-- Create Directories -->
+        <mkdir dir="${classes.dir}"/>
+        <mkdir dir="${applets.dir}"/>
+        <mkdir dir="${web-inf.classes.dir}"/>      
+        <mkdir dir="${basedir}/META-INF"/>
+    </target>
+
+    <!--
+    ==========================================================================
+    Target: "clean"
+    ==========================================================================
+    -->
+    <target name="clean" description="clean up">
+        <!-- Delete the ${class.dir} directory trees -->
+        <delete dir="${classes.dir}"/>
+        <delete dir="${applets.dir}"/>
+        <delete dir="${web-inf.classes.dir}"/>      
+    </target>
+
+    <!--
+    ==========================================================================
+    Target: "compile"
+    ==========================================================================
+    -->    
+    <target name="compile" depends="init" description="Compile src">
+        <javac srcdir="${src.dir}" destdir="${classes.dir}" debug="${build.debug}" debuglevel="${build.debuglevel}" source="${build.source}" target="${build.target}" deprecation="${build.deprecation}">
+            <compilerarg line="${build.extraparams}"/>
+            <classpath refid="classpath"/>
+        </javac>    
+    </target>
+    
+    <!--
+    ==========================================================================
+    Target: "package"
+    ==========================================================================
+    -->    
+    <target name="package" depends="compile" description="Package into WAR file">
+        
+        <!-- Copy applets -->
+        <copy todir="${applets.dir}" flatten="true">
+            <fileset dir="${games.dir}" includes="**/applet*.jar">
+                <exclude name="**/*bura*"/>
+            </fileset>              
+        </copy>
+    	
+    	<!-- Sign applets if keystore exists -->
+    	<signjar destDir="${applets.dir}" alias="${keystore.alias}" storepass="${keystore.password}" keystore="${keystore}" lazy="true">
+    		<path>
+    		    <fileset dir="${applets.dir}" includes="*.jar" />
+    		 </path>
+    	</signjar>
+        
+        <!-- Create WAR file -->
+        <jar destfile="${war.filename}">
+            
+            <!-- From Webapp project --> 
+            <zipfileset dir="${basedir}" includes="README.txt"/>            
+            <zipfileset dir="${meta-inf}"/>
+            <zipfileset dir="${jsp.dir}"/>
+            
+        	<zipfileset dir="${applets.dir}"   prefix="${applets}"/>               
+            <zipfileset dir="${web-inf}"       prefix="${web-inf}"/>
+            <zipfileset dir="${src.resources}" prefix="${resources.prefix}"/>           
+            <zipfileset dir="${classes.dir}"   prefix="${web-inf.prefix}"/>
+            
+            <!-- From Jogre server / api -->
+            <zipfileset file="${jogre.root}/api/jogre.jar"     prefix="${web-inf}/lib"/>
+            <zipfileset file="${jogre.root}/server/server.jar" prefix="${web-inf}/lib"/>
+            <zipfileset file="${jogre.root}/server/lib/*.jar"  prefix="${web-inf}/lib"/>
+        </jar>
+    </target>
+    
+    <!--
+    ==========================================================================
+    Target: "deploy"
+    ==========================================================================
+    -->     
+    <target name="deploy" depends="package">
+        <!-- Copy applets -->
+        <copy todir="${deploy.dir}" file="${war.filename}"/>    
+    </target>
+    
+    <!-- Extra targets -->
+    <target name="all" depends="clean, deploy"/>
+</project>

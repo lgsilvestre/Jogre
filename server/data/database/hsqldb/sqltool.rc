@@ -1,0 +1,6 @@
+# This is for a hsqldb Server running with default settings on your local
+
+urlid jogre_hsqldb
+url jdbc:hsqldb:jogre_hsqldb
+username sa
+password

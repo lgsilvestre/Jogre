@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+===============================================================================
+Ant build script for Jogre Reversi - Beta 0.3
+===============================================================================
+-->
+
+<project name="JOGRE Reversi" default="compile" basedir=".">
+
+    <description>
+        This is the build file for JOGRE Reversi
+    </description>
+   
+    <!--
+    ===========================================================================
+    Properties .
+    ===========================================================================
+    -->
+
+    <property file="${basedir}/../../build.properties"/>
+    
+    <!-- Normal Properties -->
+    <property name="jogre.root" value="${basedir}/../.."/>
+    <property name="src.dir"    value="${basedir}/src"/>
+    <property name="class.dir"  value="${basedir}/classes"/>
+    <property name="image.dir " value="${basedir}/images"/>
+    <property name="jar.file"   value="applet_reversi.jar"/>
+    
+    <!-- Testing properties -->
+    <property name="test.dir"        value="${basedir}/test"/>
+    <property name="test.src.dir"    value="${test.dir}/src"/>
+    <property name="test.class.dir"  value="${test.dir}/classes"/>
+    <property name="test.report.dir" value="${test.dir}/report"/>
+    
+    <!-- Declare compile, test and test runtime classpaths -->
+    <path id="classpath">
+        <pathelement location="${jogre.root}/api/jogre.jar"/>
+        <pathelement location="${jogre.root}/server/server.jar"/>
+    </path> 
+    <path id="test.classpath">
+        <path refid="classpath" />
+        <pathelement location="${class.dir}"/>
+        <pathelement location="${jogre.root}/api/test/lib/junit.jar"/>
+    </path>
+    <path id="test.run.classpath">
+        <path refid="test.classpath" />
+        <pathelement location="${test.class.dir}"/>
+    </path>
+
+    <!--
+    ===========================================================================
+    Target: init
+    ===========================================================================
+    -->
+    <target name="init">
+        <!-- Create directorys -->
+        <mkdir dir="${class.dir}"/>
+        <mkdir dir="${test.class.dir}"/>
+        <mkdir dir="${test.report.dir}"/>
+    </target>
+
+    <!--
+    ===========================================================================
+    Target: clean
+    ===========================================================================
+    -->
+    <target name="clean" description="Delete classes and jar files">
+        <!-- Delete the ${class.dir} directory trees -->
+        <delete dir="${class.dir}"/>
+        <delete dir="${test.report.dir}"/>
+        <delete dir="${test.class.dir}"/>
+        <delete file="${jar.file}"/>
+    </target>
+
+    <!--
+    ===========================================================================
+    Target: compile source
+    ===========================================================================
+    -->
+    <target name="compile" depends="init"
+        description="Compile the source">
+
+        <!-- Compile the java code from ${src} into ${classes} -->
+        <javac srcdir="${src.dir}" 
+               destdir="${class.dir}"  
+               debug="${build.debug}"
+               debuglevel="${build.debuglevel}" 
+               source="${build.source}" 
+               target="${build.target}" 
+               deprecation="${build.deprecation}">          
+            <classpath refid="classpath"/>
+            <compilerarg line="${build.extraparams}"/>          
+        </javac>
+
+        <copy todir="${class.dir}">
+            <fileset dir="${basedir}">
+                <include name="*.properties"/>
+            </fileset>
+        </copy>
+
+    </target>
+
+    <!--
+    ===========================================================================
+    Target: package
+    ===========================================================================
+    -->
+    <target name="package" depends="compile" description="Package into jar file">
+
+        <jar jarfile="${jar.file}" update="yes" duplicate="preserve">
+            <!-- Copy from API -->
+            <fileset dir="${basedir}/../../api/classes">
+                <include name="**/*.class"/>
+            </fileset>
+            <fileset dir="${basedir}/../../api">
+                <include name="**/*.gif"/>
+                <include name="*.properties"/>
+                <exclude name="**/jogre_icon.gif"/>
+            </fileset>
+
+            <!-- Copy from Game -->
+            <fileset dir="${class.dir}">
+                <include name="**/*.class"/>
+            </fileset>
+            <fileset dir="${basedir}">
+               <include name="images/*.gif"/>
+               <include name="*.properties"/>
+            </fileset>
+
+            <exclude name="**/*.html"/>
+        </jar>
+
+    </target>
+
+    <!--
+    ===========================================================================
+    Target: run test cases
+    ===========================================================================
+    -->
+    <target name="compiletest" depends="init" description="Compile test cases">
+        <!-- Compile the java code from ${test.src} into ${test.classes} -->
+        <javac srcdir="${test.src.dir}" 
+               destdir="${test.class.dir}" 
+               debug="${build.debug}" 
+               debuglevel="${build.debuglevel}" 
+               source="${build.source}" 
+               target="${build.target}" 
+               deprecation="${build.deprecation}">
+            <classpath refid="test.classpath"/>
+            <compilerarg line="${build.extraparams}"/>
+        </javac>
+    </target>
+    
+    <!--
+    ===========================================================================
+    Target: run test cases
+    ===========================================================================
+    -->
+    <target name="test" depends="compiletest" description="Run test cases">
+        <!-- Run junit tests -->
+        <junit printsummary="no"
+               showoutput="true"
+               fork="true"
+               haltonfailure="yes"
+               haltonerror="yes">
+            <classpath refid="test.run.classpath" />
+
+            <formatter type="plain" usefile="no"/>
+            <formatter type="xml" />
+            
+            <batchtest fork="yes" todir="${test.report.dir}">
+                <fileset dir="${test.src.dir}">
+                    <include name="**/*Test.java" />
+                </fileset>
+            </batchtest>
+        </junit>
+            
+        <!-- Create html test report -->
+        <junitreport todir="${test.report.dir}">
+            <fileset dir="${test.report.dir}">
+                <include name="*.xml" />
+            </fileset>
+            <report format="frames"
+                    todir="${test.report.dir}/html"/>
+        </junitreport>
+    </target>
+    
+    <!--
+    ===========================================================================
+    Target: All - Clean build, compile package and test.
+    ===========================================================================
+    -->
+    <target name="all" depends="clean, package, test" 
+            description="Clean and do a full compile, package and build"/>
+</project>

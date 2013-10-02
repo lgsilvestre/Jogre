@@ -1,0 +1,55 @@
+=============================================================================
+Deploying JOGRE Server / JOGRE web application on a Linux system.
+=============================================================================
+
+1) User / group setup
+-----------------------------------------------------------------------------
+
+- Create new user (e.g. jogre)
+
+	adduser jogre
+	
+- Create jogre folder under /opt.
+
+	mkdir /opt/jogre
+
+- Change ownership of directory to "jogre" user
+
+	chown -R jogre:jogre /opt/jogre
+	
+
+2) Install Java JRE in /opt/java directory and set up System variables.
+-----------------------------------------------------------------------------
+
+- Ensure you logged on as "jogre" user in linux.  If logged as root type: -
+
+	su jogre
+
+- Download JRE installer from http://java.sun.com website to /opt/jogre 
+
+	e.g. j2re-1_3_1_20-linux-i586.bin
+
+- Change permission of bin to 755 and execute file in /opt/jogre dir.
+	
+	chmod 755 j2re-1_3_1_20-linux-i586.bin
+	cd /opt/jogre
+	./j2re-1_3_1_20-linux-i586.bin
+
+- Set JAVA_HOME and PATH variables by editting bash profile.
+
+	vi ~/.bash_profile	or    pico ~/.bash_profile
+
+- Add exports at end of file
+
+	export JAVA_HOME=/opt/jogre/jre1.3.1_20
+	export PATH=$PATH:$JAVA_HOME/bin	
+
+- Save and close the file. Logout and in again and type the following: -
+
+	echo $JAVA_HOME
+	echo $PATH
+	java
+	
+(The environment variables should be displayed and Java should run its default
+help screen)
+

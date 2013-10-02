@@ -1,0 +1,42 @@
+<html>
+<head>
+<title>Applet Tester Frame</title>
+<script language="JavaScript">
+
+// Function for creating the applet tag
+function createAppletTag () {
+
+	// Read info from parent window
+	gameinfo   = opener.document.form.game.value.split(" ");
+	username   = opener.document.form.username.value;
+	serverhost = opener.document.form.serverhost.value;
+	serverport = opener.document.form.serverport.value;
+	language   = opener.document.form.language.value;
+
+	// Create applet HTML
+	appletHTML =
+		"<applet archive='" + gameinfo[0] + "' " +
+		"        code='" + gameinfo[1] + "'" +
+		"        width='100%' height='100%'>" +
+		"    <param name='username'   value='" + username + "'>" +
+		"	 <param name='serverhost' value='" + serverhost + "'>" +
+		"    <param name='serverport' value='" + serverport + "'>" +
+		"    <param name='language' value='" + language + "'>" +
+		"</applet>";
+
+	// Assign to div and update title
+	document.getElementById('applettag').innerHTML = appletHTML;
+	document.title = "Applet Tester Frame [" + gameinfo[0] + "] connected as " + username;
+}
+
+window.onload = createAppletTag;
+
+</script>
+
+</head>
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+
+<div id="applettag">Loading Applet</div>
+
+</body>
+</body>

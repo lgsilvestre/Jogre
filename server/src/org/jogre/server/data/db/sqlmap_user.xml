@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+//==============================================================================
+// SQL MAP for following table: 
+//	
+//     USER
+//
+//===========================================================================-->
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+"http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap>
+
+	<!--
+	=========================================================================== 
+	Add a single user 
+	===========================================================================
+	-->	
+	<insert id="addUser" 
+            parameterClass="org.jogre.server.data.User">
+        
+        INSERT INTO USER
+            (USERNAME,   PASSWORD,   SECURITY_QUESTION,  SECURITY_ANSWER,  YEAR_OF_BIRTH, EMAIL,   RECEIVE_NEWSLETTER)
+		VALUES
+			(#username#, #password#, #securityQuestion#, #securityAnswer#, #yearOfBirth#, #email#, #receiveNewsletter#)
+		
+	</insert>
+	
+	<!--
+	=========================================================================== 
+	Select a single user 
+	===========================================================================
+	-->	
+	<select id="selectUser" 
+            resultClass="org.jogre.server.data.User" 
+            parameterClass="org.jogre.server.data.User">
+        
+        SELECT 
+            USERNAME              as username,
+            PASSWORD              as password,
+			SECURITY_QUESTION     as securityQuestion,
+			SECURITY_ANSWER       as securityAnswer,
+			YEAR_OF_BIRTH         as yearOfBirth,
+			EMAIL                 as email,
+			RECEIVE_NEWSLETTER    as receiveNewsletter
+        FROM
+            USER
+				
+		<dynamic prepend="WHERE">
+            <isNotNull property="username" prepend="AND">
+                USERNAME = #username# 
+            </isNotNull>
+            <isNotNull property="password" prepend="AND">
+                PASSWORD = #password# 
+            </isNotNull>
+		</dynamic>   
+		           
+	</select>	
+
+    <!--
+	=========================================================================== 
+	Return all users 
+	===========================================================================
+	-->		
+	<select id="selectAllUsers" 
+            resultClass="org.jogre.server.data.User" >
+        
+		SELECT 
+            USERNAME              as username,
+            PASSWORD              as password,
+            SECURITY_QUESTION     as securityQuestion,
+            SECURITY_ANSWER       as securityAnswer,
+            YEAR_OF_BIRTH         as yearOfBirth,
+            EMAIL                 as email,
+            RECEIVE_NEWSLETTER    as receiveNewsletter
+        FROM
+            USER
+   
+	</select>	
+	
+	<!--
+	=========================================================================== 
+	Update a single user 
+	===========================================================================
+	-->	
+	<update id="updateUser" 
+            parameterClass="org.jogre.server.data.User" >
+        
+		UPDATE USER SET 		
+            USERNAME              = #username#,
+            PASSWORD              = #password#,
+            SECURITY_QUESTION     = #securityQuestion#,
+            SECURITY_ANSWER       = #securityAnswer#,
+            YEAR_OF_BIRTH         = #yearOfBirth#,
+            EMAIL                 = #email#,
+            RECEIVE_NEWSLETTER    = #receiveNewsletter#		
+        WHERE
+			USERNAME = #username#
+		
+	</update>
+	
+	<!--
+	=========================================================================== 
+	Delete a single user 
+	===========================================================================
+	-->	
+	<delete id="deleteUser" 
+            parameterClass="org.jogre.server.data.User" >
+        
+		DELETE FROM USER
+		WHERE USERNAME = #username#
+   
+	</delete>	
+
+</sqlMap>

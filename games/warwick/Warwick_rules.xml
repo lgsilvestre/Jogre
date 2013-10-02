@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+
+This is a DTD description of a rules file.  However, since NanoXML that JOGRE
+uses doesn't support DTD descriptions, it is given in a comment.
+
+<!DOCTYPE rules [
+<!ELEMENT rules (section+)>
+<!ATTLIST rules content (text | text/html | text/rtf) "text"
+				title CDATA #REQUIRED>
+	<!ELEMENT section (section+ | CDATA)>
+	<!ATTLIST title CDATA #IMPLIED>
+]>
+
+Notes: The "rules" element *must* have a title even though that title is never
+       shown to the users.  If the title isn't there, then nothing will display
+       in the rules window.
+
+       Sections are not required to have a title, but only sections with titles
+       will show up in the index'd tree list.
+
+       NanoXML doesn't support mixing elements and CDATA inside of an element,
+       and so non-title'd sections allow that functionality.
+
+       You can embed sections within sections and they will show up in the
+       tree as subsections.
+
+       The <![CDATA[ ... ]]> verbiage is needed for text that uses HTML tags within
+       it.  Without them, NanoXML would try to parse them as XML and fail.  For plain
+       text rules files, you don't need them.
+-->
+<rules content="text/html" title="Rules">
+	<section title="Credits">
+		<![CDATA[<font size="+2"><b><u>Credits</u></b></font><br>
+		<b>Warwick the Kingmaker</b> was designed by Tunc Iper.<br><br>
+		Many thanks to Tunc and IZ Games for allowing development of this
+		computer version of his game to be made.<br><br>
+		More information on this and other games is available at
+		http://www.izgames.vze.com, including a complete do-it-yourself kit for
+		making your own real-life <b>Warwick the Kingmaker</b> game.  At that
+		web site is also a complete rule sheet (with much better pictures
+		than I can draw) from which these rules were taken.<br><br>
+		The main board image was drawn by Tunc Iper and permission for use in
+		this game has been granted by him.<br><br>
+		The rose picture was developed by Paul Nylander.  It was rendered by
+		POV-Ray from source files available at http://www.bugman123.com/Math/Rose.zip<br><br>
+		All other graphics drawn by Richard Walter and are put into the public
+		domain.<br><br>
+		The program was written by Richard Walter (rwalter42@yahoo.com)]]>
+	</section>
+
+	<section title="Introduction">
+		<![CDATA[<font size="+2"><b><u><br>Introduction</u></b></font><br>
+		Richard Neville, known as "Warwick the Kingmaker", was a leading
+		figure in the Wars of the Roses, during which he helped depose the
+		Lancastrian King Henry VI in favor of the Yorkist King Edward IV.
+		This earned him his nickname of "the Kingmaker" but he later fell out
+		with Edward and restored Henry VI to the throne.  During this period
+		Warwick was the richest man in the country outside of the Royal Family
+		and was considered the real ruler of England.<br><br>
+		"Kingmaker", while a term originally applied to the activities of Richard
+		Neville, has come to be applied more generally to a person or group
+		that has great influence in a royal or polticial succession, without
+		being a viable candidate.  Kingmakers may use political, monetary,
+		religious, and/or military means to interfere in the succession.
+		<br>]]>
+	</section>
+
+	<section title="Overview">
+		<![CDATA[<font size="+2"><b><u><br>Overview</u></b></font><br>
+		<b>Warwick the Kingmaker</b> is a game for three to five players in
+		which you and your opponents play feuding lords trying to get the most
+		prestigious status in the realm.  Since your royal family is not a
+		viable candidate for the throne you must invest your resources to the
+		right candidate for the succession.<br><br>
+		The victor is the player with the most prestige points at the end of
+		the game.  A player earns prestige points in two ways: by the actions
+		of his own house and by supporting another candidate house.  At the
+		beginning of each turn, a player can change the candidate that he
+		supports as he sees fit.
+		<br>]]>
+	</section>
+
+	<section title="Components">
+		<![CDATA[<font size="+2"><b><u><br>Components</u></b></font><br>
+		The main board is divided into four sections, labeled 1, 2, 3 and 4.<br>
+		Each player receives three tokens that will be placed on the board.<br>
+		Each player also receives a scoring token that is used to keep track
+		of the prestige points gained during the game.
+		<br>]]>
+	</section>
+
+	<section title="Playing the Game">
+		<section>
+			<![CDATA[<font size="+2"><b><u><br>Playing the Game</u></b></font><br>
+			The game is divided into turns.  The number of turns in a game is
+			equal to the number of players in the game.<br>
+			Each turn is divided into a single selection phase, followed by
+			three rounds of playing tokens.<br>
+			After all of the turns in the game are complete, the player with the
+			highest total number of prestige points is the winner.
+			<br>]]>
+		</section>
+
+		<section title="The Selection Phase">
+			<![CDATA[<font size="+1"><b><u><br>The Selection Phase</u></b></font><br>
+			At the beginning of each turn, each player secretly chooses one of
+			the other players to support during this turn.  This is the secret
+			support that you provide as the kingmaker.  A player may not
+			choose himself for his secret support.<br><br>
+			Once all players have selected their player to support, the game
+			enters the placement rounds.
+			<br>]]>
+		</section>
+
+		<section title="Placement Rounds">
+			<![CDATA[<font size="+1"><b><u><br>Placement Rounds</u></b></font><br>
+			Placment rounds begin with the player who is in the seat that
+			corresponds to the turn number.  i.e.: On the first turn, the first
+			player will place first.  On the second turn, the second player will
+			place first, etc.  Thus, each player will have gone first once in
+			each game.<br><br>
+			When it is a player's turn in a round, the player must:<br>
+			&nbsp;&nbsp;&nbsp;1) Place one of his tokens on the board.<br>
+			and then<br>
+			&nbsp;&nbsp;&nbsp;2) Move any token on the board one quarter clockwise.<br>
+			Note that <b><i>any</i></b> token on the board may be moved
+			clockwise, not just tokens that belong to the player whose turn it is.<br><br>
+			Placement and moving continues until all players have placed all three
+			of their tokens on the board.  At this point, the board is scored.
+			<br>]]>
+		</section>
+
+		<section title="Scoring">
+			<![CDATA[<font size="+1"><b><u><br>Scoring</u></b></font><br>
+			After all players have placed all of their tokens on the board, each
+			player reveals which other player they chose for their secret support
+			and scoring is done.<br><br>
+			Each token on the board is worth the number of points equal to the
+			section of the board on which it is located.<br>
+			A player's score for his own prestige is the <b><i>sum</i></b> of his
+			two highest valued tokens on the board.<br>
+			A player's score for his supporting prestige is the <b><i>product</i></b>
+			of the two highest valued tokens on the board belonging to the player
+			he supported.<br>
+			A player's total score for a turn is the sum of his own prestige and
+			his supporting prestige.<br><br>
+			<i>For example:  The Blue player chose to secretly support the Yellow
+			player.  At the end of the turn there were blue tokens on the board
+			of value 3, 3 and 4, and yellow tokens on the board of value 1, 2,
+			and 3.  The Blue player would score (3+4) = 7 points for his own
+			prestige and would score (2x3) = 6 points for Yellow's prestige.  So,
+			Blue would score (7+6) = 13 points for this turn.</i><br><br>
+			After scoring, each player retrieves their tokens from the board
+			and the next turn starts with the players again choosing which other
+			player to secretly support.
+			<br>]]>
+		</section>
+
+		<section title="End of Game">
+			<![CDATA[<font size="+1"><b><u><br>End of Game</u></b></font><br>
+			The game ends after the number of turns equal to the number of players
+			in the game.  The winner is the player who has scored the most prestige
+			points during the game.
+			<br>]]>
+		</section>
+	</section>
+
+	<section title="Interface Details">
+		<section>
+			<![CDATA[<font size="+2"><b><u><br>Interface Details</u></b></font>]]>
+		</section>
+
+		<section title="Main Board">
+		<![CDATA[<font size="+1"><b><u><br>Main Board</u></b></font><br>
+			On the left side of the screen is the main board where the tokens
+			will be played.<br>
+			The top part of the main board is also where the selection of secret
+			support is made during that phase of the game.<br>
+			The last piece to have been placed on the board will be indicated
+			by a black halo around it.<br>
+			The last piece to have been moved on the board will be indicated by
+			a white halo around it.
+			<br>]]>
+		</section>
+
+		<section title="Scoring Track">
+		<![CDATA[<font size="+1"><b><u><br>Scoring Track</u></b></font><br>
+			Running around the board is the scoring track where the scoring
+			tokens for each player indicate the current number of prestige
+			points accumulated by the players.  The 0 space is in the upper
+			left corner and points accumulate clockwise around the board.<br><br>
+			Anytime during the game, mousing over a scoring marker will display
+			the score received by that player during the most recent turn.
+			Two lines will be drawn that indicate the points scored for the
+			player's own prestige and his supporter's prestige points.
+			<br>]]>
+		</section>
+
+		<section title="Player Areas">
+		<![CDATA[<font size="+1"><b><u><br>Player Areas</u></b></font><br>
+			On the right side of the screen are the player areas.  Each player
+			area shows the tokens that have not yet been placed on the board
+			and shows a rose which indicates which other player was chosen for
+			secret support.<br><br>
+			A player always sees his own player area at the top of the column,
+			with player order going down the screen.<br><br>
+			During the selection phase, a player who has not yet chosen another
+			player to secretly support will display a question mark on the selection rose.
+			Once the selection has been made, the icon will change to an exclamation point.<br><br>
+			During the selection phase and the rounds, a player will only see
+			his own secret selection, with the other players showing a neutral,
+			gray rose.  During scoring, all players will see all of the chosen
+			secret selections.
+			<br>]]>
+		</section>
+
+		<section title="Choosing Support">
+		<![CDATA[<font size="+1"><b><u><br>Choosing Support</u></b></font><br>
+			During the support selection phase, cards indicating all of the
+			other players in the game will be drawn at the top of the main
+			board.  Clicking on one of them will select that player to be
+			supported for the current turn.
+			<br>]]>
+		</section>
+
+		<section title="Placing tokens">
+		<![CDATA[<font size="+1"><b><u><br>Placing Tokens</u></b></font><br>
+			When it is a player's turn to place a token on the board, mousing
+			over the board will show where the token will be placed.  Clicking
+			will place the token on the board.
+			<br>]]>
+		</section>
+
+		<section title="Moving tokens">
+		<![CDATA[<font size="+1"><b><u><br>Moving Tokens</u></b></font><br>
+			When it is a player's turn to move a token on the board, mousing
+			over a piece on the board will highlight it and draw a line to
+			show where the piece would be moved to.  Clicking will slide the token
+			on the board.
+			<br>]]>
+		</section>
+	</section>
+</rules>

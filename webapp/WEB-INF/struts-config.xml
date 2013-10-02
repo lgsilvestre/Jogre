@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!DOCTYPE struts-config PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
+"http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+
+<!-- 	
+JOGRE Struts configuration file	 
+-->
+<struts-config>
+
+    <!-- Declare form beans -->
+    <form-beans>    		
+        <form-bean name="mainForm"     type="org.jogre.webapp.forms.MainForm" />
+		<form-bean name="gameForm"     type="org.jogre.webapp.forms.GameForm" />
+        <form-bean name="playGameForm" type="org.jogre.webapp.forms.PlayGameForm" />
+		<form-bean name="registerForm" type="org.jogre.webapp.forms.RegisterForm" />
+        <form-bean name="gameListForm" type="org.jogre.webapp.forms.GameListForm" />
+        <form-bean name="profileForm"  type="org.jogre.webapp.forms.ProfileForm" />
+        <form-bean name="helpForm"     type="org.jogre.webapp.forms.HelpForm" />
+    </form-beans>
+
+    <!-- Declare global forwards -->
+    <global-forwards>
+        <forward name="error" path="/error.jsp"/>
+    </global-forwards>
+
+    <!-- Declare action mappings -->
+    <action-mappings>
+    
+        <!-- Main page forward -->	  
+        <action path="/Main"              
+            type="org.jogre.webapp.actions.MainAction"            
+            input="/index.jsp"          
+            name="mainForm"              
+            parameter="step" 
+            scope="request" 
+            validate="false">
+            <forward name="main" path="/main.jsp"/>
+        </action>
+		
+		<!-- Login action -->
+        <action path="/Logon"                               
+            type="org.jogre.webapp.actions.LogonAction"                              
+            input="/logon.jsp"                            
+            name="mainForm"                                
+            parameter="step" 
+            scope="request" 
+            validate="true">
+            <forward name="main" path="/main.jsp" />
+			<forward name="logon" path="/logon.jsp" />
+        </action>
+		
+		<!-- Game action -->
+        <action path="/Game"                               
+            type="org.jogre.webapp.actions.GameAction"                              
+            input="/game.jsp"                            
+            name="gameForm"                                
+            parameter="step" 
+            scope="request" 
+            validate="false">
+            <forward name="game" path="/game.jsp" />
+        </action>		
+		
+        <!-- Play Game action -->
+        <action path="/PlayGame"                               
+            type="org.jogre.webapp.actions.PlayGameAction"                              
+            input="/playgame.jsp"                            
+            name="playGameForm"   
+            parameter="step" 
+            scope="request"
+            validate="false">
+            <forward name="play_game" path="/playgame.jsp" />
+            <forward name="play_game_internal" path="/playgameinternal.jsp"/>
+        </action>   
+    
+        <!-- GameList action -->   
+        <action path="/GameList"                               
+            type="org.jogre.webapp.actions.GameListAction"                              
+            input="/gamelist.jsp"                            
+            name="gameListForm"                                
+            parameter="step" 
+            scope="request" 
+            validate="true">
+            <forward name="game_list" path="/gamelist.jsp" />
+        </action>    		
+		
+        <!-- Register action -->
+        <action path="/Register"                               
+            type="org.jogre.webapp.actions.RegisterAction"                              
+            input="/register.jsp"                            
+            name="registerForm"                                
+            parameter="step" 
+            scope="request" 
+            validate="true">
+            <forward name="main" path="/main.jsp"/>
+			<forward name="register" path="/register.jsp"/>
+        </action>      	
+        
+        <!-- Profile action -->
+        <action path="/Profile"                               
+            type="org.jogre.webapp.actions.ProfileAction"
+            input="/profile.jsp"                            
+            name="profileForm"
+            parameter="step" 
+            scope="request" 
+            validate="true">
+            <forward name="profile" path="/profile.jsp"/>
+        </action>     
+
+        <!-- Profile action -->
+        <action path="/Help"   
+            type="org.jogre.webapp.actions.HelpAction"                                                       
+            input="/help.jsp"   
+            name="helpForm"                               
+            parameter="step" 
+            scope="request" 
+            validate="false">
+            <forward name="help" path="/help.jsp"/>
+        </action>               
+    </action-mappings>
+
+	<!-- Message resources -->
+    <message-resources parameter="resources.application" null="false"/>	
+
+</struts-config>

@@ -1,0 +1,514 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+
+This is a DTD description of a rules file.  However, since NanoXML that JOGRE
+uses doesn't support DTD descriptions, it is given in a comment.
+
+<!DOCTYPE rules [
+<!ELEMENT rules (section+)>
+<!ATTLIST rules content (text | text/html | text/rtf) "text"
+				title CDATA #REQUIRED>
+	<!ELEMENT section (section+ | CDATA)>
+	<!ATTLIST title CDATA #IMPLIED>
+]>
+
+Notes: The "rules" element *must* have a title even though that title is never
+       shown to the users.  If the title isn't there, then nothing will display
+       in the rules window.
+
+       Sections are not required to have a title, but only sections with titles
+       will show up in the index'd tree list.
+
+       NanoXML doesn't support mixing elements and CDATA inside of an element,
+       and so non-title'd sections allow that functionality.
+
+       You can embed sections within sections and they will show up in the
+       tree as subsections.
+
+       The <![CDATA[ ... ]]> verbiage is needed for text that uses HTML tags within
+       it.  Without them, NanoXML would try to parse them as XML and fail.  For plain
+       text rules files, you don't need them.
+-->
+
+<rules content="text/html" title="Rules">
+	<section title="Introduction">
+		<![CDATA[<font size="+2"><b><u>Introduction</u></b></font><br>
+		The game of Grand Prix Jumping was designed by Jerry Dziuba.<br><br>
+		Many thanks to Jerry for encouraging development of this computer version of his game
+		to be made.<br><br>
+		The turn highlight buttons are based on drawings by Benji Park and are in the
+		public domain and is available from http://www.openclipart.org<br><br>
+		The lock that indicates an uneditable board is by AJ Ashton and is in the
+		public domain and is available from http://www.openclipart.org<br><br>
+		All other graphics drawn by Jerry Dziuba and Richard Walter.<br><br>
+		The program was written by Richard Walter (rwalter42@yahoo.com)<br>]]>
+	</section>
+
+	<section title="Overview">
+		<![CDATA[<font size="+2"><b><u><br>Overview</u></b></font><br>
+		In Grand Prix Jumping, the players take on the roles of riders, leading their steeds
+		through a Grand Prix competition course that includes fences of varying rail heights,
+		as well as a water jump.  Getting through the course fast will help a player's cause
+		but will not guarantee victory as the winner is not the horse that finishes faster
+		but the one with the fewest fault points.<br><br>
+		Players design the course before each game so the strategy of the race changes with
+		each race.  Players can make the course as demanding as they want.  While Grand Prix
+		Jumping is at it heart a card game, there is very little luck involved, and the better
+		rider will be victorious.  Now saddle up and hit the course...<br>]]>
+	</section>
+
+	<section title="Components">
+		<![CDATA[<font size="+2"><b><u><br>Components</u></b></font><br>
+		There is a deck of 80 playing cards.<br>
+		There is a course layout board of 48 spaces.<br>
+		There are two horse & rider tokens - one for each player.<br>
+		There are jumps with rail heights of 1-5 rails and water jumps four spaces long.<br>]]>
+	</section>
+
+	<section title="Playing the Game">
+		<section>
+			<![CDATA[<font size="+2"><b><u><br>Playing the Game</u></b></font><br>]]>
+		</section>
+
+		<section title="Overview">
+			<![CDATA[<font size="+1"><b><u><br>Overview</u></b></font><br>
+			In Grand Prix Jumping, players use cards to move their horses and riders
+			around the track and over the jumps.  Cards are distributed via a "divide
+			and choose" method where one player will divide cards into two piles and
+			the other player will choose which pile to take and which to lave for
+			the divider to use.  After the split each player can play cards to move
+			their horses around the course.  Then they verify that they are not over
+			the allowable hand limit size.  Fault points are accumulated during the game
+			and are the ultimate victory condition.  The player finishing with the fewer
+			fault points is the victor and may or may not be the rider crossing the
+			finish line first.<br>]]>
+		</section>
+
+		<section title="Preparation">
+			<![CDATA[<font size="+1"><b><u><br>Preparation</u></b></font><br>
+			The track board is set up with the two player's horses on the first space.
+			The jumps are placed however the players wish.<br><br>
+			When the game is started, the creator picks an initial layout of jumps to use.
+			Once both players have started the game, the game enters an editing phase where
+			either player may change the layout of fences on the board.  Clicking on a space
+			on the board will increase the height of the fence on that space by one rail.
+			Holding the <shift> key and clicking on a space will decrease the height of
+			the fence on that space by one rail.  Water fences are placed by clicking on
+			a height 5 fence, if valid.  It is not allowed to place fences on a water fence
+			or to have water fences overlap.<br><br>
+			When a player is done making edits, he must click the "Done" button.  If the
+			opponent, however, makes any edits after that point, then the first player's
+			done button will become active again and the player must click it again to
+			show acceptance of the new layout.  Once both players have indicated that they
+			accept the layout without any intervening changes, then the initial cards
+			are played from the draw pile and play begins.<br><br>
+			When the table is created, the creator may elect to not allow edits to be
+			made to the board.  In this case, a lock icon is shown in the dividing area
+			to indicate that no edits are allowed and the game will skip the editing
+			phase and go right to dealing cards when both players start.<br>
+			]]>
+		</section>
+
+		<section title="The Split">
+			<![CDATA[<font size="+1"><b><u><br>The Split</u></b></font><br>
+			For each round of play, one player will be the divider and the other will be
+			the chooser.  The players alternate each round with the divider of the current
+			round becoming the chooser for the next round, etc...  Player 0 is the initial
+			divider.<br><br>
+			The divider is given seven cards face up.  He must then split the seven cards
+			into two groups.  He may split them in any way he wants as long as there is
+			at least one card in each group.  That is the only requirement for how the
+			cards are divided up.<br><br>
+			Once the divider has signaled that the split is done, his opponent (the chooser)
+			decides which of the two groups to take and the divider gets the group that the
+			chooser did not pick.  All "playable cards" are placed into the player's hands
+			and are hidden from the other player.  "Immediate action" cards are left face-up
+			in front of the players, as these must be settled before the end of their current turn.<br><br>
+			Once the chooser has completed any movement he is able to make and has used all
+			of the action cards he has in front of him, his turn for this round is concluded.
+			At this time, he must make sure that he is not over his allowed hand limit.  If he
+			is, then he must discard down to the limit.<br><br>
+			It is then the divider's turn to use the cards left to him by the chooser.  At the
+			end of his turn, he must also be sure he is within his current allowable hand limit.<br>]]>
+		</section>
+
+		<section title="Explanation of Cards - Hand cards">
+			<![CDATA[<font size="+1"><b><u><br>Hand Cards</u></b></font><br>
+			<i>Hand cards may be held in a player's hand and played in that turn or future rounds</i><br><br>
+			<b>Height card</b><br>
+				&nbsp;&nbsp;&nbsp;These cards are used to get the height required to clear a jump.
+				The number on the card corresponds to the number of rungs your horse can clear on any given
+				jump.  For example, a height card of 4 will allow your horse to clear a 1, 2, 3 or 4 rung jump.<br><br>
+			<b>Length card</b><br>
+				&nbsp;&nbsp;&nbsp;These cards are used to give your horse the required length
+				to clear jumps.  At a minimum you'll need a length of two to clear any vertical
+				jumps, assuming you are beginning the jump directly in front of the jump.  A
+				minimum length of five is needed to clear the water jump.<br><br>
+			<b>Canter card</b><br>
+				&nbsp;&nbsp;&nbsp;Canter cards allow you to move your horse between the jumps.
+				You move your horse the corresponding number of spaces as the number on the Canter card(s) played.<br><br>
+			<b>Saddle card</b><br>
+				&nbsp;&nbsp;&nbsp;A saddle card is required to play any of the movement cards (jump or canter).
+				For each saddle card played you are allowed to play one set of jump cards and/or canter cards.
+				You may play any number of cards, but once you change from either cantering or jumping you
+				can't play more of those types of cards unless you play another saddle card.<br>
+				<i>Example: A player plays a saddle card to start moving, followed by two "canter 1" cards to
+				move his horse forward 2 spaces.  He then plays a combination of jump cards equal to
+				3 height and 2 width to clear a 3 high jump.  If he wishes to continue cantering from this
+				point, he would need to play another saddle card.</i><br><br>
+			<b>Ribbon card</b><br>
+				&nbsp;&nbsp;&nbsp;Ribbon cards allow you to rely on your past accomplishments.
+				As such, you can play a ribbon card and either reduce your fault count by 1/4 point or
+				use it to trade in for another card from the deck.  If the card you get is an Immediate
+				action card, then you must use it this turn, otherwise the card will be put into your
+				hand.<br>]]>
+		</section>
+
+		<section title="Explanation of Cards - Immediate Action cards">
+			<![CDATA[<font size="+1"><b><u><br>Immediate Action Cards</u></b></font><br>
+			<i>Immediate action cards must be used in the same turn as acquired and cannot be held for future turns.</i><br><br>
+			<b>Stable card</b><br>
+				&nbsp;&nbsp;&nbsp;Stable cards increase the number of cards a player may hold in his hand by 1.
+				The beginning hand limit for each player is eight cards (enforced at the end of their turn.)
+				Stable cards are not recycled into the discard deck.<br><br>
+			<b> Fault cards</b><br>
+				&nbsp;&nbsp;&nbsp;These cards penalize the player with fault points.  The player gets
+				the appropriate number of fault points.<br><br>
+			<b>Dual Rider card</b><br>
+				&nbsp;&nbsp;&nbsp;This card allows the player to draw two cards from the top of the draw pile
+				and, after looking at them, decide which to keep himself and which to give to his opponent.
+				If you have already taken your turn for this round and receive an immediate action card from
+				your opponent, then you must satisfy that card before the end of the round, but you may not
+				take another "normal turn" in the process.  If you have already taken your turn for this round
+				and receive a hand card from your opponent, then it goes into your hand.  You do not have to
+				discard down to your hand limit until at the end of your next "normal" turn.<br><br>
+			<b>Race Official card</b><br>
+				&nbsp;&nbsp;&nbsp;If you receive this card your horse has failed a vet check.  As a
+				penalty you must either take one full fault point or discard half of your hand cards - rounded
+				up.  <i>(If you have 7 cards, you must discard 4)</i>.  You can choose when during your turn to
+				apply the Race Official card, so you may play cards during your "normal" turn before having
+				to discard half of them, if you choose that option.<br>]]>
+		</section>
+
+		<section title="Clearing Jumps">
+			<![CDATA[<font size="+1"><b><u><br>Clearing Jumps</u></b></font><br>
+			To clear a jump, height and length cards are played in combination.  You must play
+			enough height cards to equal or exceed the number of rails for a jump and, at the
+			same time, also play enough length cards to carry your horse to the space beyond
+			the jump.  The space the jump is on counts as one so the minimum value of length
+			cards needed to clear a jump would be two, assuming that the horse began the jump
+			in the space directly in front of the jump.<br><br>
+			You may use any combination of height and length cards with the two restrictions:<br><br>
+			1) Height and length cards may only be used when going over a jump.  You may use
+			the length of the jump to clear more space ahead of or beyond a jump, but under no
+			circumstances may you use a jump to simply move forward in lieu of canter cards.<br><br>
+			2) You card combination cannot exceed a value of seven.<br>
+			<i>(Example: You could <b>not</b> use a height of 5 and a length of 3.  Therefore, to
+			clear a 5-rail jump cleanly, you must begin your movement directly in front of the jump
+			and play cards equal to 5 in height and 2 in length.)</i><br><br>
+			Note: A height card is required to clear the water jump with no faults, but any value will work.<br>]]>
+		</section>
+
+		<section title="Fault Points">
+			<![CDATA[<font size="+1"><b><u><br>Fault Points</u></b></font><br>
+			Throughout the game, players will accumulate fault points.  There are three different
+			ways a player can be penalized fault points:<br><br>
+			1) Fault Cards<br>
+			&nbsp;&nbsp;&nbsp;The player gets as many points as listed on the card.<br><br>
+			2) Race Official Card<br>
+			&nbsp;&nbsp;&nbsp;If a player does not want to lose half of his cards, he is penalized
+			one full fault point.<br><br>
+			3) Not clearing a jump<br>
+			&nbsp;&nbsp;&nbsp;A player may purposely not play enough jump points to clear a jump.
+			For each rail not cleared, then player is penalized one full fault point.<br>
+			For the water jump, players are penalized for coming up short length-wise.  For each space
+			short, they are penalized one full fault point.<br><br>
+			The maximum amount of fault points a player may have is four.  If a player goes over the
+			limit of four faults, he is immediately disqualified and loses the game!  The only way
+			to reduce your fault points is through the use of the Ribbon cards to reduce your fault
+			total by 1/4 point per each Ribbon card played.  If both players should happen to go over
+			the four point limit during the same turn, then the player with the fewer fault points
+			is the winner.  If both players are tied, then the player whose horse is further along
+			the track is the winner.  If both players are on the same space, then the game is a tie.<br>]]>
+		</section>
+
+		<section title="Ending the Game">
+			<![CDATA[<font size="+1"><b><u><br>Ending the Game</u></b></font><br>
+			The game ends when, after a full round, either one (or both) players has more than
+			four full fault points, or when either one (or both) players has their horse on
+			the last, checkered, space of the board.  If the other player's horse is still on
+			the course, he is penalized 1/4 fault point for each space he is behind as a
+			time penalty.  <i>(The amount of penalty fault points to assign is shown on the board.)</i>
+			The player with the fewer fault points is the winner!  If both players are tied, then
+			the player whose horse made it to the finish space is the winner.  If both horses
+			are on the same space and both players have equal fault points, then the game is a tie.<br>]]>
+		</section>
+	</section>
+
+	<section title="Interface Details">
+		<section>
+			<![CDATA[<font size="+2"><b><u><br>Interface Details</u></b></font><br>]]>
+		</section>
+
+		<section title="Starting a New Game">
+			<![CDATA[<font size="+1"><b><u><br>Starting a New Game</u></b></font><br>
+			When you start a new game, there are several options you must choose from
+			to configure the game.<br><br>
+			<b>Initial jump layout</b> - Choose the initial placement of the jumps on the board.
+			Selecting "Random" will build a random board.  Selecting "Use Code" will use the
+			code entered in the text box below.  Selecting any other entry will use that
+			layout.<br>
+			<b>Initial track code</b> - If the "Use Code" option is selected for the
+			initial layout, then the code entered in this box will be used for the initial layout.
+			<b>Open Hands</b> - If enabled, then both players will be able to see their opponent's cards.<br>
+			<b>Enable Editing</b> - If enabled, the players may modify the jumps on the board before the
+			card play begins.  If disabled, the board is locked to the initial placement of jumps.<br><br>
+			When selecting a random initial layout, the random track will have the following
+			properties:<br>
+			1) There are always at least 1 space between fences.  (ie: there is never an "oxer" jump)<br>
+			2) There are always two fences of height 1, 2 & 3 and a single fence of heights 4 & 5.<br>
+			3) There is always a single water jump and it is located on the 2nd or 3rd row of the board.<br>
+			4) There is always an empty space before and after the water jump.<br><br>
+			After the board setup is complete, the code for the current setup is
+			displayed in the chat window.  This code may be entered in the code window
+			to set the fences back to this configuration again.<br>
+			]]>
+		</section>
+
+		<section title="Fault Point Panel">
+			<![CDATA[<font size="+1"><b><u><br>Fault Point Panel</u></b></font><br>
+			At the top left corner is the fault point panel.  This shows the number of
+			fault points that each player has accumulated.  As fault points are gained,
+			the bar will fill in with that player's color.  When a player goes over the
+			maximum of four full fault points, the bar will wrap around back to the left
+			side and start filling in in red.<br><br>
+			Clicking in the fault window will bring up a dialog box with a summary of
+			the scoring for each player.  This allows players to determine where their
+			fault points came from.<br><br>
+			<b>Note:</b> Currently, this dialog box displays the
+			summary for that time in the game.  It will <i>not</i> update automatically as
+			new fault points are accrued.  The dialog box must be closed and a new
+			one opened to get an up-to-date list.  Also, spectators joining a game
+			in progress will <i>not</i> see any history for prior to the time when
+			they joined the game.<br>
+			]]>
+		</section>
+
+		<section title="Done Button">
+			<![CDATA[<font size="+1"><b><u><br>Done Button</u></b></font><br>
+			Below the fault point panel is the done button.  Players must press the
+			done button to indicate that they are done with their turn.  The text of
+			the done button will change to indicate the action that will occur when
+			the button is pressed.  If the button is disabled, then it is not legal
+			to end the turn at that point.  This is usually caused by having immediate
+			action cards that haven't been played yet.<br>
+			]]>
+		</section>
+
+		<section title="Dividing Panel">
+			<![CDATA[<font size="+1"><b><u><br>Dividing Panel</u></b></font><br>
+			Below the Done Button is the dividing panel.  As each round begins,
+			seven cards will be placed in the left side of the dividing panel.  The
+			player that is the divider for this turn will divide the cards into
+			two groups, one on the left and one on the right.  Moving the mouse
+			over the groups will show which card will move when clicked on.<br><br>
+			When the divider is done dividing the cards, he should press the Done
+			Button to indicate that dividing is finished.<br><br>
+			After the divider has finished his action, the chooser must now decide
+			which pile he will take and which he will leave for the divider.  Mousing
+			over the groups will outline one of the groups.  Clicking on a highlighted
+			group will cause the chooser to get those cards and the divider to get
+			the group not chosen.<br><br>
+			The player who is to take the next action is shown by the horse in the
+			lower left corner of the Dividing Panel.<br>
+			]]>
+		</section>
+
+		<section title="State Panel">
+			<![CDATA[<font size="+1"><b><u><br>State Panel</u></b></font><br>
+			The lower left corner of the table shows a text panel that indicates what the current
+			state of the game is and whose turn it is.<br><br>
+			This also indicates that number
+			of cards in the draw pile.  When this number hits 0, then the discard pile
+			is reshuffled and becomes the new draw pile.  A chat message is also displayed
+			that indicates that the reshuffle occurred.<br>]]>
+		</section>
+
+		<section title="Hand Panel">
+			<![CDATA[<font size="+1"><b><u><br>Hand Panel</u></b></font><br>
+			The top of the window shows your hand.  Moving the mouse over a card will cause
+			it to move up a little to show which card is being pointed at.  Only cards
+			which are legal to play at any given time will respond this way to the mouse.
+			Clicking the mouse will select the current card and play it.<br><br>
+			Hand cards appear on the left side of the hand panel and are kept sorted.<br><br>
+			Immediate action cards appear on the right side of the hand panel and are kept
+			in the order in which they are received during the current round.<br><br>
+			A box is placed to show what your current hand limit is and how many cards
+			you currently have.  The box is placed such that it aligns with the left
+			edge of the last card that you are allowed to keep in your hand.  As
+			Stable cards are drawn, the box will move to the right.<br><br>
+			When it is your turn to play, your horse will be shown in the lower left
+			corner of your Hand Panel.<br><br>
+			When Saddle, Canter, Height and Length cards are played, they are darkened
+			and an icon representing them is placed on the game board to show where they
+			will be applied.  Clicking on a darkened card will un-play the card and
+			move it back into the player's hand.  Note that un-playing a saddle card
+			will also un-play any Canter, Height and/or Length cards that follow that
+			Saddle card.  Cards must be played from the hand in the order that they
+			will be applied toward movement.  This means, for example, that the
+			first movement card selected must be a Saddle card to start the movement.
+			After that, either a Canter, Height or Length card can be played.<br><br>
+			When a Ribbon card is clicked on, the player will have to choose whether
+			to apply the card to reduce the fault points by 1/4 point or to trade it
+			in for another card.  Click on the appropriate half of the card to take
+			the action.  Clicking outside of the card will cancel the selection and
+			put the ribbon card back into the player's hand.<br><br>
+			The results of Stable and Fault cards are immediately applied by the game
+			when drawn and will always show up in the Immediate Card area darkened.<br><br>
+			When a Race Official card is clicked on, the player will have to choose
+			whether to receive one full fault point or to discard half his hand.
+			Click on the appropriate half of the card to take the action.  Clicking
+			outside of the card will cancel the selection and put the Race Official
+			card back into the player's hand.<br><br>
+			When a Dual Rider card is clicked on, the Immediate action cards will be
+			replaced by a display of the next two top cards of the deck.  The player
+			must choose one of these two cards for himself by clicking in it.  The
+			other card will be given to his opponent.  There is no way to undo clicking
+			on the Dual Rider card.<br><br>
+			When it is a player's turn, his horse will be shown along with a highlight
+			button in the lower left corner of the hand panel.<br><br>
+			]]>
+		</section>
+
+		<section title="Main Board">
+			<![CDATA[<font size="+1"><b><u><br>Main Board</u></b></font><br>
+			In the center of the table is the main board.  This shows the current
+			positions of the horses and the jumps.<br><br>
+			As you play movement cards from your hand, small icons will be placed
+			on the main board to show where those cards will be applied.  To remove
+			a card and put it back into his hand, a player may either click on the
+			darkened card in the Hand panel, or click on the small icon on the track.<br><br>
+			As movement cards are applied, a line is drawn to show the horse's progress
+			along the track.  If the current sequence of cards is a legal play, then a
+			shadow horse is drawn at the end of the line.  If the current sequence of cards
+			is <b>not</b> a legal play, then the line will just end with a dot.<br><br>
+			If the current sequence of cards is a legal play that ends with jump cards,
+			then a small "+" icon will appear by the shadow horse.  Clicking on the "+"
+			will place a fake saddle on the board and allow another jump to start.  In
+			this way, multiple jumps, each of which is limited to a total value of 7
+			can be played by one saddle card.<br><br>
+			If you remove a fake saddle card by clicking on it's icon, then the jump
+			and canter cards of just that jump are removed as well.  If you remove a
+			real saddle card, then all of the subsequent fake saddles coming after
+			that are removed as well.<br><br>
+			When a player is ready to commit to moving his horse, he must click on the
+			shadow horse shown on the board.  This will take all of the cards played
+			on the current turn and remove them from the player's hand and move the horse
+			to the target location.<br><br>
+			While a player is building a jump, the opponent (and spectators) will only
+			see the location of the shadow horse as it moves along the track.  The
+			opponent and spectators only see the actual cards played when the move is
+			committed.<br><br>
+			When jump is made over a fence that does not clear the jump, a warning sign
+			is placed near the jump indicating how many fault points will be accrued
+			by the player if the jump were to be committed.  These warning signs
+			cannot be removed by clicking on them.  They are removed by adding additional
+			height (or, in the case of a water jump, length) cards to overcome the fence.<br><br>
+			While a game is not in progress, if editing is disabled, then a lock icon
+			is shown in the middle of the board.<br>]]>
+		</section>
+
+		<section title="Opponent Hand Panel">
+			<![CDATA[<font size="+1"><b><u><br>Opponent Hand Panel</u></b></font><br>
+			Below the track is the Opponent's Hand Panel.  This shows the cards for
+			your opponent's Hand and Immediate cards.<br><br>
+			If the game is being played open handed, then you can see your opponent's
+			hand cards.  Otherwise all you will see is the backs.<br><br>
+			The opponent's Immediate cards are always shown face up.<br>
+			]]>
+		</section>
+	</section>
+
+	<section title="Customization">
+		<section>
+			<![CDATA[<font size="+2"><b><u><br>Customization</u></b></font><br>]]>
+		</section>
+
+		<section>
+			<![CDATA[
+			The Grand Prix Jumping game allows a fair amount of customization for
+			the client.<br>
+			Most of the customization is done via the game.properties file.<br>]]>
+		</section>
+
+		<section title="Initial Layouts">
+			<![CDATA[<font size="+1"><b><u><br>Initial Layouts</u></b></font><br>
+			Information about the initial layout of jumps on the track is read from
+			a local XML file.  The file to use is specified in the games.properties
+			file as the <b>layout.filename</b> property.  This file can be edited
+			by any text editing program.<br><br>
+			The file can contain multiple initial layouts to choose from when a new
+			game is started.
+			]]>
+		</section>
+
+		<section title="Customizing Images">
+			<![CDATA[<font size="+1"><b><u><br>Customizing Images</u></b></font><br>
+			The images are stored in the images directory.  Each image has an entry
+			in the game.properties file that points to it.  You can change/edit any
+			of the images and change the entry in game.properties.  Some images have
+			an array of pictures with each picture being identical in size.
+			If you edit such a file, you can change the size of each element, but make
+			sure that you keep the array structure.<br>]]>
+		</section>
+
+		<section title="games.properties File">
+			<![CDATA[<font size="+1"><b><u><br>games.properties File</u></b></font><br>
+			There are several properties in the games.properties file that can be
+			used to customize the view of the local client.<br><br>
+			&nbsp;&nbsp;&nbsp;<b>layout.filename</b> - This is the XML file that
+			contains the initial layouts provided when a new game is started.  The
+			file is only read by the game and can be modified by the user.  Only
+			the creator of a game needs to have a copy of the layout used.  The other
+			players and spectators will get the initial layout from the creator.<br><br>
+			&nbsp;&nbsp;&nbsp;<b>preferences.defaultOpenHands</b> - This sets the default
+			setting of the "open hands" check box when starting a new game.  Set to 1
+			to set the check box.  Any other value disables the checkbox.<br><br>
+			&nbsp;&nbsp;&nbsp;<b>preferences.defaultAllowEdits</b> - This sets the default
+			setting of the "Allow Edits" check box when starting a new game.  Set to 1
+			to set the check box.  Any other value disables the checkbox.<br><br>
+			&nbsp;&nbsp;&nbsp;<b>hand.selected.vertical.offset</b> - The number of
+			pixels to offset the card when deciding which card to choose from your
+			hand.<br><br>
+			&nbsp;&nbsp;&nbsp;<b>hand.card.spacing</b> - The number of pixels of
+			overlap between cards in your hand.<br><br>
+			&nbsp;&nbsp;&nbsp;<b>sort.card.spacing</b> - The number of pixels of
+			vertical overlap between cards in the Dividing Panel.<br><br>
+			&nbsp;&nbsp;&nbsp;<b>sort.selected.horiz.offset</b> - The number of pixels
+			to offset the card when deciding which card to move from one group to
+			the other during dividing.<br><br>
+			&nbsp;&nbsp;&nbsp;<b>sort.well.spacing</b> - The number of pixels
+			between the two groups in the Dividing Panel.<br><br>
+			&nbsp;&nbsp;&nbsp;<b>sort.border.size</b> - The number of pixels of border
+			space to put around the card groups in the Dividing Panel.<br><br>
+			&nbsp;&nbsp;&nbsp;<b>sort.outline.thickness</b> - The number of pixels in
+			the outline to use when choosing which group of cards to take from
+			the Dividing Panel.<br><br>
+			&nbsp;&nbsp;&nbsp;<b>faults.overflow.colour</b> - This is the color
+			to use to fill in the fault bar when it loops back around past four
+			fault points.<br><br>
+			&nbsp;&nbsp;&nbsp;<b>fault.therm.height</b> - The number of pixels tall
+			the fault thermometers are.<br><br>
+			&nbsp;&nbsp;&nbsp;<b>fault.therm.pointSpread</b> - The number of pixels
+			to put between each 1/4 point in the fault thermometers.<br><br>
+			&nbsp;&nbsp;&nbsp;<b>turn.highlight.index</b> - The image file that is
+			used to display the highlight button that shows behind the horse in the
+			hand areas to indicate which player's turn it is contains four potential
+			images to use as the highlight.  This number should be set to a number
+			between 0 and 3 to select which of the four highlight buttons should be
+			used.  Any other value will result in no highlighting behind the horses.<br><br>
+			]]>
+		</section>
+	</section>
+</rules>

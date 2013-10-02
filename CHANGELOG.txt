@@ -1,0 +1,208 @@
+==============================================================================
+
+                   J O G R E   C H A N G E   L O G 
+
+==============================================================================
+
+This file contains changes between versions of JOGRE.                                                  
+
+
+==============================================================================
+Beta Release 0.3
+============================================================================== 
+
+The beta release is well over a year in the making and is by far the biggest 
+release of JOGRE.  There have been massive changes and additions in almost 
+every part of JOGRE.
+
+    * Eleven new games:
+          o Car tricks (Richard Walter)
+          o Chinese Checkers (Richard Walter)
+          o Go (Bob Marks)
+          o Grand Prix Jumping (Richard Walter)
+          o Hex (Richard Walter)
+          o Ninty Nine (Richard Walter)
+          o Points Total (Richard Walter)
+          o Quetris (Bob Marks)
+          o Texas Hold'em
+          o Triangulum (Richard Walter)
+          o Warwick (Richard Walter)
+    * Generic abstract board components for hexagonal & triangular boards.
+    * Generic abstract board components for hexagonal & triangular boards. 
+    * Player components which provide another way to join a table. 
+    * Game generator which creates the basic files, which all games use, 
+      by simply supplying a game_key and using templates. These files include 
+      Java source, ANT scripts, batch and properties files. 
+    * Much improved graphics, including a JOGRE title images which each game 
+      must have on to the top left and a game specific image on the top right. 
+    * New glass pane which can be use to draw graphics over the top of games. 
+      It is used by the API to inform users to click "start" and also 
+      displaying game over messages etc. 
+    * Full database support for persistent data in the jogre server i.e. 
+      implementation of ServerDataDB class. Database access is achieved using 
+      the iBatis library. Also if a JOGRE server is running its data 
+      persistence as a database for the first time, it will run a load script 
+      which creates tables, populates test data etc. MySQL and HSQLDB database
+      are currently supported. 
+    * Much more unit testing i.e. 37 JUnit class containing a total of 75 
+      classes. All database SQL queries (in iBatis maps) are fully tested in 
+      JUnit tests using the DBUnit library and an in-memory HSQLDB database. 
+      The database tests can ensure that all database SQL class are fully 
+      supported / working correctly in JOGRE. To test a new database works 
+      with JOGRE is simply a matter of updating the test database connection 
+      and returning the database test suite. 
+    * First pass at a web application, programmed using the Struts library. 
+      This is database driven (using iBatis) and allows a user to register, 
+      log on and play the games as applets. 
+    * Server administrator which replaces the old Server GUI wrapper. The 
+      administrator acts as a client, i.e. administrator must log onto a 
+      running Jogre Server with an admin username and password. The Jogre 
+      Administrator can also remotely view the current state of the JOGRE 
+      server i.e. games running, users etc. It can also remotely update the 
+      server configuration (server.xml file) in a graphical manner and view 
+      persistent data (XML and database). 
+    * Language utility to edit all the language Strings in one place (still 
+      in progress). 
+    * Updated connect 4 tutorial which shows the power of Beta 0.3. 
+    * Minor changes / improvements all over JOGRE, including the API, 
+      Server, Games etc.
+      
+==============================================================================
+Alpha Release 0.2.3
+============================================================================== 
+
+Alpha Release 0.2.3 is a major change from 0.2.2 in every aspect of JOGRE. 
+This includes:
+
+    * New tetris game which is a break away from the previous turn based style
+      games such as chess, checkers etc.
+    * Six other new games:
+          o Battleships (Gman)
+          o Spades (Gman)
+          o Dots (Gman)
+          o Octagons (Richard Walter)
+          o Camelot (Richard Walter)
+          o Go (still in progress)
+    * Server persistent data using IServerData interface. The server can call
+      this interface anywhere. Implementations of the interface include 
+      ServerDataXML (using the dom4j library), ServerDataDB (database support
+      not implemented yet) and ServerDataJogreDotOrg (socket connection to 
+      "jogre.org" server also not implemented).
+    * ELO rating system which saves the rating of a user at a game using the 
+      new server persistent data engine.
+    * New rules engine which is supported in all games but currently only 
+      implemented in "camelot". A rules button will be enabled on the main 
+      client window if the rules are available for that game.
+    * There is also applet support and each game is supported. Changes have 
+      been made to how games load up images so that applet support is 
+      available. A HTML file is available called "applet_test" for testing 
+      the various games as applets. Thanks starsinthesky for this work!
+    * The connection dialog has now changed from being a dialog to a panel. 
+      This is a lot more powerful from what it used to be e.g. if a 
+      connection wasn't available the dialog would crash.
+    * More advanced server controllers which can hold the state of a game on 
+      the server. This game state can be transported to clients in a 
+      <join_table> message when that user joins a game in progress. Server 
+      controllers are loaded using a proper plug-in architecture so there 
+      is no need to define a hugh CLASSPATH to link to all the games a 
+      server hosts.
+    * Graphics vastly improved. This includes coloured backgrounds, fonts, 
+      table layouts and small coloured squares to show the rating of a user.
+    * Server and clients fully multi-language compatible. Resource bundles 
+      still need to be done for a variety of languages.
+    * Invite button moved from the main window the each game window. This 
+      is a more natural place to put it.
+    * The connect 4 tutorial has been updated for 0.2.3 and shows off some 
+      of the new power which is available (e.g. server state, server game 
+      overs / ratings, applet support).
+
+
+ 
+============================================================================== 
+Alpha Release 0.2.2
+============================================================================== 
+
+Alpha Release 0.2.2 concentrates mostly on improving the communication 
+protocol:
+
+    * There exists a global build file for compiling API, Games and Server 
+      (in that order). This will make building all of jogre very quick 
+      and easy.
+    * New game Reversi by Anton Ugnich.
+    * Scaling of interfaces has been updated by Alex Torkhov.
+    * First pass at internationalisation by Alex Torkhov.
+    * Refactored start () method from JogreModel to JogreController.
+    * Major cleanup of communication objects by removing attributes from 
+      abstract Comm classes e.g. Removed gameID from CommGameMessage.java as 
+      this is set in the ServerConnectionThread when a client sucessfully 
+      connects. Communication is much leaner. e.g. Refactored CommTableAction 
+      into a number of easier to understand classes such as CommSitDown, 
+      CommStartGame, etc.
+    * Changed architecture from 3 layers to 2 (no base layer). Deleted 
+      CommBaseMessage class and refactored most of attributes and methods 
+      into the CommGameMessage class. Delegation between the server/client 
+      threads is done by detecting the existance of a "table" attribute.
+    * New abstract ServerController class which removes redundant server 
+      interfaces (IGameParser & ITableParser). The methods from these two 
+      interfaces are now empty adapter methods. This class also contains 
+      property methods which mirror that of the client JogreController. 
+      The ServerGameParser and ServerTableParser classes still exist but 
+      have been renamed to ServerTableController & ServerGameController.
+    * A new document "protocol.htm" has been released on the website. This 
+      should encourage others to creates clients for a JOGRE server e.g. 
+      (JOGRE for Mobile phone clients).
+
+ 
+ 
+============================================================================== 
+Alpha Release 0.2.1
+============================================================================== 
+
+Alpha Release 0.2.1 builds on the 0.2 release:
+
+    * New JogrePropertyHash and ITransmittableWithProps interface for sending 
+      simple properties in a communication object. This was required to get 
+      the connect 4 tutorial on web site.
+    * Data classes (e.g. Table, PlayerList etc) have read / write locks and 
+      also extend the Observable class.
+    * New GUI wrapper for the server in a new server package called 
+      org.jogre.server.awt. The Server GUI wrapper shows the structure of the 
+      data classes as a GUI tree and also shows the console, incomming and 
+      outgoing messages.
+
+ 
+============================================================================== 
+Alpha Release 0.2
+==============================================================================  
+
+Alpha Release 0.2 is the second public release of JOGRE and cosists of a much 
+more modified API, a seperate multi game server and 4 Games. Its includes:
+
+    * Single server model which uses a plug-in style architecture which can 
+      support multiple games. Data is organised on server as:
+
+      GameList -> Game -> TableList -> Table -> PlayerList -> Player
+                       -> UserList -> User
+
+    * Server classes have been split from the API. This makes the API more 
+      client centric which means slimer clients.
+    * Communications object all use XML (Nano XML) for communication and data 
+      binding. This was deemed a necessary step as all the communication was 
+      getting very complex.
+    * Powerful layering system for communication which removes manual 
+      delegation between a client frame and a table frame in a game. Each 
+      message is either 1) Base 2) Game 3) Table
+    * New game (connect 4)
+    * More powerful client controller which can send / receive simple 
+      propertiess and XML objects easily without creatin Comm objects.
+
+ 
+[ top ]
+ 
+ 
+============================================================================== 
+Alpha Release 0.1
+============================================================================== 
+
+Alpha Release 0.1 is the first public release of JOGRE and cosists of an API 
+and 3 Games. 

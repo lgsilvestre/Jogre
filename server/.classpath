@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" output="test/classes" path="test/src"/>
+	<classpathentry kind="lib" path="lib/dom4j.jar"/>
+	<classpathentry kind="lib" path="lib/mysql-connector-java-3.1.12-bin.jar"/>
+	<classpathentry kind="lib" path="lib/hsqldb.jar"/>
+	<classpathentry kind="lib" path="lib/ibatis-2.3.0.677.jar" sourcepath="D:/bob/temp/ibatis/src/ibatis-src.zip"/>
+	<classpathentry kind="lib" path="test/lib/dbunit-2.2.jar" sourcepath="D:/workspace/intelliden/rseries/d5.1/appframework/test/lib/dbunit-2.2-sources.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/JOGRE API"/>
+	<classpathentry kind="lib" path="/JOGRE API/test/lib/junit.jar"/>
+	<classpathentry kind="output" path="classes"/>
+</classpath>

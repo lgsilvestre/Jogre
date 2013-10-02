@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/commons-beanutils.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/commons-collections.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/commons-digester.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/commons-fileupload.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/commons-lang.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/commons-logging.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/commons-validator.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/log4j-1.2.9.jar"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/struts.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/JOGRE API"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/JOGRE Server"/>
+	<classpathentry kind="lib" path="WEB-INF/lib/jakarta-oro.jar"/>
+	<classpathentry kind="lib" path="/JOGRE Server/lib/dom4j.jar"/>
+	<classpathentry kind="lib" path="/JOGRE Server/lib/hsqldb.jar"/>
+	<classpathentry kind="lib" path="/JOGRE Server/lib/ibatis-2.3.0.677.jar" sourcepath="D:/bob/temp/ibatis/src/ibatis-src.zip"/>
+	<classpathentry kind="lib" path="/JOGRE Server/lib/mysql-connector-java-3.1.12-bin.jar"/>
+	<classpathentry kind="lib" path="lib/servlet.jar"/>
+	<classpathentry kind="output" path="classes"/>
+</classpath>

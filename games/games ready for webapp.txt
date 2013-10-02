@@ -1,0 +1,31 @@
+Games that are ready for webapp must have the following: -
+
+1) Complete graphics - new title graphics, icons etc.
+2) Background colour is not gray.
+3) New Player component (where a player can join a game).
+4) Test case which tests flatten / setState on model.
+5) Game state works OK - i.e. another player joins to watch a game
+
+--------------------------------------
+Games that are ready ...
+--------------------------------------
+
+- TicTacToe [done]
+- Chess [done]
+- Checkers [done]
+- Connect 4 [done]
+- Battleships [done]
+- Tetris [done]
+- Quetris [done]
+- Reversi [done]
+- Go [done]
+- Abstrac [done]
+- Chinese Checkers [done]
+- Propinquity [in progress - remove old style of sending / receiving stuff]
+- Dots [in progress]	- NEEDS IMPROVEMENT
+- Chinese Checkers [in progress]
+
+???
+
+
+Go through each game and ensure that it at least runs OK.

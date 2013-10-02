@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<dataset>
+	<user username="bob" password="bob123" security_question="1" security_answer="pigs" year_of_birth="1974" email="bob@bob.com" receive_newsletter="true" />    
+	<user username="dave" password="dave123" security_question="2" security_answer="cats" year_of_birth="1975" email="dave@dave.com" receive_newsletter="false" />
+	<user username="john" password="john123" security_question="3" security_answer="dogs" year_of_birth="1976" email="john@john.com" receive_newsletter="true" />
+	<user username="sharon" password="sharonb123" security_question="4" security_answer="sheep" year_of_birth="1977" email="sharon@sharon.com" receive_newsletter="false" />
+</dataset>

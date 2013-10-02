@@ -1,0 +1,508 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+
+This is A DTD description of a rules file.  However, since NanoXML that JOGRE
+uses doesn't support DTD descriptions, it is given in a comment.
+
+<!DOCTYPE rules [
+<!ELEMENT rules (section+)>
+<!ATTLIST rules content (text | text/html | text/rtf) "text"
+				title CDATA #REQUIRED>
+	<!ELEMENT section (section+ | CDATA)>
+	<!ATTLIST title CDATA #IMPLIED>
+]>
+
+Notes: The "rules" element *must* have a title even though that title is never
+       shown to the users.  If the title isn't there, then nothing will display
+       in the rules window.
+
+       Sections are not required to have a title, but only sections with titles
+       will show up in the index'd tree list.
+
+       NanoXML doesn't support mixing elements and CDATA inside of an element,
+       and so non-title'd sections allow that functionality.
+
+       You can embed sections within sections and they will show up in the
+       tree as subsections.
+
+       The <![CDATA[ ... ]]> verbiage is needed for text that uses HTML tags within
+       it.  Without them, NanoXML would try to parse them as XML and fail.  For plain
+       text rules files, you don't need them.
+-->
+
+<rules content="text/html" title="Rules">
+	<section title="Introduction">
+		<![CDATA[<font size="+2"><b><u>Introduction</u></b></font><br>
+		The game of Car Tricks was designed by Jerry Dziuba.<br><br>
+		Many thanks to Jerry for graciously allowing this computer version of his game
+		to be made.<br><br>
+		Jerry's web site is http://www.regnadkcin.com where there is information about his
+		other games as well as a complete do-it-yourself kit for making your own real-life Car Tricks
+		game.<br><br>
+		At his web site is also a complete rule sheet (with much better pictures than
+		I can draw) from which these rules were taken.<br><br>
+		The program was written by Richard Walter (rwalter42@yahoo.com)<br>]]>
+	</section>
+
+	<section title="Overview">
+		<![CDATA[<font size="+2"><b><u><br>Overview</u></b></font><br>
+		In Car Tricks players control cars through the playing of cards.  No player controls a
+		single car.  Instead all players can influence the speed and course of any car on the
+		track.  Before the race begins each player secretly predicts the order of finish based
+		upon the cards in their hand.  In the end, the player that most closely predicted
+		the entire finishing order (not just the car that came in first) will win the game.<br>]]>
+	</section>
+
+	<section title="Components">
+		<![CDATA[<font size="+2"><b><u><br>Components</u></b></font><br>
+		There are 6 race cars (one each of red, blue, green, yellow, purple and white).<br>
+		There are 60 movement cards (one each of numbers 2-11 of each color).<br>
+		There are 20 Event cards (five each of Driver, Leader, Slipstream and Wreck).<br>
+		There are 5 scoring cards (one for each player).<br>
+		The playing track.<br>]]>
+	</section>
+
+	<section title="Playing the Game">
+		<section>
+			<![CDATA[<font size="+2"><b><u><br>Playing the Game</u></b></font><br>]]>
+		</section>
+
+		<section title="Preparation">
+			<![CDATA[<font size="+1"><b><u><br>Preparation</u></b></font><br>
+			The track board is set up with the cars placed on the starting spaces.<br>
+			Each player receives one each of the 4 event cards.<br>
+			The movement cards are shuffled and dealt out to the players.<br>
+			&nbsp;&nbsp;&nbsp;For a 3-player game, each player will get 20 cards.<br>
+			&nbsp;&nbsp;&nbsp;For a 4-player game, each player will get 15 cards.<br>
+			&nbsp;&nbsp;&nbsp;For a 5-player game, each player will get 12 cards.<br>]]>
+		</section>
+
+		<section title="Predicing the Order of Finish">
+			<![CDATA[<font size="+1"><b><u><br>Predicing the Order of Finish</u></b></font><br>
+			After looking at their cards, each player must decide on what order they
+			think the cars will finish the race.  Players drag the car images in the bid
+			panel until they are in the correct order which the player wants.  The top
+			car is in first place, the second highest car is in second place, etc..., with
+			the car at the bottom of the panel being in last place.<br>
+			When done setting his bid, each player then selects the card from his hand that
+			he wishes to play for the first trick.  It is valid to select an event card for
+			the first trick, if desired.<br>]]>
+		</section>
+
+		<section title="First Trick">
+			<![CDATA[<font size="+1"><b><u><br>First Trick</u></b></font><br>
+			Normally in Car Tricks the player of the highest card from the previous round
+			leads for the next one.  However, since there is no previous round for the
+			first one, instead the highest card selected is considered the lead card.  If
+			there is a tie for highest value, then the card which matches the car which is
+			in the higher starting position is the winning card.<br>
+			Once the lead card has been determined with this method, the normal car movement
+			rules apply.<br><br>
+			<b><i>Note: This method is used only for the first trick.  All rounds after this
+			will be played as described in the Card Play section of the rules.</b></i>]]>
+		</section>
+
+		<section title="Card Play">
+			<![CDATA[<font size="+1"><b><u><br>Card Play</u></b></font><br>
+			The player who has the lead plays any card of his choosing from his hand.  The
+			car that matches the color of this card (the lead card) will be the active car
+			for this round.  Only this car will move this round, no others.<br><br>
+			After the lead card is played, the next player chooses a card to play.  Players do
+			<i><b>not</b></i> have to follow the color of the lead card.  They may play any
+			card of their choosing.  However, only the car of the color of the lead card will
+			actually move this round.<br><br>
+			Once everyone has played a card, the values of the cards matching the color
+			of the lead card are added together.  This is the total number of spaces that that
+			car can move.
+			The player that played the highest numbered card in that color becomes the
+			driver of that car for this round and moves the car according to the rules below.<br><br>
+			Whichever player played the highest numbered card overall becomes the leader of the
+			next round and will control what color car becomes active for that round.  Ties for
+			highest value card played overall are broken in order of card play with the first
+			player to play that number becoming the leader.<br>]]>
+		</section>
+
+		<section title="Car Movement">
+			<![CDATA[<font size="+1"><b><u><br>Car Movement</u></b></font><br>
+			Cars can move forward and diagonally along the track.  They never move backward
+			or sideways.  Cars can never occupy the same space, and therefore cannot pass
+			through an occupied space to get ahead of another car.<br><br>
+			Cars may move diagonally between two spaces with occurpied cars.<br><br>
+			Cars are not allowed to change lanes in corners.<br><br>
+			Drivers can choose either of the forks when the track splits, but these forks
+			are entered by the space of the fork that must be empty.<br><br>
+			Drivers cannot intentionally forfeit spaces if there is nothing impeding the
+			progress of a car and must move around a car in the straightaway if possible.
+			A driver can, however, drive a car into a position where it is blocked and must
+			stop before using all of the movement points.<br>]]>
+		</section>
+
+		<section title="Event Cards">
+			<![CDATA[<font size="+1"><b><u><br>Event Cards</u></b></font><br>
+			In place of playing a numbered movement card, a player may on his turn play one
+			of his event cards.  Each player's event card may only be used once per game.<br><br>
+			Use of event cards are restricted by the following rules:<br>
+			&nbsp;&nbsp;&nbsp;* Only one card of each type may be in play in any one round.<br>
+			&nbsp;&nbsp;&nbsp;* A wreck card may only be played if no other event cards have
+			been played yet that round.<br>
+			&nbsp;&nbsp;&nbsp;* After playing an event card, that player may not play another
+			event card until all other players have played at least the same number of event
+			cards.<br><br>
+			<b><i>Note: A player may lead with an event card.  In this case, the next player
+			plays the card to determine what color the active car will be that round.  If
+			that player also plays an event card, then continue on until a player plays a
+			movement card.  If all players happen to play event cards, then there is no
+			movment that round.</b></i><br>]]>
+		</section>
+
+		<section title="Event Card Descriptions">
+			<![CDATA[<font size="+1"><b><u><br>Event Descriptions</u></b></font><br>
+			<b>Driver</b> - The player of the Driver event card will take control of the
+			active car for that round instead of the player with the highest card in the
+			lead color.  The car moved is still the car of the color of the lead card.<br>
+			<b>Leader</b> - The player of the Leader event card will become the leader of
+			the next round instead of the player that played the highest overall card value.<br>
+			<b>Slipstream</b> - The number of spaces that the active car moves this round is
+			double the card total.<br>
+			<b>Wreck</b> - No car movement will take place this round.<br>]]>
+		</section>
+
+		<section title="Ending the Game">
+			<![CDATA[<font size="+1"><b><u><br>Ending the Game</u></b></font><br>
+			The game ends after a round in which a player has played his final movement
+			card (event cards do not matter).  After any car movement for this round
+			scoring takes place.<br>]]>
+		</section>
+
+		<section title="Car Positions">
+			<![CDATA[<font size="+1"><b><u><br>Car Positions</u></b></font><br>
+			The current car position panel always shows the current order of the cars in the race.<br><br>
+			The car that is closest to the finish line that didn't actually cross the line
+			is in first place.  The next closest car is in second place.  And so on for all
+			the cars.<br><br>
+			When two cars are side-by-side on a straightaway, the car on the inside is considered
+			to be ahead.  The inside lane is determined by moving <b>forward</b> to the next
+			curve.  Whichever lane is the inside for that curve is the inside for that
+			portion of the straightaway.<br><br>
+			Any car that crosses the finish line during the race is considered to be back
+			in the rear of the pack and must start working its way back up through the cars
+			to advance position in the race.<br><br>
+			A car that is in the middle of a shortcut or backtrack lane is considered to be at the entrance
+			space of the lane with regards to cars on the straightaway.  If there is a car
+			on the entrance space, then it is considered ahead of that car.<br>]]>
+		</section>
+
+		<section title="Scoring">
+			<![CDATA[<font size="+1"><b><u><br>Scoring</u></b></font><br>
+			At the end of the race, all players show their bids and the scores are
+			calculated.<br><br>
+			For each car, a player multiplies the position of the car that was bid by
+			the actual position that the car finished at the end of the game.<br><br>
+			The total for all the cars in the race is made.<br><br>
+			The player with the highest score is the winner.<br>]]>
+		</section>
+	</section>
+
+	<section title="Interface Details">
+		<section>
+			<![CDATA[<font size="+2"><b><u><br>Interface Details</u></b></font><br>]]>
+		</section>
+
+		<section title="Starting a New Game">
+			<![CDATA[<font size="+1"><b><u><br>Starting a New Game</u></b></font><br>
+			When you start a new game, there are three options you must choose from
+			to configure the game.<br><br>
+			<b>Number of Players</b> - Choose between 3 and 5 players.<br>
+			<b>Track</b> - Choose a track to drive on.  The list of tracks is provided
+			by the server.  You can create new tracks (see customization below), but
+			they must be installed by the server administrator before they can be played.<br>
+			<b>Enable Event Cards</b> - If enabled, then event cards can be used.  If
+			disabled, then event cards will not be used.  Not using event cards may be
+			easier for new players.<br>
+			]]>
+		</section>
+
+		<section title="State Panel">
+			<![CDATA[<font size="+1"><b><u><br>State Panel</u></b></font><br>
+			The upper left corner of the table shows a text panel that indicates what the current
+			state of the game is.<br>]]>
+		</section>
+
+		<section title="Hand Panel">
+			<![CDATA[<font size="+1"><b><u><br>Hand Panel</u></b></font><br>
+			The top of the window shows your hand.  Moving the mouse over a card will cause
+			it to move up a little to show which card is being pointed at.  Clicking the
+			mouse will select the current card and play it.<br>]]>
+		</section>
+
+		<section title="Played Card Panels">
+			<![CDATA[<font size="+1"><b><u><br>Played Card Panels</u></b></font><br>
+			Along the right side of the screen are the Played Card Panels.  There is one panel
+			for each player in the game.  If you are a participant in a game, then your played
+			card panel is always the one on the top.  If you are a spectator, then the panels
+			are in order from seat 0.<br><br>
+			The order of play moves down, wrapping from the bottom back to the top.<br><br>
+			Each card that is played shows up in the panel.<br><br>
+			The small symbols show which event cards each player has available to him.  When it
+			is your turn to play, instead of clicking on a movement card from your hand, you
+			may click on one of the small event card markers to play an event card.<br><br>
+			A prompt is displayed in this area for whichever player is currently
+			choosing a card to play.<br><br>
+			As cards are played, three icons are added to these panels to indicate
+			the current status of the hand.<br><br>
+			The first icon that is added shows which car will be moving this trick.
+			It is added to the first movement card that is played each trick.
+			The car that is moving is also highlighted on the track.<br><br>
+			The second icon that is added is a steering wheel.  It indicates which
+			player will be the driver.  It is added to the highest valued card
+			that matches the color of the car that is moving this trick.<br><br>
+			The third icon that is added is a yellow check.  It indicates which
+			player will lead the first card of the next trick.  It is added to
+			the highest valued card of any color played this trick.<br>
+			]]>
+		</section>
+
+		<section title="Bid Panel">
+			<![CDATA[<font size="+1"><b><u><br>Bid Panel</u></b></font><br>
+			Along the left side of the screen is the bid panel.  At the beginning of the game
+			you can drag the cars around to place them in the order in which you are predicting
+			that they will finish the race.  The top of the panel is for first place, with
+			second place below that, moving downward with last place at the bottom.<br><br>
+			After bidding is done, you cannot move any of the cars around.<br><br>
+			If you are a spectator, then the bid panel will be empty<br>]]>
+		</section>
+
+		<section title="Current Position Panel">
+			<![CDATA[<font size="+1"><b><u><br>Current Position Panel</u></b></font><br>
+			Next to the bid panel is the current position panel.  This shows the current positions
+			of the cars on the track.  As the cars are moved, this panel will always be updated to
+			reflect the current positions<br>]]>
+		</section>
+
+		<section title="Track Panel">
+			<![CDATA[<font size="+1"><b><u><br>Track Panel</u></b></font><br>
+			The middle of the screen shows the track.  The cars are placed on their spaces.<br><br>
+			When it is time for a car to move, the legal spaces where that car can move to are
+			indicated by black dots.  The driver who is moving the car should use the mouse to
+			select one of these spaces to indicate where the car should move to.<br><br>
+			Moving the mouse close to one of the ending spaces will highlight that marker.
+			Clicking will select the current ending position.<br><br>
+			If there is only a single valid place for the car to move to, then
+			the game will automatically move the car to that location and advance
+			to the selection phase where the leader of the next trick should pick
+			his card.  Note that this is also true when a car can't move, either
+			because a wreck card has been played, or the car is blocked by other
+			cars.  A note is added in the chat window of all the players indicating
+			what occurred.
+			]]>
+		</section>
+	</section>
+
+	<section title="Customization">
+		<section>
+			<![CDATA[<font size="+2"><b><u><br>Customization</u></b></font><br>]]>
+		</section>
+
+		<section>
+			<![CDATA[
+			The Car Tricks game allows a fair amount of customization.  This can be
+			done by both the server side (allowing the server manager to provide new
+			tracks for all clients who connect to the server) and the client side (allowing
+			clients to customize their view of the game however they like without affecting
+			the other players).  The customization section provides information about how
+			to accomplish this.<br>]]>
+		</section>
+
+		<section title="Track Database">
+			<![CDATA[<font size="+1"><b><u><br>Track Database</u></b></font><br>
+			Information about the tracks is contained in a track database.  A track database
+			is a directory that contains a database file named db.xml and a number
+			of graphical images called tiles that are used to draw the track.
+			Each track will have its own directory.  The name of the directory must start
+			with the characters "track_".<br><br>
+			A data directory holds all of the track directories.  By default, the data
+			directory is called "data" and is contained within the games/carTricks directory.
+			However, the location of the master track directory can be changed for either
+			the client or server.  See the appropriate section below on client or server
+			customization to see how to do this.<br><br>
+			When the server controller is initialized, it will scan the data directory
+			for valid track directories.  When a client attaches to the server, the server
+			will send a list of the tracks that it found to the clients.  This list is
+			used to create the selection box when the client starts a new game.  Only
+			tracks that the server has can be played on.  If a client has created a new
+			track locally, it must be provided to the server administrator through non-JOGRE
+			means (email, ftp, etc...) and installed by the administrator before that
+			track becomes available to play on that server.<br><br>
+			Clients may keep copies of the tracks locally.  When a game is started, the
+			client will look to see if it already has a copy of the track database for
+			the track that is being played.  If it does, then the local copy is used.  If
+			it does not, then it will request the server to send the data to it to create
+			the database.<br><br>
+			Tracks are identified using the track name (an ASCII string) and a "fingerprint"
+			which is a number calculated from the topology of the track.  There can be
+			multiple tracks with the same name as long as they have different fingerprints.
+			Also, a client can locally customize some of track database and still play
+			on the track with others as long as the fingerprint isn't affected.<br>]]>
+		</section>
+
+		<section title="Track db.xml Format">
+			<![CDATA[<font size="+1"><b><u><br>Track db.xml Format</u></b></font><br>
+			The main database file used in a track database is called "db.xml".
+			A db.xml file contains a single track element with several required attributes
+			and several child elements which describe the tiles and spaces of the track.<br><br>
+			The attributes of the track element are:<br>
+			&nbsp;&nbsp;&nbsp;<b>name</b> - The name of the track as it will appear in the
+			list of games when starting a new game.<br>
+			&nbsp;&nbsp;&nbsp;<b>start_spaces</b> - A list of the space numbers where the
+			cars begin the race.  The number of cars in the race is determined by the
+			number of elements of this array.<br>
+			&nbsp;&nbsp;&nbsp;<b>num_spaces</b> - The number of spaces in the track.<br>
+			&nbsp;&nbsp;&nbsp;<b>num_tiles</b> - The number of tiles used to draw this track.<br>
+			&nbsp;&nbsp;&nbsp;<b>image_size</b> - The width & height of the track (in pixels)
+			when it is drawn.<br>
+			&nbsp;&nbsp;&nbsp;<b>backgroundTile</b> - The number of the tile that should
+			be used to cover the background of the track before drawing the tiles.  This
+			is optional, if a background tile isn't desired<br>
+			<br>
+			Within the track element there are a number of sub-elements.  Each sub-element
+			defines either a tile or a space.<br><br>
+			Spaces are the places where a car can move to on the track.  The spaces are
+			numbered and each space must have a unique number.  Lower numbered spaces are
+			closer to the end of the track than higher numbered spaces.  This means that
+			a car that is on a lower numbered space is ahead of a car on a higher numbered
+			space.<br><br>
+			Tiles are graphical elements that are used to draw the complete track.<br><br>
+			All of the tiles must be defined before the spaces.<br><br>
+			<b>Tile Sub-elements</b><br>
+			Tiles have the following attributes:<br>
+			&nbsp;&nbsp;&nbsp;<b>id</b> - The number of this tile.  Tile Id's must be unique<br>
+			&nbsp;&nbsp;&nbsp;<b>file</b> - The name of the graphical file that contains
+			the image of this tile.<br>
+			&nbsp;&nbsp;&nbsp;<b>offset</b> - An (x,y) pair that indicates the location
+			within the tile where the point of the space element is located.<br><br>
+			<b>Space Sub-elements</b><br>
+			Spaces have the following attributes:<br>
+			&nbsp;&nbsp;&nbsp;<b>id</b> - The number of this space.  Space Id's must be unique<br>
+			&nbsp;&nbsp;&nbsp;<b>screen</b> - A three element array that is used to
+			place the image of the car that is on that space.  The first two elments
+			are the (x,y) location of where the car should be drawn.  This is the
+			center point of the car.  The last element is a number from 0 to 15 and
+			indicates the rotation of the car image to be drawn.  Rotation 0 is pointing
+			East.  Rotation increases clockwise in 22.5-degree increments.  So, rotation 4
+			is pointing South and rotation 10 is pointing North-West.<br>
+			&nbsp;&nbsp;&nbsp;<b>next</b> - A three element array that contains the
+			space Id's for the spaces that the car can move to from the current space.
+			This array must always be three elements in size and -1 is used if a space
+			does not have 3 valid following spaces.  A space can never have more than 3
+			valid following spaces.<br>
+			&nbsp;&nbsp;&nbsp;<b>tile</b> - A two element array that indicates which
+			tile should be drawn for this space.  This field is optional; not every
+			space needs a tile (this is because a single tile can graphical show multiple
+			spaces and so only one of the spaces on that tile needs the tile attribute.)
+			The first element is the tile Id of the tile to draw.  The second element is
+			the layer on which this tile should be drawn.  When the track is drawn it
+			is drawn in layers with tiles on higher valued layers being drawn on top
+			of tiles on lower values layers.  Tiles on the same layer are drawn in
+			indeterminite order, but if the tiles don't overlap, then it doesn't matter.
+			Valid layers range from 1 (on the bottom) to 9999 (on the very top).<br>]]>
+		</section>
+
+		<section title="Server Customization">
+			<![CDATA[<font size="+1"><b><u><br>Server Customization</u></b></font><br>
+			In the server.xml file, there will be a section for Car Tricks under
+			supported_games.  In that section, there is a custom element that is used
+			to provide customization to the server.<br><br>
+			For Car Tricks, the server customization provides the following attribute:<br>
+			&nbsp;&nbsp;&nbsp;<b>dataRootDir</b> - The location of the master track
+			directory.  If this is a relative path, then it is relative to the jogre/server
+			directory where the server is run from.  The default value is "../games/carTricks/data"<br>
+			]]>
+		</section>
+
+		<section title="Client Customization">
+			<section>
+				<![CDATA[<font size="+1"><b><u><br>Client Customization</u></b></font><br>]]>
+			</section>
+
+			<section title="Customizing Track Images">
+				<![CDATA[<font size="+1"><b><br>Customizing Track Images</b></font><br>
+				The tile files within each track database directory are not part of
+				the fingerprint calculation and therefore can be freely changed.  You
+				can either edit the tile image file or create a new one.  If you change
+				a tile image to a new name, just edit the db.xml file for that track
+				to change the name of the tile.<br><br>
+				The screen attributes of the spaces is also not part of the fingerprint
+				calculation and therefore you can rearrange spaces on the screen to
+				change the layout.  As long as the space Id's and the next attributes
+				are unchanged, then you can play on the modified track.
+				]]>
+			</section>
+
+			<section title="Customizing Non-Track Images">
+				<![CDATA[<font size="+1"><b><br>Customizing Non-Track Images</b></font><br>
+				The non-track images (cards, path markers, etc...) are stored in the
+				images directory.  Each image has an entry in the game.properties file
+				that points to it.  You can change/edit any of the images and change
+				the entry in game.properties.  Some images have an array of pictures
+				with each picture being identical in size.
+				If you edit such a file, you can change the size of each element, but make
+				sure that you keep the array structure.  For example, the file cards.png
+				shows 10 cards across by 6 cards down.  If you change the size of each
+				card to be 25 x 30 pixels, then your final image file should be 250 x 180
+				pixels, with the cards still arranged in the 10 x 6 array.<br>]]>
+			</section>
+
+			<section title="games.properties File">
+				<![CDATA[<font size="+1"><b><br>games.properties File</b></font><br>
+				There are several properties in the games.properties file that can be
+				used to customize the view of the local client.<br><br>
+				&nbsp;&nbsp;&nbsp;<b>local.trackDB.cache.dir</b> - This is the directory
+				where the local copies of the track databases are kept.<br><br>
+				&nbsp;&nbsp;&nbsp;<b>local.trackDB.cache.saveNewTracks</b> -
+				If set to 1, then new tracks that are downloaded from the server will
+				be stored into the local.trackDB.cache.dir directory when a client
+				attaches to a track that it doesn't know.
+				If set to 0, then new tracks will not be stored locally on disk,
+				but will be downloaded only for the duration of the game.<br><br>
+				&nbsp;&nbsp;&nbsp;<b>path.layer.0.width</b><br>
+				&nbsp;&nbsp;&nbsp;<b>path.layer.0.color</b><br>
+				&nbsp;&nbsp;&nbsp;<b>path.layer.1.width</b><br>
+				&nbsp;&nbsp;&nbsp;<b>path.layer.1.color</b> - When a player is the
+				driver and is deciding where to move a car, the track will show a path
+				from the car's currently space to the highlighted destination space.
+				This path is composed of two lines that are drawn on top of each other.
+				Layer 0 is drawn first followed by layer 1.  The width indicates the
+				width of the stripe (in pixels) and the color indicates the color
+				to be used for the stripe.  Color can either be an r,g,b triplet for
+				a constant color, or the keyword "car" to be drawn in the color of the
+				active car that is moving.  The default values draw a 7-pixel black stripe
+				with a 3-pixel stripe of the car color.<br><br>
+				&nbsp;&nbsp;&nbsp;<b>car.color.x</b> - The color to use for car <i>x</i>
+				when keyword "car" is used for one of the path.layer..colors.<br><br>
+				&nbsp;&nbsp;&nbsp;<b>hand.selected.vertical.offset</b> - The number of
+				pixels to offset the card when deciding which card to choose from your
+				hand.<br><br>
+				&nbsp;&nbsp;&nbsp;<b>hand.card.spacing</b> - The number of pixels of
+				overlap between cards of <i>the same</i> color when drawing your card hand.<br><br>
+				&nbsp;&nbsp;&nbsp;<b>hand.color.spacing</b> - The number of pixels of
+				overlap between cards of <i>different</i> colors when drawing your card hand<br><br>
+				&nbsp;&nbsp;&nbsp;<b>halo.color.0</b><br>
+				&nbsp;&nbsp;&nbsp;<b>halo.color.1</b> - These two colors are used
+				to draw the highlighting halo around the car that will be moving on
+				the track.  The two colors are used alternating in concentric
+				circles around the active car.  The color can either be an r,g,b
+				triplet for a constant color, or the keyword "car" to be drawn
+				in the color of the active car.<br><br>
+				&nbsp;&nbsp;&nbsp;<b>halo.density</b> - This parameter controls how
+				transparent each ring of the halo is.  It is a percent value ranging
+				from 0 (for completely clear) to 100 (for completely opaque).<br><br>
+				&nbsp;&nbsp;&nbsp;<b>halo.size</b> - This parameter controls how
+				large the halo is.  It is a percent value relative to the size
+				of the car.  For example, a value of 200 would make the halo
+				twice as large as the car.<br>
+				]]>
+			</section>
+		</section>
+	</section>
+</rules>

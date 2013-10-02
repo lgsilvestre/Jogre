@@ -1,0 +1,24 @@
+TODO LIST FOR BETA 0.3
+------------------------------------
+
+H - Create Jogre Administrator - sort out messages - 95%
+M - Do port listen server shut down - 0%
+H - Create Texas Hold'em - 100% ?
+H - Use Ibatis for data mapping - 100%
+L - Investigate moving property files to own src directory - 0% - IGNORE FOR BETA 0.3
+M - Clean up all graphical inconsistencys (e.g. Dialogs) - IGNORE FOR BETA 0.3
+M - Create Jogre Communication Protocol document - IGNORE FOR BETA 0.3
+M - Test cases - API, server communication, model on each game. - 100%
+M - Configurable server timout feature - 0% - IGNORE FOR BETA 0.3
+
+
+Possible refactors
+------------------------------------
+
+- Some ambiguity exists at minute between "client" / "game" GUI elements / messages
+  They are essentially the same.  I think client is mybe better than game as the
+  server manager can send CommClientMessage's
+
+- Refactor graphical names of Jogre GUI objects and objects which directly extend Swing objects
+
+- remove logging and replaced with Log4J (mybe use existing logging class as a wrapper object?)
