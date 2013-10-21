@@ -63,7 +63,7 @@ public abstract class ConnectionPanel extends JogrePanel
     protected JTextField usernameTextField;
     protected JTextField serverTextField, portTextField;
     protected JPasswordField passwordTextField;
-    protected JButton okButton, cancelButton;    
+    protected JButton okButton, cancelButton, newUserButton;    
     protected JLabel statusLabel;
     
     // Data fields
@@ -328,16 +328,18 @@ public abstract class ConnectionPanel extends JogrePanel
      */
     private JogrePanel getButtonPanel () {
         // Create panel
-        double pref = TableLayout.PREFERRED, space = 5;
-        double [][] sizes = new double [][] {{pref, space, pref}, {pref}};
+        double pref = TableLayout.PREFERRED, space = 20;
+        double [][] sizes = new double [][] {{pref, space, pref, space, pref}, {pref}};
         JogrePanel buttonPanel = new JogrePanel (sizes);
 
         // Create buttons
         okButton = new JogreButton (labels.get("logon"));
         cancelButton = new JogreButton (labels.get("cancel"));
+        newUserButton = new JogreButton ("New User");
         if (!silentConnect) {
             buttonPanel.add (okButton, "0,0");
             buttonPanel.add (cancelButton, "2,0");
+            buttonPanel.add (newUserButton, "4,0");
         }
 
         return buttonPanel;

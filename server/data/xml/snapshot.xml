@@ -1,3 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<snapshots/>
+<snapshots>
+  <game id="triangulum" numOfUsers="0" numOfTables="0"/>
+  <game id="carTricks" numOfUsers="0" numOfTables="0"/>
+  <game id="abstrac" numOfUsers="0" numOfTables="0"/>
+  <game id="tictactoe" numOfUsers="0" numOfTables="0"/>
+  <game id="reversi" numOfUsers="0" numOfTables="0"/>
+  <game id="propinquity" numOfUsers="0" numOfTables="0"/>
+  <game id="chess" numOfUsers="0" numOfTables="0"/>
+  <game id="grandPrixJumping" numOfUsers="0" numOfTables="0"/>
+  <game id="tetris" numOfUsers="0" numOfTables="0"/>
+  <game id="pointsTotal" numOfUsers="0" numOfTables="0"/>
+  <game id="chineseCheckers" numOfUsers="0" numOfTables="0"/>
+  <game id="ninetynine" numOfUsers="0" numOfTables="0"/>
+  <game id="hex" numOfUsers="0" numOfTables="0"/>
+  <game id="checkers" numOfUsers="0" numOfTables="0"/>
+  <game id="octagons" numOfUsers="0" numOfTables="0"/>
+  <game id="spades" numOfUsers="0" numOfTables="0"/>
+  <game id="connect4" numOfUsers="0" numOfTables="0"/>
+  <game id="quetris" numOfUsers="0" numOfTables="0"/>
+  <game id="warwick" numOfUsers="0" numOfTables="0"/>
+  <game id="texasHoldEm" numOfUsers="0" numOfTables="0"/>
+  <game id="dots" numOfUsers="0" numOfTables="0"/>
+  <game id="battleship" numOfUsers="0" numOfTables="0"/>
+  <game id="camelot" numOfUsers="0" numOfTables="0"/>
+  <game id="go" numOfUsers="0" numOfTables="0"/>
+</snapshots>
