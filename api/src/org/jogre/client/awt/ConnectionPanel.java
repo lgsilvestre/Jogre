@@ -28,6 +28,7 @@ import java.net.ConnectException;
 import java.net.Socket;
 
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
@@ -194,6 +195,21 @@ public abstract class ConnectionPanel extends JogrePanel
                 }
             }
         );
+        
+        // New user button.
+        newUserButton.addActionListener (
+        	new ActionListener () {
+        		public void actionPerformed (ActionEvent event) {
+        			JogreNewUserDialog newuserwindow = new JogreNewUserDialog();
+        			newuserwindow.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        			newuserwindow.setSize(300,300);
+        			newuserwindow.setLocation(300, 300);
+        			newuserwindow.setTitle("Create New User");
+
+        			newuserwindow.setVisible(true);
+        		}
+        	}
+		);
     }
 
     /**
