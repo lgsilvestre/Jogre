@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+//==============================================================================
+// SQL MAP for following table: 
+//	
+//     GAME_SUMMARY
+//
+//===========================================================================-->
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+"http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap>
+
+	<!--
+	=========================================================================== 
+	Add a single user 
+	===========================================================================
+	-->	
+	<insert id="addGameSummary" 
+            parameterClass="org.jogre.server.data.GameSummary">
+        
+        INSERT INTO GAME_SUMMARY
+            (GAME_KEY, USERNAME, RATING, WINS, LOSES, DRAWS, STREAK)
+		VALUES
+			(#gameKey#, #username#, #rating#, #wins#, #loses#, #draws#, #streak#)
+		           
+	</insert>
+	
+	<!--
+	=========================================================================== 
+	Select a single game summary
+	===========================================================================
+	-->	
+	<select id="selectGameSummary" 
+            resultClass="org.jogre.server.data.GameSummary" 
+            parameterClass="org.jogre.server.data.GameSummary">
+        
+        SELECT 
+            GAME_KEY      as gameKey,
+			USERNAME      as username,
+			RATING        as rating,
+			WINS          as wins,
+			LOSES         as loses,
+			DRAWS         as draws,
+			STREAK        as streak
+        FROM
+            GAME_SUMMARY
+		WHERE
+			GAME_KEY = #gameKey#    AND
+		    USERNAME = #username#
+		           
+	</select>	
+
+    <!--
+	=========================================================================== 
+	Return all users 
+	===========================================================================
+	-->		
+	<select id="selectAllGameSummary" 
+            resultClass="org.jogre.server.data.GameSummary" >
+        
+        SELECT 
+            GAME_KEY      as gameKey,
+			USERNAME      as username,
+			RATING        as rating,
+			WINS          as wins,
+			LOSES         as loses,
+			DRAWS         as draws,
+			STREAK        as streak
+        FROM
+            GAME_SUMMARY
+            
+        <dynamic prepend="WHERE">
+            <isNotNull property="username" prepend="AND">
+                USERNAME = #username# 
+            </isNotNull>
+        </dynamic>              
+   
+	</select>	
+	
+	<!--
+	=========================================================================== 
+	Update a single user 
+	===========================================================================
+	-->	
+	<update id="updateGameSummary" 
+            parameterClass="org.jogre.server.data.GameSummary" >
+        
+		UPDATE GAME_SUMMARY SET 
+            GAME_KEY    = #gameKey#,
+			USERNAME    = #username#,
+			RATING      = #rating#,
+			WINS        = #wins#,
+			LOSES       = #loses#,
+			DRAWS       = #draws#,
+			STREAK      = #streak#
+		WHERE
+			GAME_KEY = #gameKey#    AND
+		    USERNAME = #username#
+		
+	</update>
+	
+	<!--
+	=========================================================================== 
+	Delete a single user 
+	===========================================================================
+	-->	
+	<delete id="deleteGameSummary" 
+            parameterClass="org.jogre.server.data.GameSummary" >
+        
+		DELETE FROM GAME_SUMMARY
+		WHERE
+			GAME_KEY = #gameKey#    AND
+		    USERNAME = #username#
+   
+	</delete>	
+
+</sqlMap>

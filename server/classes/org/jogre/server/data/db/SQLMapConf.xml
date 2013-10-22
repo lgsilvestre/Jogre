@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMapConfig PUBLIC "-//iBATIS.com//DTD SQL Map Config 2.0//EN"
+"http://www.ibatis.com/dtd/sql-map-config-2.dtd">
+
+<sqlMapConfig>
+
+    <settings
+		cacheModelsEnabled="true"
+		enhancementEnabled="true"
+		lazyLoadingEnabled="true"
+		useStatementNamespaces="false"/>
+
+	<!-- Connection which is defined as properties -->
+	<transactionManager type="JDBC" >
+		<dataSource type="SIMPLE">
+			<property name="JDBC.Driver" value="${driver}"/>
+			<property name="JDBC.ConnectionURL" value="${url}"/>
+			<property name="JDBC.Username" value="${username}"/>
+			<property name="JDBC.Password" value="${password}"/>
+		</dataSource>
+	</transactionManager>
+
+	<!-- Declare SQL maps -->      
+	<sqlMap resource="org/jogre/server/data/db/sqlmap_game_info.xml" />
+	<sqlMap resource="org/jogre/server/data/db/sqlmap_game_summary.xml" />
+	<sqlMap resource="org/jogre/server/data/db/sqlmap_snap_shot.xml" />
+    <sqlMap resource="org/jogre/server/data/db/sqlmap_user.xml" />
+	
+</sqlMapConfig>

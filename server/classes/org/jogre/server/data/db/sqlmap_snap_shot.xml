@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+//==============================================================================
+// SQL MAP for following table: 
+//	
+//     SNAP_SHOT
+//
+//===========================================================================-->
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+"http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap>
+
+	<!--
+	=========================================================================== 
+	Add a single snapshot 
+	===========================================================================
+	-->	
+	<insert id="addSnapShot" 
+            parameterClass="org.jogre.server.data.SnapShot">
+        
+        INSERT INTO SNAP_SHOT
+            (GAME_KEY, NUM_OF_USERS, NUM_OF_TABLES)
+		VALUES  
+			(#gameKey#, #numOfUsers#, #numOfTables#)
+		           
+	</insert>
+	
+	<!--
+	=========================================================================== 
+	Select a single snapshot 
+	===========================================================================
+	-->	
+	<select id="selectSnapShot" 
+            resultClass="org.jogre.server.data.SnapShot" 
+            parameterClass="org.jogre.server.data.SnapShot">
+        
+        SELECT 
+            GAME_KEY       as gameKey,
+            NUM_OF_USERS   as numOfUsers,
+			NUM_OF_TABLES  as numOfTables
+        FROM
+            SNAP_SHOT
+		WHERE
+			GAME_KEY = #gameKey#		
+		           
+	</select>	
+
+    <!--
+	=========================================================================== 
+	Return all snapshots 
+	===========================================================================
+	-->		
+	<select id="selectAllSnapShot" 
+            resultClass="org.jogre.server.data.SnapShot" >
+       
+		 SELECT 
+            GAME_KEY       as gameKey,
+            NUM_OF_USERS   as numOfUsers,
+			NUM_OF_TABLES  as numOfTables
+        FROM
+            SNAP_SHOT
+   
+		<isNotNull property="orderBy">
+			ORDER BY $orderBy$
+		</isNotNull>
+	</select>	
+	
+	<!--
+	=========================================================================== 
+	Update a single snapshot 
+	===========================================================================
+	-->	
+	<update id="updateSnapShot" 
+            parameterClass="org.jogre.server.data.SnapShot" >
+        
+		UPDATE SNAP_SHOT SET 
+            GAME_KEY       = #gameKey#,
+            NUM_OF_USERS   = #numOfUsers#,
+			NUM_OF_TABLES  = #numOfTables#
+        WHERE
+			GAME_KEY = #gameKey#
+		
+	</update>
+	
+	<!--
+	=========================================================================== 
+	Delete a single snapshot 
+	===========================================================================
+	-->	
+	<delete id="deleteSnapShot" 
+            parameterClass="org.jogre.server.data.SnapShot" >
+        
+		DELETE FROM SNAP_SHOT
+		WHERE GAME_KEY = #gameKey#
+   
+	</delete>	
+
+	<!--
+	=========================================================================== 
+	Delete all snapshots 
+	===========================================================================
+	-->	
+	<delete id="deleteAllSnapShot" 
+            parameterClass="org.jogre.server.data.SnapShot" >
+        
+		DELETE FROM SNAP_SHOT
+   
+	</delete>	
+</sqlMap>

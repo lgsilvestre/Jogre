@@ -24,6 +24,7 @@ import info.clearthought.layout.TableLayout;
 import java.awt.Font;
 import java.awt.Frame;
 
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 import org.jogre.common.User;
@@ -95,6 +96,8 @@ public class JUserInfoDialog extends JogreDialog {
 		JLabel gamesDrawsR  = new JLabel (String.valueOf (user.getDraws()));
 		JLabel gamesStreakL = new JLabel (labels.get("streak") + ":");
 		JLabel gamesStreakR = new JLabel (String.valueOf (user.getStreak()));
+		ImageIcon userImage = new ImageIcon(""); //Aquí debería ir un getter de la imagen del objeto user
+		JLabel ImageLabel = new JLabel("",userImage,JLabel.LEFT);
 		
 		// Set fonts
 		Font pf = JogreAwt.LIST_FONT;
@@ -108,12 +111,13 @@ public class JUserInfoDialog extends JogreDialog {
 		
 		// Add labels to panel
 		panel.add (title, "1,1,3,1,c,c");
-		panel.add (ratingsL,    " 1,3,r,c");  panel.add (ratingsR,     "3,3,l,c");
-		panel.add (gamesPlayedL, "1,5,r,c");  panel.add (gamesPlayedR, "3,5,l,c");
-		panel.add (gamesWonL,    "1,7,r,c");  panel.add (gamesWonR,    "3,7,l,c");
-		panel.add (gamesLosesL,  "1,9,r,c");  panel.add (gamesLosesR,  "3,9,l,c");
-		panel.add (gamesDrawsL,  "1,11,r,c"); panel.add (gamesDrawsR,  "3,11,l,c");
-		panel.add (gamesStreakL, "1,13,r,c"); panel.add (gamesStreakR, "3,13,l,c");
+		panel.add (ratingsL,    " 1,5,r,c");  panel.add (ratingsR,     "3,5,l,c");
+		panel.add (gamesPlayedL, "1,7,r,c");  panel.add (gamesPlayedR, "3,7,l,c");
+		panel.add (gamesWonL,    "1,9,r,c");  panel.add (gamesWonR,    "3,9,l,c");
+		panel.add (gamesLosesL,  "1,11,r,c");  panel.add (gamesLosesR,  "3,11,l,c");
+		panel.add (gamesDrawsL,  "1,13,r,c"); panel.add (gamesDrawsR,  "3,13,l,c");
+		panel.add (gamesStreakL, "1,15,r,c"); panel.add (gamesStreakR, "3,15,l,c");
+		panel.add (ImageLabel, "1,3,3,1,c,c");
 		
 		// Set this panel to be visible
 		getContentPane().add(panel);
