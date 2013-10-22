@@ -29,6 +29,7 @@ import org.jogre.common.Game;
 import org.jogre.common.TableList;
 import org.jogre.common.UserList;
 import org.jogre.common.comm.CommGameMessage;
+import org.jogre.common.comm.CommNewUserMessage;
 import org.jogre.common.comm.CommTableMessage;
 
 /**
@@ -121,6 +122,10 @@ public class ClientConnectionThread extends AbstractConnectionThread {
 	 * @param message
 	 */
 	public void send (CommGameMessage message) {
+		super.send (message);
+	}
+	
+	public void send (CommNewUserMessage message) {
 		super.send (message);
 	}
 

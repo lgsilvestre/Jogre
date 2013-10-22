@@ -29,6 +29,7 @@ import org.jogre.common.TransmissionException;
 import org.jogre.common.comm.Comm;
 import org.jogre.common.comm.CommError;
 import org.jogre.common.comm.CommGameConnect;
+import org.jogre.common.comm.CommNewUserConnect;
 import org.jogre.common.util.GameProperties;
 import org.jogre.common.util.JogreLabels;
 
@@ -42,7 +43,6 @@ public class GameConnectionPanel extends ConnectionPanel {
 
 	/** Link the GUI. */
 	private IJogreGUI client;
-	
 	/** Link to the client connection thread for the game. */
 	private ClientConnectionThread conn = null;
 	
@@ -103,7 +103,31 @@ public class GameConnectionPanel extends ConnectionPanel {
         conn.send (commConnect);
 
 	}
+	// Connect with Integer (NewUser) a=0 => no newUser
+	// with a=0 does similar to connect() but with a CommNewUserConnect Object
+	protected void connect (int a,Socket socket, 
+	            String username,
+	            String password) 
+	{
+		if (a==0) connect(socket,username,password);
+		else{
+			// Create a new connection thread to handle communication
+	        this.conn = new ClientConnectionThread (socket, username, this);
+	        conn.start();       // Start the thread
 
+	        // Create a connect message.
+	        CommNewUserConnect commConnect;
+	        if (password.equals (""))
+	            commConnect = new CommNewUserConnect
+	                (username, GameProperties.getGameID());
+	        else
+	            commConnect = new CommNewUserConnect
+	                (username, password, GameProperties.getGameID());
+	                    
+	        // Send connect message to the server.
+	        conn.send (commConnect);
+		}
+	}
     /**
      * @see org.jogre.client.IClient#receiveGameMessage(nanoxml.XMLElement)
      */
