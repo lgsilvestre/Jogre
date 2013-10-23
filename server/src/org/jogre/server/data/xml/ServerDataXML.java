@@ -320,7 +320,7 @@ public class ServerDataXML extends AbstractServerData {
 	 * @see org.jogre.server.data.IServerData#getUsers()
 	 */
 	public List getUsers() {
-		List users = new ArrayList ();
+		List users = new ArrayList();
 		List userElms = userDoc.getRootElement().elements();
 		for (int i = 0; i < userElms.size(); i++) {
 			Element userElm = (Element)userElms.get(i);
@@ -362,7 +362,7 @@ public class ServerDataXML extends AbstractServerData {
 	 * @see org.jogre.server.data.IServerData#getGameSummarys()
 	 */
 	public List getGameSummarys() {
-		List gameSummaries = new ArrayList ();
+		List gameSummaries = new ArrayList();
 		
 		Iterator it1 = userDoc.getRootElement().elements().iterator();
 		while (it1.hasNext()) {
@@ -395,6 +395,7 @@ public class ServerDataXML extends AbstractServerData {
 			userDoc.getRootElement().add (userElm);
 
 			saveXMLFile (userFile, userDoc);
+			/* MANDAR NOTIFICACION AL SERVIDOR */
 		}
 		else 
 			throw new ServerDataException ("User already exists: " + user.getUsername());
@@ -409,6 +410,7 @@ public class ServerDataXML extends AbstractServerData {
 		Object userObj = userDoc.selectSingleNode ("users/user[@username='" + user.getUsername() + "']");
 		if (userObj != null)
 			userDoc.getRootElement().remove((Element)userObj);
+		saveXMLFile (userFile, userDoc);
 	}
 
 	/**
