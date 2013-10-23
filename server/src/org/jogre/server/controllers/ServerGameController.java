@@ -45,6 +45,7 @@ import org.jogre.common.comm.CommGameConnect;
 import org.jogre.common.comm.CommInvite;
 import org.jogre.common.comm.CommJoinTable;
 import org.jogre.common.comm.CommNewTable;
+import org.jogre.common.comm.CommNewUserConnect;
 import org.jogre.common.comm.CommRequestData;
 import org.jogre.common.util.JogreLogger;
 import org.jogre.common.util.JogreUtils;
@@ -56,6 +57,7 @@ import org.jogre.server.data.GameSummary;
 import org.jogre.server.data.IServerData;
 import org.jogre.server.data.ServerDataException;
 import org.jogre.server.data.db.DBConnection;
+import org.jogre.server.data.xml.ServerDataXML;
 
 /**
  * Class which parses game specific messages on the server (used to
@@ -94,6 +96,9 @@ public class ServerGameController {
 			// Check for a connect message first of all
 			if (messageType.equals (Comm.GAME_CONNECT)) {
 				gameConnect (conn, message);
+			}
+			if (messageType.equals (Comm.GAME_NEWUSER)) {
+				newUserConnect (conn, message);
 			}
 			else if (messageType.equals (Comm.ADMIN_CONNECT)) {
 				adminConnect (conn, message);
@@ -229,6 +234,32 @@ public class ServerGameController {
 				conn.send (new CommError (CommError.SERVER_FULL));
 				conn.stopLoop ();
 			}
+		}
+	}
+	/**
+	 * Connect a user to a server.
+	 *
+	 * @param conn
+	 * @param message                  Connection object.
+	 * @throws TransmissionException   Thrown if there is a transmission error.
+	 */
+	private void newUserConnect (ServerConnectionThread conn, XMLElement message) throws TransmissionException, ServerDataException {
+		ServerDataXML xmlcool = new ServerDataXML();
+		// Unpack game connect message
+		CommNewUserConnect commConnect = new CommNewUserConnect (message);
+		String username = commConnect.getUsername();
+		String gameID = commConnect.getGameID();
+		String password = commConnect.getPassword();
+		// Check server supports this particular game
+		if (!server.getGameList().containsGame (gameID)) {
+
+			// Send "game not supported" error to client and kill thread
+			conn.send (new CommError (CommError.GAME_NOT_SUPPORTED));
+			conn.stopLoop();
+		}
+		else {	// Everything ok?
+			org.jogre.server.data.User Nuevo = new org.jogre.server.data.User(username,password);
+			xmlcool.newUser(Nuevo);
 		}
 	}
 

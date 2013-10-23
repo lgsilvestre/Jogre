@@ -94,6 +94,8 @@ public interface Comm {
 
 	/** Header token of a CommConnect communications object. */
 	public static final String GAME_CONNECT = "game_connect";
+	/** Header token of a CommConnect communications object. */
+	public static final String GAME_NEWUSER = "game_newuser";
 
 	/** Header token of a CommMasterServerConnect communications object. */
 	public static final String MASTER_SERVER_CONNECT = "master_server_connect";
