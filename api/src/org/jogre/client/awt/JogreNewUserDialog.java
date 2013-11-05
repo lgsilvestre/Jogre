@@ -88,8 +88,8 @@ public class JogreNewUserDialog extends JogreDialog {
         if (!silentConnect) {
             port     = Integer.parseInt (portTextField.getText().trim());
             server   = serverTextField.getText();
-            username = usernameTextField.getText();
-            password = new String (passwordTextField.getPassword());
+            username = newUserName.getText();
+            password = new String (newPassword.getPassword());
         }
 
         // Try and create a socket connection
