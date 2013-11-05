@@ -35,7 +35,7 @@ public class JogreNewUserDialog extends JogreDialog {
         JogrePanel panel = new JogrePanel (sizes);
         portLabel = new JLabel("Port: ");
         serverLabel = new JLabel("Server: ");
-        portTextField = new JTextField(4)
+        portTextField = new JTextField(4);
         serverTextField = new JTextField(20);
 		newUserNameLabel = new JLabel("Username: ");
 		newPasswordLabel = new JLabel("Password: ");
