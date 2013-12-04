@@ -18,9 +18,9 @@ import info.clearthought.layout.TableLayout;
 public class JogreNewUserDialog extends JogreDialog {
 	
 	JPanel panel;
-    JLabel newUserNameLabel, newPasswordLabel, repeatNewPasswordLabel;
+    JLabel newUserNameLabel, newPasswordLabel, repeatNewPasswordLabel, portLabel, serverLabel;
     JPasswordField newPassword, repeatNewPassword;
-    JTextField newUserName;
+    JTextField newUserName, portTextField, serverTextField;
     JButton createNewUser, cancel;
     
     public JogreNewUserDialog() {
@@ -69,7 +69,7 @@ public class JogreNewUserDialog extends JogreDialog {
 		createNewUser.addActionListener(
 			new ActionListener() {
 					public void actionPerformed(ActionEvent event) {
-						connect();
+						
 					}
 				}
 		);
@@ -83,37 +83,6 @@ public class JogreNewUserDialog extends JogreDialog {
 		
 	}
 	
-	public void connect () {
-        // Retrieve server and port num
-        if (!silentConnect) {
-            port     = Integer.parseInt (portTextField.getText().trim());
-            server   = serverTextField.getText();
-            username = newUserName.getText();
-            password = new String (newPassword.getPassword());
-        }
-
-        // Try and create a socket connection
-        Socket socket = null;
-        try {            
-                socket = new Socket (server, port);
-
-                // Let sub class handle the connection for here on...
-                connect (1,socket, username, password);
-        }
-        catch (ConnectException coEx) {
-                statusLabel.setText (labels.get("cannot.connect.to.server"));        
-        }
-        catch (IOException ioEx) {
-            ioEx.printStackTrace();
-            statusLabel.setText (labels.get("cannot.connect.to.server"));            
-        }
-        catch (SecurityException secEx) {
-            statusLabel.setText (labels.get("security.exception.has.occurred"));            
-        }
-        catch (Exception genEx) {
-            genEx.printStackTrace ();
-        }
-    }
 
 	private void close() {
 		this.setVisible(false);
