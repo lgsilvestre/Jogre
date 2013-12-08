@@ -22,6 +22,7 @@ import info.clearthought.layout.TableLayout;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
@@ -35,6 +36,7 @@ import java.util.MissingResourceException;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTabbedPane;
 import javax.swing.border.TitledBorder;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -93,6 +95,7 @@ public class JogreClientPanel extends JPanel
 	// GUI stuff
 	private JTableList tableListBox;
 	private JUserList  userListBox;
+	private JUserList  friendListBox;
 
 	// buttons
 	private JogreButton infoButton, messageButton;
@@ -147,8 +150,17 @@ public class JogreClientPanel extends JPanel
 
 		// Create table panel
 		JogrePanel tablePanel = new JogrePanel (sizes);
+		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP, JTabbedPane.SCROLL_TAB_LAYOUT);
+		tabbedPane.setBackground (GameProperties.getBackgroundColour());
+		
 		this.userListBox = new JUserList (conn.getGame());
+		this.friendListBox = new JUserList (conn.getGame()); /* PLACEHOLDER */
 		JogreScrollPane userListScroll = new JogreScrollPane (userListBox);
+		JogreScrollPane friendListScroll = new JogreScrollPane (friendListBox);
+		tabbedPane.addTab(this.jogreLabels.get("users.all"), userListScroll);
+		tabbedPane.setMnemonicAt(0, KeyEvent.VK_1);
+		tabbedPane.addTab(this.jogreLabels.get("users.friends"), friendListScroll);
+		tabbedPane.setMnemonicAt(1, KeyEvent.VK_2);
 
 		// Create user buttons panel and add buttons to it
 		sizes = new double [][] {{pref, SPACING, pref}, {pref}};
@@ -160,7 +172,7 @@ public class JogreClientPanel extends JPanel
 
 		// Add user panel stuff.
 		userPanel.add (userButtonPanel,    "0, 0");
-		userPanel.add (userListScroll,     "0, 2");
+		userPanel.add (tabbedPane,         "0, 2");
 		userPanel.add (new RatingsPanel(), "0, 4");
 		userPanel.setBorder(BorderFactory.createTitledBorder
             (BorderFactory.createEtchedBorder(), this.jogreLabels.get("user.list")));
