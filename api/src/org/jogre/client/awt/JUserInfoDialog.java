@@ -25,6 +25,7 @@ import java.awt.Font;
 import java.awt.Frame;
 
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 
 import org.jogre.common.User;
@@ -38,7 +39,7 @@ import org.jogre.common.util.JogreLabels;
  * @version Alpha 0.2.3
  */
 public class JUserInfoDialog extends JogreDialog {
-	
+
 	private User user;
 	
 	/**
@@ -99,6 +100,9 @@ public class JUserInfoDialog extends JogreDialog {
 		ImageIcon userImage = new ImageIcon(""); //Aquí debería ir un getter de la imagen del objeto user
 		JLabel ImageLabel = new JLabel("",userImage,JLabel.LEFT);
 		
+		JButton addFriendButton = new JButton ("hadsasadsasdadsola");
+		addFriendButton.setText("Add Friend");
+		
 		// Set fonts
 		Font pf = JogreAwt.LIST_FONT;
 		title.setFont(JogreAwt.LIST_FONT_BOLD);
@@ -110,6 +114,7 @@ public class JUserInfoDialog extends JogreDialog {
 		gamesStreakL.setFont (pf);	gamesStreakR.setFont (pf);
 		
 		// Add labels to panel
+		panel.add (addFriendButton, "1,2,3,1,c,c");
 		panel.add (title, "1,1,3,1,c,c");
 		panel.add (ratingsL,    " 1,5,r,c");  panel.add (ratingsR,     "3,5,l,c");
 		panel.add (gamesPlayedL, "1,7,r,c");  panel.add (gamesPlayedR, "3,7,l,c");
