@@ -34,7 +34,7 @@ import org.jogre.common.comm.ITransmittable;
  * @version Alpha 0.2.3
  */
 public class User extends Observable implements ITransmittable {
-
+	private static final String XML_ATT_FRIENDS	 = "friends";
 	private static final String XML_ATT_USERNAME = "username";
 	private static final String XML_ATT_RATING   = "rating";
 	private static final String XML_ATT_WINS     = "wins";
@@ -45,6 +45,10 @@ public class User extends Observable implements ITransmittable {
 	/** Username of User. */
 	protected String username;
 
+	/** Friends of User **/
+	protected String friends;
+
+	
 	/** Score rating of User. */
 	protected int rating, wins, draws, loses, streak;
 
@@ -86,6 +90,7 @@ public class User extends Observable implements ITransmittable {
 			throw new TransmissionException ("Error parsing User");
 
 		this.username = message.getStringAttribute (XML_ATT_USERNAME);
+		this.friends  = message.getStringAttribute  (XML_ATT_FRIENDS);
 		this.rating   = message.getIntAttribute    (XML_ATT_RATING);
 		this.wins     = message.getIntAttribute    (XML_ATT_WINS);
 		this.loses    = message.getIntAttribute    (XML_ATT_LOSES);
@@ -207,7 +212,8 @@ public class User extends Observable implements ITransmittable {
 		XMLElement message = new XMLElement (Comm.USER);
 
 		message.setAttribute (XML_ATT_USERNAME,  username);
-
+		System.out.println("Los friends de bob son"+friends);
+		//message.setAttribute (XML_ATT_FRIENDS,friends);
 		message.setIntAttribute (XML_ATT_RATING, rating);
 		message.setIntAttribute (XML_ATT_WINS,   wins);
 		message.setIntAttribute (XML_ATT_LOSES,  loses);

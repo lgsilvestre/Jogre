@@ -95,7 +95,7 @@ public class JogreClientPanel extends JPanel
 	// GUI stuff
 	private JTableList tableListBox;
 	private JUserList  userListBox;
-	private JUserList  friendListBox;
+	private JUserFriendList  friendListBox;
 
 	// buttons
 	private JogreButton infoButton, messageButton;
@@ -154,7 +154,7 @@ public class JogreClientPanel extends JPanel
 		tabbedPane.setBackground (GameProperties.getBackgroundColour());
 		
 		this.userListBox = new JUserList (conn.getGame());
-		this.friendListBox = new JUserList (conn.getGame()); /* PLACEHOLDER */
+		this.friendListBox = new JUserFriendList (conn.getGame()); /* PLACEHOLDER */
 		JogreScrollPane userListScroll = new JogreScrollPane (userListBox);
 		JogreScrollPane friendListScroll = new JogreScrollPane (friendListBox);
 		tabbedPane.addTab(this.jogreLabels.get("users.all"), userListScroll);

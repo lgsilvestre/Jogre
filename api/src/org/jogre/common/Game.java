@@ -78,6 +78,7 @@ public class Game extends Observable implements ITransmittable {
 	 * @throws TransmissionException
 	 */
 	public Game (XMLElement message) throws TransmissionException {
+		System.out.println(message);
 	    // Read game key and create empty userlist / tablelist.
 	    this.gameKey = message.getStringAttribute (XML_ATT_GAME_KEY);
 	    // Set min / max number of players
