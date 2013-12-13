@@ -55,8 +55,8 @@ public class JogreNewUserDialog extends JogreDialog {
         panel.add (newUserName, "3,1,l,c");
         panel.add (newPassword, "3,3,l,c");
         panel.add (repeatNewPassword,   "3,5,l,c");
-        panel.add (serverTextField, "3,7,1,c");
-        panel.add (portTextField, "3,9,1,c");
+        panel.add (serverTextField, "3,7,l,c");
+        panel.add (portTextField, "3,9,l,c");
         panel.add (cancel,     "3,11,l,c");
         
         addListeners();
